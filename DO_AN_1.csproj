@@ -77,6 +77,7 @@
     <Compile Include="BaoCaoThongKe.Designer.cs">
       <DependentUpon>BaoCaoThongKe.cs</DependentUpon>
     </Compile>
+    <Compile Include="Connection.cs" />
     <Compile Include="frm_qlkd.cs">
       <SubType>Form</SubType>
     </Compile>
