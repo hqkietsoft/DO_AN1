@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace DO_AN_1
 {
-    public partial class QuanLyNhapHang : DevExpress.XtraEditors.XtraForm
+    public partial class QLNH_CNSuaDH : DevExpress.XtraEditors.XtraForm
     {
-        public QuanLyNhapHang()
+        public QLNH_CNSuaDH()
         {
             InitializeComponent();
         }
