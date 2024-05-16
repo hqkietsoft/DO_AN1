@@ -83,6 +83,7 @@ namespace DO_AN_1
             string Query = "DELETE FROM NguoiDung WHERE MaNV = '" + txt_MaNV.Text + "' ";
             do_sql(Query);
             Hienthi_dgv1();
+
         }
 
         private void txtXoa_TextChanged(object sender, EventArgs e)
@@ -97,7 +98,8 @@ namespace DO_AN_1
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            
+            if (MessageBox.Show("Có chắc chắn thoát không?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                this.Dispose();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -146,6 +148,17 @@ namespace DO_AN_1
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            TimKiem_ND TK = new TimKiem_ND();
+            TK.Show();
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Timkiem_Click(object sender, EventArgs e)
         {
 
         }

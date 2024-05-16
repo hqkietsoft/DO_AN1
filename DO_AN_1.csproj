@@ -45,12 +45,16 @@
     <Reference Include="DevExpress.RichEdit.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.RichEdit.v23.2.Export, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v23.2" />
+    <Reference Include="DevExpress.Utils.v23.2.UI, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Xpo.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraBars.v23.2" />
     <Reference Include="DevExpress.Sparkline.v23.2.Core" />
     <Reference Include="DevExpress.XtraCharts.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v23.2.UI, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v23.2.Wizard, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v23.2" />
     <Reference Include="DevExpress.Drawing.v23.2" />
+    <Reference Include="DevExpress.XtraGantt.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraLayout.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -61,6 +65,7 @@
     <Reference Include="DevExpress.XtraTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -115,12 +120,21 @@
     <Compile Include="QuanLySanPham.Designer.cs">
       <DependentUpon>QuanLySanPham.cs</DependentUpon>
     </Compile>
+    <Compile Include="TimKiem_ND.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimKiem_ND.Designer.cs">
+      <DependentUpon>TimKiem_ND.cs</DependentUpon>
+    </Compile>
     <Compile Include="TraCuu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TraCuu.Designer.cs">
       <DependentUpon>TraCuu.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BaoCaoThongKe.resx">
+      <DependentUpon>BaoCaoThongKe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_qlkd.resx">
       <DependentUpon>frm_qlkd.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,6 +151,9 @@
     <EmbeddedResource Include="QuanLyBanHang.resx">
       <DependentUpon>QuanLyBanHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyKhachHang.resx">
+      <DependentUpon>QuanLyKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QuanLyNguoiDung.resx">
       <DependentUpon>QuanLyNguoiDung.cs</DependentUpon>
     </EmbeddedResource>
@@ -145,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLySanPham.resx">
       <DependentUpon>QuanLySanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TimKiem_ND.resx">
+      <DependentUpon>TimKiem_ND.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TraCuu.resx">
       <DependentUpon>TraCuu.cs</DependentUpon>
