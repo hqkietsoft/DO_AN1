@@ -26,7 +26,7 @@ namespace DO_AN_1
         }
         public SqlConnection moketnoi()
         {
-            string str = "Data Source=DESKTOP-H2UCOT4\\SQLEXPRESS;Initial Catalog=QLKinhDoanhMayTinh;Integrated Security=True";
+            string str = "Data Source=DESKTOP-TEOF11\\SQLEXPRESS;Initial Catalog=QuanLyKinhDoanhMayTinh;Integrated Security=True";
             con = new SqlConnection(str);
             con.Open();
             return con;

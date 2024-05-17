@@ -20,7 +20,7 @@ namespace DO_AN_1
         SqlCommand cmd;
         public SqlConnection Moketnoi()
         {
-            string str = "Data Source=DESKTOP-H2UCOT4\\SQLEXPRESS;Initial Catalog=QLKinhDoanhMayTinh;Integrated Security=True";
+            string str = "Data Source=DESKTOP-TEOF11\\SQLEXPRESS;Initial Catalog=QuanLyKinhDoanhMayTinh;Integrated Security=True";
             con = new SqlConnection(str);
             con.Open();
             return con;
@@ -52,26 +52,9 @@ namespace DO_AN_1
         }
         public void Hienthi_dgv1()
         {
-            dgv1.DataSource = ShowAll();
+            dgv_nguoidung.DataSource = ShowAll();
         }
-        private void dgv1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txt_taikhoan.Text = dgv1.CurrentRow.Cells[0].Value.ToString();
-            txt_Matkhau.Text = dgv1.CurrentRow.Cells[1].Value.ToString();
-            txt_MaNV.Text = dgv1.CurrentRow.Cells[2].Value.ToString();
-            txt_Hoten.Text = dgv1.CurrentRow.Cells[3].Value.ToString();
-            datetime.Text = dgv1.CurrentRow.Cells[4].Value.ToString();
-            if (dgv1.CurrentRow.Cells[5].Value.ToString() == "Nam")
-            {
-                rbnam.Checked = true;
-            }
-            else
-            {
-                rbnu.Checked = true;
-            }
-            txt_Chucvu.Text = dgv1.CurrentRow.Cells[6].Value.ToString();
-            txt_Diachi.Text = dgv1.CurrentRow.Cells[7].Value.ToString();
-        }
+       
 
         private void QuanLyNguoiDung_Load(object sender, EventArgs e)
         {
@@ -161,6 +144,25 @@ namespace DO_AN_1
         private void btn_Timkiem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgv_nguoidung_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //txt_taikhoan.Text = dgv_nguoidung.CurrentRow.Cells[0].Value.ToString();
+            //txt_Matkhau.Text = dgv_nguoidung.CurrentRow.Cells[1].Value.ToString();
+            txt_MaNV.Text = dgv_nguoidung.CurrentRow.Cells[0].Value.ToString();
+            txt_Hoten.Text = dgv_nguoidung.CurrentRow.Cells[1].Value.ToString();
+            datetime.Text = dgv_nguoidung.CurrentRow.Cells[2].Value.ToString();
+            if (dgv_nguoidung.CurrentRow.Cells[3].Value.ToString() == "Nam")
+            {
+                rbnam.Checked = true;
+            }
+            else
+            {
+                rbnu.Checked = true;
+            }
+            txt_Chucvu.Text = dgv_nguoidung.CurrentRow.Cells[4].Value.ToString();
+            txt_Diachi.Text = dgv_nguoidung.CurrentRow.Cells[5].Value.ToString();
         }
     }
 }
