@@ -21,6 +21,7 @@ namespace DO_AN_1
         private void InHoaDonNhap_Load(object sender, EventArgs e)
         {
 
+        }
 
             this.reportViewer1.RefreshReport();
             this.reportViewer2.RefreshReport();
