@@ -70,6 +70,12 @@
     <Reference Include="DevExpress.XtraScheduler.v23.2.Core.Desktop, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraVerticalGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
@@ -89,11 +95,14 @@
       <HintPath>packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -110,11 +119,30 @@
     <Compile Include="BaoCaoThongKe.Designer.cs">
       <DependentUpon>BaoCaoThongKe.cs</DependentUpon>
     </Compile>
-    <Compile Include="InHoaDonNhap.cs">
-      <SubType>Form</SubType>
+    <Compile Include="ConnData.cs" />
+    <Compile Include="InHDN.cs">
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="InHoaDonNhap.Designer.cs">
-      <DependentUpon>InHoaDonNhap.cs</DependentUpon>
+    <Compile Include="InHDN.Designer.cs">
+      <DependentUpon>InHDN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InPNH.cs">
+      <DependentUpon>ModelinPNH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelinPNH.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelinPNH.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelinPNH.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelinPNH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelinPNH.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelinPNH.edmx</DependentUpon>
     </Compile>
     <Compile Include="QLNH_CNSuaDH.cs">
       <SubType>Form</SubType>
@@ -128,8 +156,13 @@
     <Compile Include="QLNH_CNThemDH.Designer.cs">
       <DependentUpon>QLNH_CNThemDH.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuanLyNhapHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyNhapHang.Designer.cs">
+      <DependentUpon>QuanLyNhapHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="TruyXuatCSDL.cs" />
     <Compile Include="frm_qlkd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,8 +204,8 @@
     <EmbeddedResource Include="frm_qlkd.resx">
       <DependentUpon>frm_qlkd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InHoaDonNhap.resx">
-      <DependentUpon>InHoaDonNhap.cs</DependentUpon>
+    <EmbeddedResource Include="InHDN.resx">
+      <DependentUpon>InHDN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -196,6 +229,9 @@
     <EmbeddedResource Include="QuanLyNguoiDung.resx">
       <DependentUpon>QuanLyNguoiDung.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyNhapHang.resx">
+      <DependentUpon>QuanLyNhapHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QuanLySanPham.resx">
       <DependentUpon>QuanLySanPham.cs</DependentUpon>
     </EmbeddedResource>
@@ -203,6 +239,13 @@
       <DependentUpon>TraCuu.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
+    <EntityDeploy Include="ModelinPNH.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelinPNH.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ModelinPNH.edmx.diagram">
+      <DependentUpon>ModelinPNH.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -215,6 +258,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ModelinPNH.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelinPNH.Context.cs</LastGenOutput>
+      <DependentUpon>ModelinPNH.edmx</DependentUpon>
+    </Content>
+    <Content Include="ModelinPNH.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelinPNH.edmx</DependentUpon>
+      <LastGenOutput>ModelinPNH.cs</LastGenOutput>
+    </Content>
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -228,6 +281,9 @@
     <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

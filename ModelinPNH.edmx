@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="quanLyKDLaptopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'quanLyKDLaptop.dbo.InPNH' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="InPNH">
+          <Key>
+            <PropertyRef Name="MaNV" />
+            <PropertyRef Name="MaPhieu" />
+          </Key>
+          <Property Name="MaNV" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="255" />
+          <Property Name="MaPhieu" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="MaSP" Type="nvarchar" MaxLength="255" />
+          <Property Name="TenNCC" Type="nvarchar" MaxLength="255" />
+          <Property Name="TenSP" Type="nvarchar" MaxLength="255" />
+          <Property Name="NgayLap" Type="datetime" />
+          <Property Name="SoLuongNhap" Type="float" />
+          <Property Name="DonViTinh" Type="nvarchar" MaxLength="255" />
+          <Property Name="GiaNhap" Type="float" />
+          <Property Name="TongTien" Type="float" />
+          <Property Name="NgaySinh" Type="datetime" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityContainer Name="quanLyKDLaptopModelStoreContainer">
+          <EntitySet Name="InPNH" EntityType="Self.InPNH" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [InPNH].[MaNV] AS [MaNV], 
+    [InPNH].[HoTen] AS [HoTen], 
+    [InPNH].[MaPhieu] AS [MaPhieu], 
+    [InPNH].[MaSP] AS [MaSP], 
+    [InPNH].[TenNCC] AS [TenNCC], 
+    [InPNH].[TenSP] AS [TenSP], 
+    [InPNH].[NgayLap] AS [NgayLap], 
+    [InPNH].[SoLuongNhap] AS [SoLuongNhap], 
+    [InPNH].[DonViTinh] AS [DonViTinh], 
+    [InPNH].[GiaNhap] AS [GiaNhap], 
+    [InPNH].[TongTien] AS [TongTien], 
+    [InPNH].[NgaySinh] AS [NgaySinh], 
+    [InPNH].[GioiTinh] AS [GioiTinh]
+    FROM [dbo].[InPNH] AS [InPNH]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="quanLyKDLaptopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="InPNH">
+          <Key>
+            <PropertyRef Name="MaNV" />
+            <PropertyRef Name="MaPhieu" />
+          </Key>
+          <Property Name="MaNV" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HoTen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MaPhieu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaSP" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TenNCC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TenSP" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NgayLap" Type="DateTime" Precision="3" />
+          <Property Name="SoLuongNhap" Type="Double" />
+          <Property Name="DonViTinh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="GiaNhap" Type="Double" />
+          <Property Name="TongTien" Type="Double" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="3" />
+          <Property Name="GioiTinh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="quanLyKDLaptopEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="InPNHs" EntityType="Self.InPNH" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="quanLyKDLaptopModelStoreContainer" CdmEntityContainer="quanLyKDLaptopEntities">
+          <EntitySetMapping Name="InPNHs">
+            <EntityTypeMapping TypeName="quanLyKDLaptopModel.InPNH">
+              <MappingFragment StoreEntitySet="InPNH">
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="MaPhieu" ColumnName="MaPhieu" />
+                <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+                <ScalarProperty Name="TenNCC" ColumnName="TenNCC" />
+                <ScalarProperty Name="TenSP" ColumnName="TenSP" />
+                <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
+                <ScalarProperty Name="SoLuongNhap" ColumnName="SoLuongNhap" />
+                <ScalarProperty Name="DonViTinh" ColumnName="DonViTinh" />
+                <ScalarProperty Name="GiaNhap" ColumnName="GiaNhap" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
