@@ -76,6 +76,7 @@
             // 
             // ribbon
             // 
+            this.ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 37, 35, 37);
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem,
@@ -87,11 +88,13 @@
             this.byn_bctk,
             this.btn_tc});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
+            this.ribbon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ribbon.MaxItemId = 8;
             this.ribbon.Name = "ribbon";
+            this.ribbon.OptionsMenuMinWidth = 385;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.tacvu});
-            this.ribbon.Size = new System.Drawing.Size(1274, 158);
+            this.ribbon.Size = new System.Drawing.Size(1472, 180);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
             // btn_qlnd
@@ -225,10 +228,11 @@
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 637);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 771);
+            this.ribbonStatusBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1274, 24);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1472, 43);
             // 
             // dcmManager
             // 
@@ -267,21 +271,23 @@
             this.dockPanel1.Controls.Add(this.dockPanel1_Container);
             this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.dockPanel1.ID = new System.Guid("795d0690-91bf-4e60-ab75-1884d8036cfb");
-            this.dockPanel1.Location = new System.Drawing.Point(0, 158);
+            this.dockPanel1.Location = new System.Drawing.Point(0, 180);
+            this.dockPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Options.ShowAutoHideButton = false;
             this.dockPanel1.Options.ShowCloseButton = false;
             this.dockPanel1.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(200, 479);
+            this.dockPanel1.Size = new System.Drawing.Size(250, 591);
             this.dockPanel1.Text = "TRANG CHỦ";
             this.dockPanel1.Click += new System.EventHandler(this.dockPanel1_Click);
             // 
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Controls.Add(this.accordionControl1);
-            this.dockPanel1_Container.Location = new System.Drawing.Point(0, 23);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(0, 27);
+            this.dockPanel1_Container.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(199, 456);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(249, 564);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // accordionControl1
@@ -291,9 +297,10 @@
             this.accordionControlElement2,
             this.accordionControlSeparator2,
             this.accordionControlElement3});
-            this.accordionControl1.Location = new System.Drawing.Point(0, 25);
+            this.accordionControl1.Location = new System.Drawing.Point(0, 31);
+            this.accordionControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.accordionControl1.Name = "accordionControl1";
-            this.accordionControl1.Size = new System.Drawing.Size(199, 431);
+            this.accordionControl1.Size = new System.Drawing.Size(232, 530);
             this.accordionControl1.TabIndex = 0;
             // 
             // acc_ele_tacvu
@@ -381,13 +388,14 @@
             // 
             // frm_qlkd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1274, 661);
+            this.ClientSize = new System.Drawing.Size(1472, 814);
             this.Controls.Add(this.dockPanel1);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
             this.IsMdiContainer = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frm_qlkd";
             this.Ribbon = this.ribbon;
             this.StatusBar = this.ribbonStatusBar;

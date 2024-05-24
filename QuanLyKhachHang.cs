@@ -10,50 +10,44 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using DevExpress.XtraLayout.Customization;
-using DevExpress.Pdf.Native.BouncyCastle.Utilities.Collections;
+
 
 namespace DO_AN_1
 {
     public partial class QuanLyKhachHang : DevExpress.XtraEditors.XtraForm
     {
-        SqlConnection con;
-        SqlCommand cmd;
+        SqlConnection sqlcon;
+        DataSet ds;
+        SqlDataAdapter sqlda;
         public QuanLyKhachHang()
         {
             InitializeComponent();
-            Hienthi_dgv1();
+            ShowAll();
         }
-        public SqlConnection moketnoi()
+        public void connect()
         {
-            string str = "Data Source=DESKTOP-TEOF11\\SQLEXPRESS;Initial Catalog=QuanLyKinhDoanhMayTinh;Integrated Security=True";
-            con = new SqlConnection(str);
-            con.Open();
-            return con;
+            string ketnoi;
+            ketnoi = "Data Source=DESKTOP-H2UCOT4\\SQLEXPRESS;Initial Catalog=QLKinhDoanhMayTinh;Integrated Security=True;Encrypt=False";
+            sqlcon = new SqlConnection(ketnoi);
+            sqlcon.Open();
         }
         public void dongketnoi()
         {
-            con.Close();
+            sqlcon.Close();
+            sqlcon.Dispose();
         }
-        public DataTable ShowAll()
+        public void ShowAll()
         {
-            string getAllQuery = "SELECT * FROM KhachHang";
-            cmd = new SqlCommand(getAllQuery, moketnoi());
-            SqlDataReader dr = cmd.ExecuteReader();
-            DataTable bang= new DataTable();
-            bang.Load(dr);
-            return bang;
+            connect();
+            string sql;
+            sql = "SELECT * FROM KhachHang";       
+            sqlda = new SqlDataAdapter(sql, sqlcon);
+            ds = new DataSet();
+            sqlda.Fill(ds);
+            dgv1.DataSource = ds.Tables[0];
         }
-        public void do_sql(string Query)
-        {
-            cmd = new SqlCommand(Query, moketnoi());
-            cmd.ExecuteNonQuery();
-            dongketnoi();
-        }
-        public void Hienthi_dgv1()
-        {
-            dgv1.DataSource = ShowAll();
-        }
+        
+        
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
@@ -66,12 +60,36 @@ namespace DO_AN_1
 
         private void button2_Click(object sender, EventArgs e)
         {
+            try
+            {
+                connect();
+                string sql;
+                sql = "update KhachHang set TenKH =@tenkh, NgaySinh=@ngaysinh, GioiTinh=@gioitinh, DiaChi=@diachi, SDT=@sdt where MaKH=@makh";
+                SqlCommand sqlcom = new SqlCommand(sql, sqlcon);
+                sqlcom.Parameters.AddWithValue("@makh", txtMa.Text);
+                sqlcom.Parameters.AddWithValue("@tenkh", txtTenKH.Text);
+                sqlcom.Parameters.AddWithValue("@ngaysinh", datetime.Value);
+                sqlcom.Parameters.AddWithValue("@gioitinh", gioitinh());
+                sqlcom.Parameters.AddWithValue("@diachi", txtDiachi.Text);
+                sqlcom.Parameters.AddWithValue("@sdt", txtSDT.Text);
+                int kq = sqlcom.ExecuteNonQuery();
+                if (kq > 0)
+                {
+                    ShowAll();
 
+                    MessageBox.Show("Bạn đã sửa thành công khách hàng!", "Thêm dữ liệu");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hệ thống báo lỗi: " + ex.Message);
+            }
         }
-
         private void button4_Click(object sender, EventArgs e)
         {
 
+            if (MessageBox.Show("Có chắc chắn thoát không?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                this.Dispose();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -110,71 +128,79 @@ namespace DO_AN_1
 
         private void button3_Click(object sender, EventArgs e)
         {
+            DialogResult tl;
+            tl = MessageBox.Show("Bạn có đồng ý xóa không? ", "Xóa dữ liệu", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (tl == DialogResult.OK)
+            {
+                try
+                {
+                    connect();
+                    string sql;
+                    sql = "delete from KhachHang where MaKH = @makh";
+                    SqlCommand sqlcom = new SqlCommand(sql, sqlcon);
+                    sqlcom.Parameters.AddWithValue("@makh", txtMa.Text);
+                    int kq = sqlcom.ExecuteNonQuery();
+                    if (kq > 0)
+                    {
+                        ShowAll();
+                        MessageBox.Show("Bạn đã xóa thành công khách hàng", "Xoá dữ liệu");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Hệ thống báo lỗi:" + ex.Message);
+                }
+            
+        }
+    }        
+        private void btnThem_Click(object sender, EventArgs e)
+        {
             try
             {
-                DialogResult tlXoa;
-                tlXoa = MessageBox.Show("Bạn có muốn xóa không?", "Xóa dữ liệu", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (tlXoa == DialogResult.OK)
+                connect();
+                string ma = txtMa.Text;
+                DateTime dt = datetime.Value;
+                string sql;
+                sql = "insert into KhachHang (MaKH, TenKH, NgaySinh, GioiTinh, DiaChi, SDT) values (@makh, @tenkh, @ngaysinh, @gioitinh, @diachi, @sdt)";
+                SqlCommand sqlcom = new SqlCommand(sql, sqlcon);
+                sqlcom.Parameters.AddWithValue("@makh", ma);
+                sqlcom.Parameters.AddWithValue("@tenkh", txtTenKH.Text);
+                sqlcom.Parameters.AddWithValue("@ngaysinh", dt);
+                sqlcom.Parameters.AddWithValue("@gioitinh", gioitinh());
+                sqlcom.Parameters.AddWithValue("@diachi", txtDiachi.Text);
+                sqlcom.Parameters.AddWithValue("@sdt", txtSDT.Text);
+                int kq = sqlcom.ExecuteNonQuery();
+                if (kq > 0)
                 {
-                    string Query = "DELETE FROM KhachHang WHERE MaKH = '" + txtMa.Text + "'";
-                    do_sql(Query);
-                    Hienthi_dgv1();
-                    MessageBox.Show("Đã xóa thành công ", "Xóa dữ liệu");
-                }    
+                    ShowAll();
+                    MessageBox.Show("Bạn đã thêm thành công khách hàng!", "Thêm dữ liệu");
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Bạn chưa xóa thành công dữ liệu!!!");
-                MessageBox.Show("Hệ thống báo lỗi." +ex.Message);
+                MessageBox.Show("Hệ thống báo lỗi: " + ex.Message);
+                
             }
-        }
-        bool kiemtraRong()
-        {
-            if (txtMa.Text.Trim() == "") return false;
-            if (txtTenKH.Text.Trim() == "") return false;
-            if (datetime.Text.Trim() == "") return false;
-            if (txtDiachi.Text.Trim() =="") return false;
-            if (txtSDT.Text.Trim() == "") return false;
-            return true;
-        }
-        public bool tontaiKH(string ma)
-        {
-            bool kt = false;
-            moketnoi();
-            string sql = "select * from KhachHang where MaKH = @MaKH";
-            SqlCommand cmd = new SqlCommand(sql, con);
-            cmd.Parameters.AddWithValue("MaKH", ma);
-            SqlDataReader dr = cmd.ExecuteReader();
-            if(dr.HasRows) kt= true;
-            dongketnoi();
-            return kt;
-        }
-        
-        private void btnThem_Click(object sender, EventArgs e)
-        {
-            if (!kiemtraRong())
-            {
-                MessageBox.Show("Chưa nhập đủ thông tin!");
-                return;
-            }
-            string ma = txtMa.Text.Trim();
-            string ten = txtTenKH.Text;
-            DateTime ngay = DateTime.Parse(datetime.Text);
-            
-            string dc = txtDiachi.Text;
-            string sdt = txtSDT.Text;
-            if (tontaiKH(ma))
-            {
-                string Query = "INSERT INTO KhachHang VALUES('"+ma+"','"+ten+"', '"+ngay+"', '"+gioitinh()+"', '"+dc+"', '"+sdt+"')";
-                do_sql(Query);
-                Hienthi_dgv1();
-                MessageBox.Show("Mã khách hàng đã tồn tại!");
-                return;
-            }
-
         }
 
         private void QuanLyKhachHang_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void btnTK_Click(object sender, EventArgs e)
+        {
+            connect();
+            string sql;
+            sql = "SELECT * FROM KhachHang WHERE MaKH = @makh";
+            SqlCommand sqlcom = new SqlCommand(sql, sqlcon);
+            sqlcom.Parameters.AddWithValue("@makh", txtTimKiem.Text);
+            SqlDataReader reader = sqlcom.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+            dgv1.DataSource = dt;  
+        }
+
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TimKiem_ND));
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.txt_MaNV = new System.Windows.Forms.TextBox();
             this.dgv_timkiem = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,37 +49,23 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(27, 32);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.radioButton1.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1.Location = new System.Drawing.Point(102, 33);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(179, 33);
+            this.radioButton1.Size = new System.Drawing.Size(160, 30);
             this.radioButton1.TabIndex = 0;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Mã nhân viên";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(229, 34);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(174, 31);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Tên nhân viên";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
             // txt_MaNV
             // 
             this.txt_MaNV.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_MaNV.Location = new System.Drawing.Point(477, 165);
-            this.txt_MaNV.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txt_MaNV.Location = new System.Drawing.Point(424, 122);
             this.txt_MaNV.Name = "txt_MaNV";
-            this.txt_MaNV.Size = new System.Drawing.Size(451, 44);
+            this.txt_MaNV.Size = new System.Drawing.Size(401, 38);
             this.txt_MaNV.TabIndex = 2;
+            this.txt_MaNV.TextChanged += new System.EventHandler(this.txt_MaNV_TextChanged);
             // 
             // dgv_timkiem
             // 
@@ -96,12 +81,11 @@
             this.Column6,
             this.Column7});
             this.dgv_timkiem.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgv_timkiem.Location = new System.Drawing.Point(43, 225);
-            this.dgv_timkiem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgv_timkiem.Location = new System.Drawing.Point(38, 192);
             this.dgv_timkiem.Name = "dgv_timkiem";
             this.dgv_timkiem.RowHeadersWidth = 51;
             this.dgv_timkiem.RowTemplate.Height = 24;
-            this.dgv_timkiem.Size = new System.Drawing.Size(1026, 468);
+            this.dgv_timkiem.Size = new System.Drawing.Size(928, 374);
             this.dgv_timkiem.TabIndex = 4;
             // 
             // Column1
@@ -156,13 +140,10 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(43, 137);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(38, 94);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(428, 76);
+            this.groupBox1.Size = new System.Drawing.Size(380, 77);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tìm kiếm theo: ";
@@ -170,37 +151,39 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(183, 61);
+            this.label1.Font = new System.Drawing.Font("Tahoma", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(167, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(809, 51);
+            this.label1.Size = new System.Drawing.Size(702, 45);
             this.label1.TabIndex = 6;
             this.label1.Text = "TÌM KIẾM THÔNG TIN NGƯỜI DÙNG";
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.Yellow;
             this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(934, 165);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(846, 122);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(135, 48);
+            this.button1.Size = new System.Drawing.Size(120, 38);
             this.button1.TabIndex = 3;
-            this.button1.Text = "Tìm Kiếm";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Text = "&Tìm Kiếm";
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // TimKiem_ND
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1145, 740);
+            this.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.ClientSize = new System.Drawing.Size(1018, 592);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgv_timkiem);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txt_MaNV);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "TimKiem_ND";
             this.Text = "Tìm kiếm thông tin người dùng";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_timkiem)).EndInit();
@@ -214,7 +197,6 @@
         #endregion
 
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.TextBox txt_MaNV;
         private System.Windows.Forms.DataGridView dgv_timkiem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;

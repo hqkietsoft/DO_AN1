@@ -34,5 +34,10 @@ namespace DO_AN_1
             sqlda.Fill(ds);
             dgv_timkiem.DataSource = ds.Tables[0];
         }
+
+        private void txt_MaNV_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

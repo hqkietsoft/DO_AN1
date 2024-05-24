@@ -20,7 +20,7 @@ namespace DO_AN_1
         SqlCommand cmd;
         public SqlConnection Moketnoi()
         {
-            string str = "Data Source=DESKTOP-TEOF11\\SQLEXPRESS;Initial Catalog=QuanLyKinhDoanhMayTinh;Integrated Security=True";
+            string str = "Data Source=DESKTOP-H2UCOT4\\SQLEXPRESS;Initial Catalog=QLKinhDoanhMayTinh;Integrated Security=True";
             con = new SqlConnection(str);
             con.Open();
             return con;
@@ -63,9 +63,23 @@ namespace DO_AN_1
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            string Query = "DELETE FROM NguoiDung WHERE MaNV = '" + txt_MaNV.Text + "' ";
-            do_sql(Query);
-            Hienthi_dgv1();
+            try
+            {
+                DialogResult tlXoa;
+                tlXoa = MessageBox.Show("Bạn có muốn xóa không?", "Xóa dữ liệu", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (tlXoa == DialogResult.OK)
+                {
+                    string Query = "DELETE FROM KhachHang WHERE MaKH = '" + txt_Hoten.Text + "'";
+                    do_sql(Query);
+                    Hienthi_dgv1();
+                    MessageBox.Show("Đã xóa thành công!", "Xóa dữ liệu");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Bạn chưa xóa thành công dữ liệu!!!");
+                MessageBox.Show("Hệ thống báo lỗi." + ex.Message);
+            }
 
         }
 
@@ -87,8 +101,8 @@ namespace DO_AN_1
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            string Query = "INSERT INTO NguoiDung (Taikhoan, Matkhau, MaNV, HoTen, NgaySinh, GioiTinh, ChucVu, DiaChi)" +
-                "VALUES ('" + txt_taikhoan.Text + "', '" + txt_Matkhau.Text + "','" + txt_MaNV.Text + "', N'" + txt_Hoten.Text +
+            string Query = "INSERT INTO NguoiDung ( MaNV, HoTen, NgaySinh, GioiTinh, ChucVu, DiaChi)" +
+                "VALUES ('" + txt_MaNV.Text + "', N'" + txt_Hoten.Text +
                 "','" + datetime.Text + "',N'" + gioitinh() + "',N'" + txt_Chucvu.Text + "', N'" + txt_Diachi.Text + "')";
               do_sql(Query);
               Hienthi_dgv1();
@@ -150,10 +164,10 @@ namespace DO_AN_1
         {
             //txt_taikhoan.Text = dgv_nguoidung.CurrentRow.Cells[0].Value.ToString();
             //txt_Matkhau.Text = dgv_nguoidung.CurrentRow.Cells[1].Value.ToString();
-            txt_MaNV.Text = dgv_nguoidung.CurrentRow.Cells[0].Value.ToString();
-            txt_Hoten.Text = dgv_nguoidung.CurrentRow.Cells[1].Value.ToString();
-            datetime.Text = dgv_nguoidung.CurrentRow.Cells[2].Value.ToString();
-            if (dgv_nguoidung.CurrentRow.Cells[3].Value.ToString() == "Nam")
+            txtMaNV.Text = dgv_nguoidung.CurrentRow.Cells[2].Value.ToString();
+            txt_Hoten.Text = dgv_nguoidung.CurrentRow.Cells[3].Value.ToString();
+            datetime.Text = dgv_nguoidung.CurrentRow.Cells[4].Value.ToString();
+            if (dgv_nguoidung.CurrentRow.Cells[5].Value.ToString() == "Nam")
             {
                 rbnam.Checked = true;
             }
@@ -161,8 +175,121 @@ namespace DO_AN_1
             {
                 rbnu.Checked = true;
             }
-            txt_Chucvu.Text = dgv_nguoidung.CurrentRow.Cells[4].Value.ToString();
-            txt_Diachi.Text = dgv_nguoidung.CurrentRow.Cells[5].Value.ToString();
+            txt_Chucvu.Text = dgv_nguoidung.CurrentRow.Cells[6].Value.ToString();
+            txt_Diachi.Text = dgv_nguoidung.CurrentRow.Cells[7].Value.ToString();
+        }
+
+        private void btnThoat_Click_1(object sender, EventArgs e)
+        {
+
+            if (MessageBox.Show("Có chắc chắn thoát không?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                this.Dispose();
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnThem_Click_1(object sender, EventArgs e)
+        {
+            string Query = "INSERT INTO NguoiDung ( MaNV, HoTen, NgaySinh, GioiTinh, ChucVu, DiaChi)" +
+                "VALUES ('" + txt_MaNV.Text + "', N'" + txt_Hoten.Text +
+                "','" + datetime.Text + "',N'" + gioitinh() + "',N'" + txt_Chucvu.Text + "', N'" + txt_Diachi.Text + "')";
+            do_sql(Query);
+            Hienthi_dgv1();
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        private void btnXoa_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            cmd.Parameters.AddWithValue("@Taikhoan", txt_taikhoan.Text);
+            cmd.Parameters.AddWithValue("@Matkhau", txt_Matkhau.Text);
+            cmd.Parameters.AddWithValue("@MaNV", txt_MaNV.Text);
+            cmd.Parameters.AddWithValue("@HoTen", txt_Hoten.Text);
+            cmd.Parameters.AddWithValue("@NgaySinh", datetime.Text);
+            cmd.Parameters.AddWithValue("@GioiTinh", gioitinh());
+            cmd.Parameters.AddWithValue("@ChucVu", txt_Chucvu.Text);
+            cmd.Parameters.AddWithValue("@Diachi", txt_Diachi.Text);
+            if (MessageBox.Show("Bạn có muốn lưu không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                txt_taikhoan.Text = "";
+                txt_Matkhau.Text = "";
+                txt_MaNV.Text = "";
+                txt_Hoten.Text = "";
+                datetime.Text = "";
+                gioitinh();
+                txt_Chucvu.Text = "";
+                txt_Diachi.Text = "";
+            }
+            btnLuu.Enabled = false;
+            btnBoqua.Enabled = false;
+            btnThem.Enabled = true;
+            btnXoa.Enabled = true;
+            btnSua.Enabled = true;
+            btn_Timkiem.Enabled = true;
+        }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void btnBoqua_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có muốn bỏ qua không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                btnLuu.Enabled = false;
+                btnBoqua.Enabled = false;
+                btnThem.Enabled = true;
+                btnXoa.Enabled = true;
+                btnSua.Enabled = true;
+                btn_Timkiem.Enabled = true;
+            }
+        }
+
+        private void datetime_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_MaNV_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
