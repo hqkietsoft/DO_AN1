@@ -122,6 +122,9 @@
     <Compile Include="TraCuu.Designer.cs">
       <DependentUpon>TraCuu.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BaoCaoThongKe.resx">
+      <DependentUpon>BaoCaoThongKe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_qlkd.resx">
       <DependentUpon>frm_qlkd.cs</DependentUpon>
     </EmbeddedResource>

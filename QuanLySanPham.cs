@@ -21,11 +21,14 @@ namespace DO_AN_1
             InitializeComponent();
             DuaDLVaoBangSP();
             DuaDLVaoBangLoaiHang();
+            DuaDLVaoBangCNSP();
             ketnoi.layDLhienthilenCombobox(cboMaLoai, "select MaLoai from LoaiHang", "MaLoai");
-            ketnoi.layDLhienthilenCombobox(cboSoLuongNhap, "select SoLuongNhap from ChiTietPhieuNhap", "SoLuongNhap");
-            ketnoi.layDLhienthilenCombobox(cboGiaNhap, "select GiaNhap from ChiTietPhieuNhap", "GiaNhap");
+            
+            // ketnoi.layDLhienthilenCombobox(cboma, "select SoLuongNhap from ChiTietPhieuNhap", "SoLuongNhap");
+            //ketnoi.layDLhienthilenCombobox(cboGiaNhap, "select GiaNhap from ChiTietPhieuNhap", "GiaNhap");
             //ketnoi.layDLhienthilenCombobox(cboSoLuongBan, "select SoLuongBan from ChiTietHoaDon", "SoLuongBan");
             //ketnoi.layDLhienthilenCombobox(cboGiaBan, "select GiaBan from ChiTietHoaDon", "GiaBan");
+
         }
 
         /// <summary>
@@ -35,6 +38,9 @@ namespace DO_AN_1
         {
             //Code đưa thông tin lên bảng cho "Cập nhật sản phẩm"
             dgvQuanLySanPham.DataSource = ketnoi.getDSSanPham();
+            
+
+
         }
         private void tabPage1_Click(object sender, EventArgs e)
         {
@@ -109,7 +115,7 @@ namespace DO_AN_1
                 return;
             }
             string ma = txtmasp.Text.Trim();
-            string ten = txttennsx.Text;
+            string ten = txttensp.Text;
             string dvt = txtdonvitinh.Text;
             string maloai = cboMaLoai.Text;
             string tennsx = txttennsx.Text;
@@ -182,12 +188,13 @@ namespace DO_AN_1
                 return;
             }
             string ma = txtmasp.Text.Trim();
-            string ten = txttennsx.Text;
+            string ten = txttensp.Text;
             string dvt = txtdonvitinh.Text;
             string maloai = cboMaLoai.Text;
             string tennsx = txttennsx.Text;
             string dongia = txtdongia.Text;
             ketnoi.capnhatSanPham(ma, ten, dvt, maloai, tennsx, dongia);
+
             DuaDLVaoBangSP();
             clearsTextSP();
             btnLuu.Enabled = false;
@@ -271,6 +278,7 @@ namespace DO_AN_1
             }
             ketnoi.themLoaiHang(maloai, tenhang, tinhtrang, giaban, soluong, mota);
             DuaDLVaoBangLoaiHang();
+            
             clearsTextLH();
         }
 
@@ -357,6 +365,159 @@ namespace DO_AN_1
             {
                 this.Dispose();
             }
+        }
+
+        /*-----------------CODE CHO TABCONTROL 'TÌM KIẾM SẢN PHẨM'---------------------*/
+        /*--------24-05-2024-----------------------*/
+
+        private void btntk_Click(object sender, EventArgs e)
+        {
+            string tukhoa = txttimkiem.Text.Trim();
+            if(rdomasp.Checked)
+            {
+                dgvtkmasanpham.DataSource = ketnoi.TKTheoMaSP(tukhoa);
+            }
+            else
+            {
+                dgvtkmasanpham.DataSource = ketnoi.TKTheoTen(tukhoa);
+            }
+            
+        }
+
+        /*-----------------CODE CHO TABCONTROL 'CẬP NHẬT GIÁ'---------------------*/
+        /*--------24-05-2024-----------------------*/
+
+        private void btnthoatcng_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void cboma_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ketnoi.hienthithongtinSP(txtten,txtgia,cboma);
+            
+        }
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        //Load cbo mã
+        private void QLSP_Load(object sender, EventArgs e)
+        {
+            cboma.Text = "---Chọn mã SP---";
+            foreach (DataRow item in ketnoi.LaydulieuSP().Rows)
+            {
+
+                cboma.Items.Add(item["MaSP"]);
+            }
+        }
+
+        private void btnsuacapnhatgia_Click(object sender, EventArgs e)
+        {
+            if (cboma.Text.Trim() == "")
+            {
+                MessageBox.Show("Bạn chưa chọn sản phẩm cần sửa thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (!ketnoi.tontaiSP(cboma.Text.Trim()))
+            {
+                MessageBox.Show("Mã sản phẩm không tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            btnluutlh.Enabled = true;
+            btnboqualh.Enabled = true;
+            btnsualh.Enabled = true;
+            btnxoalh.Enabled = true;
+            cboma.Enabled = false;
+        }
+
+        bool kiemTraRongCapNhatGia()
+        {
+            if (cboma.Text.Trim() == "") return false;
+            if (txtten.Text.Trim() == "") return false;
+            if (txtgia.Text.Trim() == "") return false;
+            return true;
+        }
+
+        private void dgvcapnhatgia_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i = e.RowIndex;
+            if (i >= 0)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row = dgvcapnhatgia.Rows[i];
+                cboma.Text = row.Cells[0].Value.ToString();
+                txtten.Text = row.Cells[1].Value.ToString();
+                txtgia.Text = row.Cells[2].Value.ToString();
+                row.Cells[0].ReadOnly = true;
+                row.Cells[1].ReadOnly = true;
+                row.Cells[2].ReadOnly = true;
+            }
+        }
+
+        void DuaDLVaoBangCNSP()
+        {
+            //Code đưa thông tin lên bảng cho "Cập nhật sản phẩm"
+            dgvcapnhatgia.DataSource = ketnoi.getDSCNSanPham();
+        }
+
+        private void btnboquacapnhatgia_Click(object sender, EventArgs e)
+        {
+
+            btnluucapnhatgia.Enabled = false;
+            btnboquacapnhatgia.Enabled = false;
+            btnsuacapnhatgia.Enabled = true;
+            //btnxoacapnhatgia.Enabled = true;
+            cboma.Enabled = true;
+        }
+
+        void clearsTextCapNhatGia()
+        {
+            cboma.Text = "";
+            txtten.Text = "";
+            txtgia.Text = "";
+        }
+
+
+        //private void btnxoacapnhatgia_Click(object sender, EventArgs e)
+        //{
+        //    if (cboma.Text.Trim() != "")
+        //    {
+        //        if (MessageBox.Show("Bạn chắc chắn muốn xoá không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+        //        {
+        //            ketnoi.xoaGiaBan(txtmaloailh.Text.Trim());
+        //            DuaDLVaoBangLoaiHang();
+        //            clearsTextCapNhatGia();
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Không thể xoá!");
+        //        }
+        //    }
+        //}
+
+        private void btnluucapnhatgia_Click(object sender, EventArgs e)
+        {
+            if (!kiemTraRongCapNhatGia())
+            {
+                MessageBox.Show("Chưa nhập đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            string masp = cboma.Text.Trim();
+            string tensp = txtten.Text;
+            string dongia = txtgia.Text;
+            ketnoi.capnhatGia(masp, tensp, dongia);
+            DuaDLVaoBangCNSP();
+            clearsTextCapNhatGia();
+            btnluucapnhatgia.Enabled = false;
+            btnboquacapnhatgia.Enabled = false;
+            btnsuacapnhatgia.Enabled = true;
+            //btnxoacapnhatgia.Enabled = true;
+            cboma.Enabled = true;
+            MessageBox.Show("Đã sửa thông tin có mã " + masp);
         }
     }
 }

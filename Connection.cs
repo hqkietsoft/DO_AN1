@@ -38,7 +38,7 @@ namespace DO_AN_1
         }
 
         //Hàm lấy dữ liệu hiển thị lên DataGridview
-        public void layDLhienthilenCombobox(ComboBox cbo1,string query, string displaymemb)
+        public void layDLhienthilenCombobox(ComboBox cbo1, string query, string displaymemb)
         {
             string selectAllQuery = "select MaLoai from LoaiHang";
             SqlCommand cmd = new SqlCommand(query, Moketnoi());
@@ -68,7 +68,7 @@ namespace DO_AN_1
         }
 
         //Hàm thêm sản phẩm
-        public void themSanPham(string ma, string ten,string dvt,string maloai,string tennsx,string dongia)
+        public void themSanPham(string ma, string ten, string dvt, string maloai, string tennsx, string dongia)
         {
             Moketnoi();
             String sql = "insert into SanPham values (@masp,@tensp,@donvitinh,@maloai,@tennsx,@dongia)";
@@ -95,7 +95,8 @@ namespace DO_AN_1
             {
                 cmd.ExecuteNonQuery();
                 kt = true;
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
 
             }
@@ -104,7 +105,7 @@ namespace DO_AN_1
         }
 
         //Hàm cập nhật sản phẩm (Sửa)
-        public void capnhatSanPham(string ma, string ten,string dvt, string maloai, string tennsx, string dongia)
+        public void capnhatSanPham(string ma, string ten, string dvt, string maloai, string tennsx, string dongia)
         {
             Moketnoi();
             string sql = "update SanPham set TenSP=@tensp,DonViTinh=@donvitinh,MaLoai=@maloai,TenNSX=@tennsx,DonGia=@dongia where MaSP=@masp";
@@ -162,9 +163,10 @@ namespace DO_AN_1
             cmd.Parameters.AddWithValue("mota", mota);
             cmd.ExecuteNonQuery();
             Dongketnoi();
+
         }
 
-        //Hàm cập nhạt loại hàng (Sửa)
+        //Hàm cập nhật loại hàng (Sửa)
         public void capnhatLoaiHang(string maloai, string tenhang, string tinhtrang, string giaban, string soluong, string mota)
         {
             Moketnoi();
@@ -200,5 +202,107 @@ namespace DO_AN_1
             Dongketnoi();
             return kt;
         }
+
+
+        //Hàm tìm kiếm sản phẩm theo mã
+        public DataTable TKTheoMaSP(string masp)
+        {
+            Moketnoi();
+            String sql = "select * from SanPham where MaSP = @masp";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("masp", masp);
+            SqlDataReader dr = cmd.ExecuteReader();
+            DataTable bang = new DataTable();
+            bang.Load(dr);
+            Dongketnoi();
+            return bang;
+        }
+
+        //Hàm tìm kiếm sản phẩm theo tên
+        public DataTable TKTheoTen(string tensp)
+        {
+            Moketnoi();
+            String sql = "select * from SanPham where TenSP like " + "N'%" + tensp + "%'";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            SqlDataReader dr = cmd.ExecuteReader();
+            DataTable bang = new DataTable();
+            bang.Load(dr);
+            Dongketnoi();
+            return bang;
+        }
+
+
+        //Hàm code cho cbo mã
+        public void hienthithongtinSP(TextBox tb1, TextBox tb2, ComboBox cboma)
+        {
+            string ma = cboma.SelectedItem.ToString();
+            string query = "SELECT TenSP, DonGia FROM SanPham WHERE MaSP = @ma";
+            SqlCommand  cmd = new SqlCommand(query, Moketnoi());
+            cmd.Parameters.AddWithValue("@ma", ma);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                tb1.Text = reader["TenSP"].ToString();
+                tb2.Text = reader["DonGia"].ToString();
+            }
+            reader.Close();
+        }
+
+
+        public DataTable LaydulieuSP()
+        {
+            string selectAllQuery = "select * from SanPham";
+            SqlCommand cmd = new SqlCommand(selectAllQuery, Moketnoi());
+            SqlDataReader reader = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+            Dongketnoi();
+            return dt;
+        }
+
+        //Hàm cập nhật Giá (Sửa)
+        public void capnhatGia(string masp, string tensp, string dongia)
+        {
+            Moketnoi();
+            string sql = "update SanPham set  DonGia=@dongia where MaSP=@masp";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("masp", masp);
+            cmd.Parameters.AddWithValue("tensp", tensp);
+            cmd.Parameters.AddWithValue("dongia", dongia);
+            cmd.ExecuteNonQuery();
+            Dongketnoi();
+        }
+
+        public DataTable getDSCNSanPham()
+        {
+            string sql = "select MaSP,TenSP,DonGia from SanPham";
+            SqlCommand cmd = new SqlCommand(sql, Moketnoi());
+            SqlDataReader dr = cmd.ExecuteReader();
+            DataTable bangcnsp = new DataTable();
+            bangcnsp.Load(dr);
+            Dongketnoi();
+            return bangcnsp;
+        }
+
+        ////Xoá giá bán
+        //public bool xoaGiaBan(string gia)
+        //{
+        //    Moketnoi();
+        //    bool kt = false;
+        //    string sql = "delete GiaBan =@giaban where SanPham";
+        //    SqlCommand cmd = new SqlCommand(sql, conn);
+        //    cmd.Parameters.AddWithValue("giaban", gia);
+        //    try
+        //    {
+        //        cmd.ExecuteNonQuery();
+        //        kt = true;
+        //    }
+        //    catch (Exception e)
+        //    {
+
+        //    }
+        //    Dongketnoi();
+        //    return kt;
+        //}
     }
 }
