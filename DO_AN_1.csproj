@@ -61,12 +61,15 @@
     <Reference Include="DevExpress.XtraBars.v23.2" />
     <Reference Include="DevExpress.Sparkline.v23.2.Core" />
     <Reference Include="DevExpress.XtraCharts.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+
     <Reference Include="DevExpress.XtraCharts.v23.2.Extensions, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraCharts.v23.2.UI, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraCharts.v23.2.Wizard, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v23.2" />
     <Reference Include="DevExpress.Drawing.v23.2" />
+
     <Reference Include="DevExpress.XtraGauges.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+
     <Reference Include="DevExpress.XtraGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraLayout.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraNavBar.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -123,6 +126,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+
     <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing.Design" />
@@ -153,6 +157,7 @@
       <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
+
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -252,12 +257,16 @@
     <Compile Include="QuanLySanPham.Designer.cs">
       <DependentUpon>QuanLySanPham.cs</DependentUpon>
     </Compile>
+
     <Compile Include="StartPage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="StartPage.Designer.cs">
       <DependentUpon>StartPage.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BaoCaoThongKe.resx">
+      <DependentUpon>BaoCaoThongKe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_qlkd.resx">
       <DependentUpon>frm_qlkd.cs</DependentUpon>
     </EmbeddedResource>
@@ -286,6 +295,9 @@
     <EmbeddedResource Include="QuanLyBanHang.resx">
       <DependentUpon>QuanLyBanHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyKhachHang.resx">
+      <DependentUpon>QuanLyKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QuanLyNguoiDung.resx">
       <DependentUpon>QuanLyNguoiDung.cs</DependentUpon>
     </EmbeddedResource>
@@ -295,8 +307,10 @@
     <EmbeddedResource Include="QuanLySanPham.resx">
       <DependentUpon>QuanLySanPham.cs</DependentUpon>
     </EmbeddedResource>
+
     <EmbeddedResource Include="StartPage.resx">
       <DependentUpon>StartPage.cs</DependentUpon>
+
     </EmbeddedResource>
     <None Include="App.config" />
     <EntityDeploy Include="InPNHData.edmx">
