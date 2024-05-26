@@ -17,7 +17,12 @@ namespace DO_AN_1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new QLSP());
+
+
+            Application.Run(new Login());
+
+
+
         }
     }
 }

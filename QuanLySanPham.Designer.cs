@@ -150,6 +150,7 @@
             // 
             // tabControl1
             // 
+
             this.tabControl1.AccessibleName = "";
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
@@ -161,9 +162,12 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1713, 801);
             this.tabControl1.TabIndex = 12;
+
+ 
             // 
             // tabPage1
             // 
+
             this.tabPage1.AutoScroll = true;
             this.tabPage1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tabPage1.Controls.Add(this.dgvQuanLySanPham);
@@ -179,9 +183,11 @@
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Cập nhật sản phẩm";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+
             // 
             // dgvQuanLySanPham
             // 
+
             this.dgvQuanLySanPham.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.PaleTurquoise;
@@ -1328,6 +1334,7 @@
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("QLSP.IconOptions.Image")));
             this.InactiveGlowColor = System.Drawing.Color.Transparent;
             this.Margin = new System.Windows.Forms.Padding(4);
+
             this.Name = "QLSP";
             this.Text = "Quản lý sản phẩm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
