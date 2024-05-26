@@ -39,5 +39,15 @@ namespace DO_AN_1
         {
 
         }
+
+        private void TimKiem_ND_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

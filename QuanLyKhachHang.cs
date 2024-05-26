@@ -27,7 +27,7 @@ namespace DO_AN_1
         public void connect()
         {
             string ketnoi;
-            ketnoi = "Data Source=DESKTOP-H2UCOT4\\SQLEXPRESS;Initial Catalog=QLKinhDoanhMayTinh;Integrated Security=True;Encrypt=False";
+            ketnoi = "Data Source=DESKTOP-H2UCOT4\\SQLEXPRESS;Initial Catalog=QLKDMayTinh;Integrated Security=True";
             sqlcon = new SqlConnection(ketnoi);
             sqlcon.Open();
         }
@@ -64,10 +64,10 @@ namespace DO_AN_1
             {
                 connect();
                 string sql;
-                sql = "update KhachHang set TenKH =@tenkh, NgaySinh=@ngaysinh, GioiTinh=@gioitinh, DiaChi=@diachi, SDT=@sdt where MaKH=@makh";
+                sql = "update KhachHang set HoTen =@hoten, NamSinh=@ngaysinh, GioiTinh=@gioitinh, DiaChi=@diachi, SĐT=@sdt where MaKH=@makh";
                 SqlCommand sqlcom = new SqlCommand(sql, sqlcon);
                 sqlcom.Parameters.AddWithValue("@makh", txtMa.Text);
-                sqlcom.Parameters.AddWithValue("@tenkh", txtTenKH.Text);
+                sqlcom.Parameters.AddWithValue("@hoten", txtTenKH.Text);
                 sqlcom.Parameters.AddWithValue("@ngaysinh", datetime.Value);
                 sqlcom.Parameters.AddWithValue("@gioitinh", gioitinh());
                 sqlcom.Parameters.AddWithValue("@diachi", txtDiachi.Text);
@@ -161,11 +161,11 @@ namespace DO_AN_1
                 string ma = txtMa.Text;
                 DateTime dt = datetime.Value;
                 string sql;
-                sql = "insert into KhachHang (MaKH, TenKH, NgaySinh, GioiTinh, DiaChi, SDT) values (@makh, @tenkh, @ngaysinh, @gioitinh, @diachi, @sdt)";
+                sql = "insert into KhachHang (MaKH, HoTen, NamSinh, GioiTinh, DiaChi, SĐT) values (@makh, @hoten, @namsinh, @gioitinh, @diachi, @sdt)";
                 SqlCommand sqlcom = new SqlCommand(sql, sqlcon);
                 sqlcom.Parameters.AddWithValue("@makh", ma);
-                sqlcom.Parameters.AddWithValue("@tenkh", txtTenKH.Text);
-                sqlcom.Parameters.AddWithValue("@ngaysinh", dt);
+                sqlcom.Parameters.AddWithValue("@hoten", txtTenKH.Text);
+                sqlcom.Parameters.AddWithValue("@namsinh", dt);
                 sqlcom.Parameters.AddWithValue("@gioitinh", gioitinh());
                 sqlcom.Parameters.AddWithValue("@diachi", txtDiachi.Text);
                 sqlcom.Parameters.AddWithValue("@sdt", txtSDT.Text);
