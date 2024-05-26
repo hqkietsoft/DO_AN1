@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyNguoiDung));
             this.dgv_nguoidung = new System.Windows.Forms.DataGridView();
@@ -432,17 +433,21 @@
             this.button1.Size = new System.Drawing.Size(211, 194);
             this.button1.TabIndex = 70;
             this.button1.UseVisualStyleBackColor = false;
+
             // 
-            // Column1
+            // MaNhanVien
             // 
+
             this.Column1.DataPropertyName = "TaiKhoan";
             this.Column1.HeaderText = "Tài Khoản";
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+
             // 
-            // Column2
+            // HoTen
             // 
+
             this.Column2.DataPropertyName = "MatKhau";
             this.Column2.HeaderText = "Mật Khẩu";
             this.Column2.MinimumWidth = 6;
@@ -519,12 +524,14 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
+
 
         private System.Windows.Forms.DataGridView dgv_nguoidung;
         private System.Windows.Forms.Button btn_Timkiem;
@@ -562,5 +569,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn gt;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChucVu;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
+
     }
 }

@@ -37,10 +37,11 @@
             // 
             // xtraTabControl1
             // 
-            this.xtraTabControl1.Location = new System.Drawing.Point(220, 70);
+            this.xtraTabControl1.Location = new System.Drawing.Point(443, 67);
+            this.xtraTabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(304, 173);
+            this.xtraTabControl1.Size = new System.Drawing.Size(456, 253);
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -48,22 +49,25 @@
             // 
             // xtraTabPage1
             // 
+            this.xtraTabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(302, 148);
+            this.xtraTabPage1.Size = new System.Drawing.Size(454, 218);
             this.xtraTabPage1.Text = "xtraTabPage1";
             // 
             // xtraTabPage2
             // 
+            this.xtraTabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(153, 148);
+            this.xtraTabPage2.Size = new System.Drawing.Size(454, 218);
             this.xtraTabPage2.Text = "xtraTabPage2";
             // 
             // QLSP
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(728, 421);
+            this.ClientSize = new System.Drawing.Size(1092, 615);
             this.Controls.Add(this.xtraTabControl1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "QLSP";
             this.Text = "Quản lý sản phẩm";
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();

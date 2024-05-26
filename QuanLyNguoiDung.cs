@@ -1,14 +1,13 @@
-﻿using DevExpress.XtraEditors;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+
 using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+
 using System.Windows.Forms;
 
 
@@ -16,19 +15,24 @@ namespace DO_AN_1
 {
     public partial class QuanLyNguoiDung : DevExpress.XtraEditors.XtraForm
     {
+
         SqlConnection con;
         SqlCommand cmd;
         public SqlConnection Moketnoi()
         {
             string str = "Data Source=DESKTOP-H2UCOT4\\SQLEXPRESS;Initial Catalog=QLKDMayTinh;Integrated Security=True";
+
             con = new SqlConnection(str);
             con.Open();
             return con;
         }
+
         public void Dongketnoi()
+
         {
             con.Close();
         }
+
 
         public QuanLyNguoiDung()
         {
@@ -146,6 +150,7 @@ namespace DO_AN_1
             }
             txt_Chucvu.Text = dgv_nguoidung.CurrentRow.Cells[6].Value.ToString();
             txt_Diachi.Text = dgv_nguoidung.CurrentRow.Cells[7].Value.ToString();
+
         }
     }
 }
