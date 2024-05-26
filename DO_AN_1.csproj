@@ -225,6 +225,7 @@
     <Compile Include="frm_qlkd.Designer.cs">
       <DependentUpon>frm_qlkd.cs</DependentUpon>
     </Compile>
+    <Compile Include="KetnoiCSDL.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuanLyBanHang.cs">
