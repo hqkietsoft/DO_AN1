@@ -17,7 +17,10 @@ namespace DO_AN_1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frm_qlkd());
+
+            Application.Run(new Login());
+
+
         }
     }
 }
