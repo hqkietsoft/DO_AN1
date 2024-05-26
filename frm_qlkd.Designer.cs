@@ -29,11 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_qlkd));
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup2 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem3 = new DevExpress.XtraBars.Ribbon.GalleryItem();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem4 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem1 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem2 = new DevExpress.XtraBars.Ribbon.GalleryItem();
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btn_qlnd = new DevExpress.XtraBars.BarButtonItem();
             this.btn_qlsp = new DevExpress.XtraBars.BarButtonItem();
@@ -58,7 +57,6 @@
             this.skinRibbonGalleryBarItem2 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.galleryDropDown1 = new DevExpress.XtraBars.Ribbon.GalleryDropDown(this.components);
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.tacvu = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -68,7 +66,6 @@
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.page_khachhang = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.page_thongke = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.page_tracuu = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.dcmManager = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
@@ -76,7 +73,6 @@
             this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
-            this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_ele_tacvu = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_qlnd = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_qlsp = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -86,7 +82,6 @@
             this.acc_bctk = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_tc = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlSeparator1 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
-            this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.galleryDropDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dcmManager)).BeginInit();
@@ -129,7 +124,7 @@
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
             this.tacvu});
-            this.ribbon.Size = new System.Drawing.Size(1285, 145);
+            this.ribbon.Size = new System.Drawing.Size(1285, 147);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
             // btn_qlnd
@@ -253,17 +248,17 @@
             // 
             // 
             // 
-            galleryItemGroup2.Caption = "Group4";
-            galleryItem3.Caption = "Item2";
-            galleryItem3.Checked = true;
-            galleryItem3.Description = "Seven Classic";
-            galleryItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            galleryItem4.Caption = "Item3";
-            galleryItemGroup2.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            galleryItem3,
-            galleryItem4});
+            galleryItemGroup1.Caption = "Group4";
+            galleryItem1.Caption = "Item2";
+            galleryItem1.Checked = true;
+            galleryItem1.Description = "Seven Classic";
+            galleryItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            galleryItem2.Caption = "Item3";
+            galleryItemGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            galleryItem1,
+            galleryItem2});
             this.skinPaletteRibbonGalleryBarItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup2});
+            galleryItemGroup1});
             this.skinPaletteRibbonGalleryBarItem1.Id = 15;
             this.skinPaletteRibbonGalleryBarItem1.Name = "skinPaletteRibbonGalleryBarItem1";
             // 
@@ -325,18 +320,10 @@
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup4,
             this.ribbonPageGroup2,
             this.ribbonPageGroup3});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Hệ thống";
-            // 
-            // ribbonPageGroup4
-            // 
-            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem5);
-            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem7);
-            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            this.ribbonPageGroup4.Text = "Quản trị";
             // 
             // ribbonPageGroup2
             // 
@@ -357,8 +344,7 @@
             this.page_nhaphang,
             this.ribbonPageGroup1,
             this.page_khachhang,
-            this.page_thongke,
-            this.page_tracuu});
+            this.page_thongke});
             this.tacvu.Name = "tacvu";
             this.tacvu.Text = "Tác vụ";
             // 
@@ -404,19 +390,12 @@
             this.page_thongke.Name = "page_thongke";
             this.page_thongke.Text = "Thống kê";
             // 
-            // page_tracuu
-            // 
-            this.page_tracuu.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.True;
-            this.page_tracuu.ItemLinks.Add(this.btn_tc);
-            this.page_tracuu.Name = "page_tracuu";
-            this.page_tracuu.Text = "Tra cứu";
-            // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 622);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 634);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1285, 35);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1285, 23);
             // 
             // dcmManager
             // 
@@ -455,41 +434,32 @@
             this.dockPanel1.Controls.Add(this.dockPanel1_Container);
             this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.dockPanel1.ID = new System.Guid("795d0690-91bf-4e60-ab75-1884d8036cfb");
-            this.dockPanel1.Location = new System.Drawing.Point(0, 145);
+            this.dockPanel1.Location = new System.Drawing.Point(0, 147);
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Options.ShowAutoHideButton = false;
             this.dockPanel1.Options.ShowCloseButton = false;
             this.dockPanel1.OriginalSize = new System.Drawing.Size(201, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(201, 477);
+            this.dockPanel1.Size = new System.Drawing.Size(201, 487);
             this.dockPanel1.Text = "TRANG CHỦ";
             this.dockPanel1.Click += new System.EventHandler(this.dockPanel1_Click);
             // 
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Controls.Add(this.accordionControl1);
-            this.dockPanel1_Container.Location = new System.Drawing.Point(0, 23);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(0, 22);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(200, 454);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(200, 465);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // accordionControl1
             // 
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.accordionControlElement2,
-            this.acc_ele_tacvu,
-            this.accordionControlElement3});
+            this.acc_ele_tacvu});
             this.accordionControl1.Location = new System.Drawing.Point(0, 25);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.Size = new System.Drawing.Size(199, 431);
             this.accordionControl1.TabIndex = 0;
             this.accordionControl1.Click += new System.EventHandler(this.accordionControl1_Click);
-            // 
-            // accordionControlElement2
-            // 
-            this.accordionControlElement2.Expanded = true;
-            this.accordionControlElement2.Name = "accordionControlElement2";
-            this.accordionControlElement2.Text = "Quản trị";
-            this.accordionControlElement2.Click += new System.EventHandler(this.accordionControlElement2_Click);
             // 
             // acc_ele_tacvu
             // 
@@ -560,12 +530,6 @@
             // 
             this.accordionControlSeparator1.Name = "accordionControlSeparator1";
             // 
-            // accordionControlElement3
-            // 
-            this.accordionControlElement3.Expanded = true;
-            this.accordionControlElement3.Name = "accordionControlElement3";
-            this.accordionControlElement3.Text = "Giao diện";
-            // 
             // frm_qlkd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -578,7 +542,6 @@
             this.IsMdiContainer = true;
             this.Name = "frm_qlkd";
             this.Ribbon = this.ribbon;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.StatusBar = this.ribbonStatusBar;
             this.Text = "QUẢN LÝ KINH DOANH";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -611,7 +574,6 @@
         private DevExpress.XtraBars.BarButtonItem btn_qlbh;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup page_khachhang;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup page_thongke;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup page_tracuu;
         private DevExpress.XtraBars.BarButtonItem btn_qlkh;
         private DevExpress.XtraBars.BarButtonItem byn_bctk;
         private DevExpress.XtraBars.BarButtonItem btn_tc;
@@ -624,8 +586,6 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement acc_ele_tacvu;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acc_qlnd;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acc_qlsp;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement2;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement3;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acc_qlnh;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acc_qlbh;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acc_qlkh;
@@ -646,7 +606,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiThoat;
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
         private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem2;

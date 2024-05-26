@@ -41,14 +41,14 @@
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
-            this.pictureEdit1.Size = new System.Drawing.Size(840, 545);
+            this.pictureEdit1.Size = new System.Drawing.Size(840, 535);
             this.pictureEdit1.TabIndex = 0;
             // 
             // StartPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(840, 545);
+            this.ClientSize = new System.Drawing.Size(840, 535);
             this.Controls.Add(this.pictureEdit1);
             this.Name = "StartPage";
             this.Text = "StartPage";
