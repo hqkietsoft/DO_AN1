@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_qlkd));
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem1 = new DevExpress.XtraBars.Ribbon.GalleryItem();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem2 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup2 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem3 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem4 = new DevExpress.XtraBars.Ribbon.GalleryItem();
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btn_qlnd = new DevExpress.XtraBars.BarButtonItem();
             this.btn_qlsp = new DevExpress.XtraBars.BarButtonItem();
@@ -54,6 +55,8 @@
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            this.skinRibbonGalleryBarItem2 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
+            this.galleryDropDown1 = new DevExpress.XtraBars.Ribbon.GalleryDropDown(this.components);
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -85,6 +88,7 @@
             this.accordionControlSeparator1 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
             this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.galleryDropDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dcmManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -117,14 +121,15 @@
             this.barButtonItem6,
             this.barButtonItem5,
             this.barButtonItem7,
-            this.barButtonItem8});
+            this.barButtonItem8,
+            this.skinRibbonGalleryBarItem2});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 21;
+            this.ribbon.MaxItemId = 22;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
             this.tacvu});
-            this.ribbon.Size = new System.Drawing.Size(1283, 143);
+            this.ribbon.Size = new System.Drawing.Size(1285, 145);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
             // btn_qlnd
@@ -248,17 +253,17 @@
             // 
             // 
             // 
-            galleryItemGroup1.Caption = "Group4";
-            galleryItem1.Caption = "Item2";
-            galleryItem1.Checked = true;
-            galleryItem1.Description = "Seven Classic";
-            galleryItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            galleryItem2.Caption = "Item3";
-            galleryItemGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            galleryItem1,
-            galleryItem2});
+            galleryItemGroup2.Caption = "Group4";
+            galleryItem3.Caption = "Item2";
+            galleryItem3.Checked = true;
+            galleryItem3.Description = "Seven Classic";
+            galleryItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            galleryItem4.Caption = "Item3";
+            galleryItemGroup2.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            galleryItem3,
+            galleryItem4});
             this.skinPaletteRibbonGalleryBarItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup1});
+            galleryItemGroup2});
             this.skinPaletteRibbonGalleryBarItem1.Id = 15;
             this.skinPaletteRibbonGalleryBarItem1.Name = "skinPaletteRibbonGalleryBarItem1";
             // 
@@ -305,6 +310,18 @@
             this.barButtonItem8.Name = "barButtonItem8";
             this.barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
             // 
+            // skinRibbonGalleryBarItem2
+            // 
+            this.skinRibbonGalleryBarItem2.Caption = "skinRibbonGalleryBarItem2";
+            this.skinRibbonGalleryBarItem2.GalleryDropDown = this.galleryDropDown1;
+            this.skinRibbonGalleryBarItem2.Id = 21;
+            this.skinRibbonGalleryBarItem2.Name = "skinRibbonGalleryBarItem2";
+            // 
+            // galleryDropDown1
+            // 
+            this.galleryDropDown1.Name = "galleryDropDown1";
+            this.galleryDropDown1.Ribbon = this.ribbon;
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -323,10 +340,7 @@
             // 
             // ribbonPageGroup2
             // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem1);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem2);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem6);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem8);
+            this.ribbonPageGroup2.ItemLinks.Add(this.skinRibbonGalleryBarItem2);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Giao diện";
             // 
@@ -399,10 +413,10 @@
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 626);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 622);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1283, 31);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1285, 35);
             // 
             // dcmManager
             // 
@@ -441,12 +455,12 @@
             this.dockPanel1.Controls.Add(this.dockPanel1_Container);
             this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.dockPanel1.ID = new System.Guid("795d0690-91bf-4e60-ab75-1884d8036cfb");
-            this.dockPanel1.Location = new System.Drawing.Point(0, 143);
+            this.dockPanel1.Location = new System.Drawing.Point(0, 145);
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Options.ShowAutoHideButton = false;
             this.dockPanel1.Options.ShowCloseButton = false;
             this.dockPanel1.OriginalSize = new System.Drawing.Size(201, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(201, 483);
+            this.dockPanel1.Size = new System.Drawing.Size(201, 477);
             this.dockPanel1.Text = "TRANG CHỦ";
             this.dockPanel1.Click += new System.EventHandler(this.dockPanel1_Click);
             // 
@@ -455,7 +469,7 @@
             this.dockPanel1_Container.Controls.Add(this.accordionControl1);
             this.dockPanel1_Container.Location = new System.Drawing.Point(0, 23);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(200, 460);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(200, 454);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // accordionControl1
@@ -472,6 +486,7 @@
             // 
             // accordionControlElement2
             // 
+            this.accordionControlElement2.Expanded = true;
             this.accordionControlElement2.Name = "accordionControlElement2";
             this.accordionControlElement2.Text = "Quản trị";
             this.accordionControlElement2.Click += new System.EventHandler(this.accordionControlElement2_Click);
@@ -547,6 +562,7 @@
             // 
             // accordionControlElement3
             // 
+            this.accordionControlElement3.Expanded = true;
             this.accordionControlElement3.Name = "accordionControlElement3";
             this.accordionControlElement3.Text = "Giao diện";
             // 
@@ -554,7 +570,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1283, 657);
+            this.ClientSize = new System.Drawing.Size(1285, 657);
             this.Controls.Add(this.dockPanel1);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
@@ -562,11 +578,13 @@
             this.IsMdiContainer = true;
             this.Name = "frm_qlkd";
             this.Ribbon = this.ribbon;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.StatusBar = this.ribbonStatusBar;
             this.Text = "QUẢN LÝ KINH DOANH";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frm_qlkd_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.galleryDropDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dcmManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
@@ -631,5 +649,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
+        private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem2;
+        private DevExpress.XtraBars.Ribbon.GalleryDropDown galleryDropDown1;
     }
 }

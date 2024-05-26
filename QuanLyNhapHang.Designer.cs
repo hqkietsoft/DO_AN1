@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnThem = new DevExpress.XtraBars.BarButtonItem();
@@ -36,12 +37,12 @@
             this.btnIn = new DevExpress.XtraBars.BarButtonItem();
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
-            this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
             this.btnTim = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.dteNhapDenNgay = new DevExpress.XtraEditors.DateEdit();
@@ -54,24 +55,17 @@
             this.NgayLap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgDSHoaDon = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -91,13 +85,14 @@
             this.splitContainerControl2.Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel2)).BeginInit();
             this.splitContainerControl2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar2,
-            this.bar3});
+            this.bar2});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -111,7 +106,6 @@
             this.btnThoat});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 5;
-            this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
             // 
@@ -119,6 +113,7 @@
             this.bar2.DockCol = 0;
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar2.FloatLocation = new System.Drawing.Point(572, 135);
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btnThem),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSua),
@@ -164,18 +159,6 @@
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThoat_ItemClick);
             // 
-            // bar3
-            // 
-            this.bar3.BarName = "Status bar";
-            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.bar3.DockCol = 0;
-            this.bar3.DockRow = 0;
-            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.bar3.OptionsBar.AllowQuickCustomization = false;
-            this.bar3.OptionsBar.DrawDragBorder = false;
-            this.bar3.OptionsBar.UseWholeRow = true;
-            this.bar3.Text = "Status bar";
-            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -189,10 +172,10 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 560);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 681);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1168, 23);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1168, 0);
             // 
             // barDockControlLeft
             // 
@@ -201,7 +184,7 @@
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 540);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 661);
             // 
             // barDockControlRight
             // 
@@ -210,7 +193,7 @@
             this.barDockControlRight.Location = new System.Drawing.Point(1168, 20);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 540);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 661);
             // 
             // groupControl1
             // 
@@ -220,12 +203,21 @@
             this.groupControl1.Controls.Add(this.dteNhapDenNgay);
             this.groupControl1.Controls.Add(this.labelControl1);
             this.groupControl1.Controls.Add(this.dteNhapTuNgay);
-            this.groupControl1.Location = new System.Drawing.Point(0, 26);
+            this.groupControl1.Location = new System.Drawing.Point(12, 27);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(477, 82);
             this.groupControl1.TabIndex = 25;
             this.groupControl1.Text = "Ngày nhập vào hệ thống";
             this.groupControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl1_Paint);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(123, 49);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(86, 23);
+            this.btnRefresh.TabIndex = 29;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnTim
             // 
@@ -292,6 +284,16 @@
             // 
             // dgHoaDon
             // 
+            this.dgHoaDon.AllowUserToOrderColumns = true;
+            this.dgHoaDon.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgHoaDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgHoaDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgHoaDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaPhieu,
@@ -305,8 +307,10 @@
             this.dgHoaDon.Name = "dgHoaDon";
             this.dgHoaDon.RowHeadersWidth = 51;
             this.dgHoaDon.RowTemplate.Height = 24;
-            this.dgHoaDon.Size = new System.Drawing.Size(639, 146);
+            this.dgHoaDon.Size = new System.Drawing.Size(695, 235);
             this.dgHoaDon.TabIndex = 26;
+            this.dgHoaDon.ColumnHeadersDefaultCellStyleChanged += new System.EventHandler(this.dgHoaDon_ColumnHeadersDefaultCellStyleChanged);
+            this.dgHoaDon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgHoaDon_CellClick);
             this.dgHoaDon.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgHoaDon_CellContentClick);
             // 
             // MaPhieu
@@ -348,7 +352,7 @@
             // TongTien
             // 
             this.TongTien.DataPropertyName = "TongTien";
-            this.TongTien.HeaderText = "Tổng tiền";
+            this.TongTien.HeaderText = "Thành tiền";
             this.TongTien.MinimumWidth = 6;
             this.TongTien.Name = "TongTien";
             this.TongTien.ReadOnly = true;
@@ -356,20 +360,15 @@
             // 
             // dgDSHoaDon
             // 
+            this.dgDSHoaDon.BackgroundColor = System.Drawing.Color.White;
             this.dgDSHoaDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgDSHoaDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
             this.Column3,
-            this.Column4,
             this.Column5,
             this.Column6,
-            this.Column7,
             this.Column8,
             this.Column9,
             this.Column10,
-            this.Column11,
-            this.Column12,
             this.Column13});
             this.dgDSHoaDon.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgDSHoaDon.Location = new System.Drawing.Point(0, 0);
@@ -377,126 +376,13 @@
             this.dgDSHoaDon.Name = "dgDSHoaDon";
             this.dgDSHoaDon.RowHeadersWidth = 51;
             this.dgDSHoaDon.RowTemplate.Height = 24;
-            this.dgDSHoaDon.Size = new System.Drawing.Size(1168, 253);
+            this.dgDSHoaDon.Size = new System.Drawing.Size(928, 123);
             this.dgDSHoaDon.TabIndex = 27;
             this.dgDSHoaDon.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDSHoaDon_CellContentClick);
             // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "MaPhieu";
-            this.Column1.HeaderText = "Mã phiếu";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "MaNV";
-            this.Column2.HeaderText = "Mã nhân viên";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "MaSP";
-            this.Column3.HeaderText = "Mã sản phẩm";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "TenNCC";
-            this.Column4.HeaderText = "Tên nhà cung cấp";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "TenNSX";
-            this.Column5.HeaderText = "Tên nhà sản xuất";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "TenSP";
-            this.Column6.HeaderText = "Tên sản phẩm";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "NgayLap";
-            this.Column7.HeaderText = "Ngày lập";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "SoLuongNhap";
-            this.Column8.HeaderText = "Số lượng nhập";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "DonViTinh";
-            this.Column9.HeaderText = "Đơn vị tính";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "GiaNhap";
-            this.Column10.HeaderText = "Giá nhập";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            // 
-            // Column11
-            // 
-            this.Column11.DataPropertyName = "DonGia";
-            this.Column11.HeaderText = "Đơn giá";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            // 
-            // Column12
-            // 
-            this.Column12.DataPropertyName = "TongTien";
-            this.Column12.HeaderText = "Tổng tiền";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            // 
-            // Column13
-            // 
-            this.Column13.DataPropertyName = "GhiChu";
-            this.Column13.HeaderText = "Ghi chú";
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(0, 114);
-            this.labelControl3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(177, 27);
-            this.labelControl3.TabIndex = 28;
-            this.labelControl3.Text = "HOÁ ĐƠN NHẬP";
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(0, 297);
-            this.labelControl4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(257, 27);
-            this.labelControl4.TabIndex = 29;
-            this.labelControl4.Text = "DANH SÁCH SẢN PHẨM";
-            // 
             // splitContainerControl1
             // 
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 146);
+            this.splitContainerControl1.Location = new System.Drawing.Point(13, 45);
             this.splitContainerControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.splitContainerControl1.Name = "splitContainerControl1";
             // 
@@ -509,13 +395,13 @@
             // 
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel1;
-            this.splitContainerControl1.Size = new System.Drawing.Size(639, 146);
+            this.splitContainerControl1.Size = new System.Drawing.Size(695, 235);
             this.splitContainerControl1.SplitterPosition = 86;
             this.splitContainerControl1.TabIndex = 30;
             // 
             // splitContainerControl2
             // 
-            this.splitContainerControl2.Location = new System.Drawing.Point(0, 330);
+            this.splitContainerControl2.Location = new System.Drawing.Point(13, 48);
             this.splitContainerControl2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.splitContainerControl2.Name = "splitContainerControl2";
             // 
@@ -528,28 +414,102 @@
             // 
             this.splitContainerControl2.Panel2.Text = "Panel2";
             this.splitContainerControl2.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel1;
-            this.splitContainerControl2.Size = new System.Drawing.Size(1168, 253);
+            this.splitContainerControl2.Size = new System.Drawing.Size(928, 123);
             this.splitContainerControl2.SplitterPosition = 86;
             this.splitContainerControl2.TabIndex = 31;
             // 
-            // btnRefresh
+            // groupBox1
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(123, 49);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(86, 23);
-            this.btnRefresh.TabIndex = 29;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            this.groupBox1.Controls.Add(this.splitContainerControl1);
+            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(13, 115);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(722, 292);
+            this.groupBox1.TabIndex = 36;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "HOÁ ĐƠN NHẬP";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.splitContainerControl2);
+            this.groupBox2.Font = new System.Drawing.Font("Tahoma", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(13, 413);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(954, 185);
+            this.groupBox2.TabIndex = 37;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "THÔNG TIN CHI TIẾT";
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "MaSP";
+            this.Column3.HeaderText = "Mã sản phẩm";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 125;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "TenNSX";
+            this.Column5.HeaderText = "Tên nhà sản xuất";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 125;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "TenSP";
+            this.Column6.HeaderText = "Tên sản phẩm";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 125;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "SoLuong";
+            this.Column8.HeaderText = "Số lượng nhập";
+            this.Column8.MinimumWidth = 6;
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Width = 125;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "DonViTinh";
+            this.Column9.HeaderText = "Đơn vị tính";
+            this.Column9.MinimumWidth = 6;
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Width = 125;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "GiaNhap";
+            this.Column10.HeaderText = "Giá nhập";
+            this.Column10.MinimumWidth = 6;
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Width = 125;
+            // 
+            // Column13
+            // 
+            this.Column13.DataPropertyName = "GhiChu";
+            this.Column13.HeaderText = "Ghi chú";
+            this.Column13.MinimumWidth = 6;
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            this.Column13.Width = 125;
             // 
             // QuanLyNhapHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1168, 583);
-            this.Controls.Add(this.splitContainerControl2);
-            this.Controls.Add(this.splitContainerControl1);
-            this.Controls.Add(this.labelControl4);
-            this.Controls.Add(this.labelControl3);
+            this.ClientSize = new System.Drawing.Size(1168, 681);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -580,6 +540,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
             this.splitContainerControl2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -589,7 +551,6 @@
 
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar2;
-        private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
@@ -605,30 +566,24 @@
         private DevExpress.XtraEditors.DateEdit dteNhapDenNgay;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.DateEdit dteNhapTuNgay;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
         private System.Windows.Forms.DataGridView dgDSHoaDon;
         private System.Windows.Forms.DataGridView dgHoaDon;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
+        private DevExpress.XtraEditors.SimpleButton btnRefresh;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaPhieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNV;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenNCC;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayLap;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongTien;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private DevExpress.XtraEditors.SimpleButton btnRefresh;
     }
 }

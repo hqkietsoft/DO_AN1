@@ -13,10 +13,10 @@ namespace DO_AN_1
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class quanLyKDLaptopEntities : DbContext
+    public partial class quanlykinhdoanhmaytinhEntities : DbContext
     {
-        public quanLyKDLaptopEntities()
-            : base("name=quanLyKDLaptopEntities")
+        public quanlykinhdoanhmaytinhEntities()
+            : base("name=quanlykinhdoanhmaytinhEntities")
         {
         }
     

@@ -19,15 +19,11 @@ namespace DO_AN_1
         public QuanLyNhapHang()
         {
             InitializeComponent();
+            dgHoaDon.CellClick += new DataGridViewCellEventHandler(dgHoaDon_CellClick);
+            dgHoaDon.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 11, FontStyle.Bold);
+            dgDSHoaDon.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 11, FontStyle.Bold);
         }
 
-
-        private void SetAnchor()
-        {
-            dgHoaDon.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dgDSHoaDon.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            // Các điều khiển khác...
-        }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -35,68 +31,46 @@ namespace DO_AN_1
             qLNH_CNThem.Show();
         }
 
-        public class DonHang
-        {
-            public string MaPhieu { get; set; }
-            public string MaNhanVien { get; set; }
-            public string MaSanPham { get; set; }
-            public string TenNCC { get; set; }
-            public string TenNSX { get; set; }
-            public string TenSanPham { get; set; }
-            public DateTime NgayLap { get; set; }
-            public int SoLuongNhap { get; set; }
-            public string DonViTinh { get; set; }
-            public decimal GiaNhap { get; set; }
-            public decimal DonGia { get; set; }
-            public decimal TongTien { get; set; }
-            public string GhiChu { get; set; }
-        }
-
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            List<DonHang> danhSachDonHang = new List<DonHang>();
-
-            // Đoạn mã lấy dữ liệu từ bảng và thêm vào danh sách danhSachDonHang
-            DataTable dtHoaDon = (DataTable)dgDSHoaDon.DataSource;
-            if (dtHoaDon == null || dtHoaDon.Rows.Count == 0)
+            if (dgHoaDon.SelectedRows.Count > 0 && dgDSHoaDon.SelectedRows.Count > 0)
             {
-                MessageBox.Show("Không có dữ liệu để sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+                // Lấy hàng được chọn từ mỗi DataGridView
+                DataGridViewRow selectedRowHoaDon = dgHoaDon.SelectedRows[0];
+                DataGridViewRow selectedRowDSHoaDon = dgDSHoaDon.SelectedRows[0];
 
-            foreach (DataRow row in dtHoaDon.Rows)
+                // Tạo một danh sách các giá trị để truyền
+                List<object> combinedData = new List<object>();
+
+                // Lấy 5 giá trị từ dgHoaDon
+                for (int i = 0; i < 5; i++)
+                {
+                    combinedData.Add(selectedRowHoaDon.Cells[i].Value);
+                }
+
+                // Lấy 7 giá trị từ dgDSHoaDon
+                for (int i = 0; i < 7; i++)
+                {
+                    combinedData.Add(selectedRowDSHoaDon.Cells[i].Value);
+                }
+
+                // Truyền dữ liệu sang form QLNH_CNSuaDH
+                QLNH_CNSuaDH suaDHForm = new QLNH_CNSuaDH();
+                suaDHForm.AddCombinedData(combinedData);
+                suaDHForm.Show();
+            }
+            else
             {
-                DonHang donHang = new DonHang();
-                donHang.MaPhieu = row["MaPhieu"].ToString();
-                donHang.MaNhanVien = row["MaNV"].ToString();
-                donHang.MaSanPham = row["MaSP"].ToString();
-                donHang.TenNCC = row["TenNCC"].ToString();
-                donHang.TenNSX = row["TenNSX"].ToString();
-                donHang.TenSanPham = row["TenSP"].ToString();
-                donHang.NgayLap = Convert.ToDateTime(row["NgayLap"]);
-                donHang.SoLuongNhap = Convert.ToInt32(row["SoLuongNhap"]);
-                donHang.DonViTinh = row["DonViTinh"].ToString();
-                donHang.GiaNhap = Convert.ToDecimal(row["GiaNhap"]);
-                donHang.DonGia = Convert.ToDecimal(row["DonGia"]);
-                donHang.TongTien = Convert.ToDecimal(row["TongTien"]);
-                donHang.GhiChu = row["GhiChu"].ToString();
-
-                danhSachDonHang.Add(donHang);
+                MessageBox.Show("Vui lòng chọn hàng trong cả hai bảng dgHoaDon và dgDSHoaDon.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
-            // Tạo đối tượng mới của lớp QLNH_CNSuaDH và truyền danh sách danhSachDonHang vào constructor
-            QLNH_CNSuaDH suaDHForm = new QLNH_CNSuaDH(danhSachDonHang);
-            suaDHForm.Show();
-
         }
 
         private void QuanLyNhapHang_Load(object sender, EventArgs e)
         {
             this.MdiParent = frm_qlkd.ActiveForm;
-            SetAnchor();
             connData.HienthiLenDGPN(dgHoaDon);
-            connData.HienthiLenDGDSP(dgDSHoaDon);
             FormatColumns();
+            dgHoaDon.DataSource = connData.getQueryPhieuNH();
         }
 
         private void dgHoaDon_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -108,7 +82,6 @@ namespace DO_AN_1
         {
 
         }
-    
 
         private void btnTim_Click(object sender, EventArgs e)
         {
@@ -124,22 +97,11 @@ namespace DO_AN_1
             string query = "SELECT * FROM PhieuNhapHang WHERE NgayLap >= @NgayTuNgay AND NgayLap <= @NgayDenNgay";
             DataTable dt = connData.displaySearch(query, ngayTuNgay, ngayDenNgay);
             dgHoaDon.DataSource = dt;
-
-            string query1 = @"SELECT pnh.MaPhieu, nd.MaNV, sp.MaSP, pnh.TenNCC, sp.TenNSX, ctpn.TenSP, pnh.NgayLap, ctpn.SoLuongNhap, sp.DonViTinh, 
-                    ctpn.GiaNhap, sp.DonGia, pnh.TongTien, ctpn.GhiChu 
-                    FROM PhieuNhapHang AS pnh
-                    INNER JOIN ChiTietPhieuNhap AS ctpn ON pnh.MaPhieu = ctpn.MaPhieu
-                    INNER JOIN NguoiDung AS nd ON nd.MaNV = pnh.MaNV
-                    INNER JOIN SanPham AS sp ON sp.MaSP = ctpn.MaSP
-                    WHERE pnh.NgayLap BETWEEN @NgayTuNgay AND @NgayDenNgay";
-            DataTable dt1 = connData.displaySearch(query1, ngayTuNgay, ngayDenNgay);
-            dgDSHoaDon.DataSource = dt1;
         }
 
         private void FormatColumns()
         {
             dgHoaDon.Columns["NgayLap"].DefaultCellStyle.Format = "dd-MM-yyyy";
-            dgDSHoaDon.Columns["Column7"].DefaultCellStyle.Format = "dd-MM-yyyy";
         }
 
         private void groupControl1_Paint(object sender, PaintEventArgs e)
@@ -164,12 +126,19 @@ namespace DO_AN_1
                     maHoaDons.Add(maHoaDon);
                 }
 
-                string maHoaDonList = string.Join(",", maHoaDons.Select(m => $"'{m}'"));
+                // Tạo chuỗi chứa các tham số cho câu lệnh SQL
+                string maHoaDonList = string.Join(",", maHoaDons.Select((m, i) => $"@MaPhieu{i}"));
 
-                using (SqlConnection con = new SqlConnection(@"Data Source=DAFF;Initial Catalog=quanLyKDLaptop;Integrated Security=True;Encrypt=False"))
+                using (SqlConnection con = new SqlConnection(@"Data Source=DAFF;Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False"))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand($"select * from InPNH where MaPhieu IN ({maHoaDonList})", con);
+                    SqlCommand cmd = new SqlCommand($"SELECT * FROM InPNH WHERE MaPhieu IN ({maHoaDonList})", con);
+
+                    // Thêm các giá trị cho tham số vào SqlCommand
+                    for (int i = 0; i < maHoaDons.Count; i++)
+                    {
+                        cmd.Parameters.AddWithValue($"@MaPhieu{i}", maHoaDons[i]);
+                    }
 
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
@@ -182,8 +151,9 @@ namespace DO_AN_1
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn ít nhất một hóa đơn để in.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng chọn ít nhất một hóa đơn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -205,15 +175,18 @@ namespace DO_AN_1
 
                     string maHoaDonList = string.Join(",", maHoaDons.Select(m => $"'{m}'"));
 
-                    using (SqlConnection con = new SqlConnection(@"Data Source=DAFF;Initial Catalog=quanLyKDLaptop;Integrated Security=True;Encrypt=False"))
+                    using (SqlConnection con = new SqlConnection(@"Data Source=DAFF;Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False"))
                     {
                         con.Open();
-                        SqlCommand cmdCTPN = new SqlCommand($"DELETE FROM ChiTietPhieuNhap WHERE MaPhieu IN ({maHoaDonList})", con);
-                        cmdCTPN.ExecuteNonQuery();
+                        using (SqlCommand cmdCTPN = new SqlCommand($"DELETE FROM ChiTietPhieuNhapHang WHERE MaPhieu IN ({maHoaDonList})", con))
+                        {
+                            cmdCTPN.ExecuteNonQuery();
+                        }
 
-                        SqlCommand cmdPNH = new SqlCommand($"DELETE FROM PhieuNhapHang WHERE MaPhieu IN ({maHoaDonList})", con);
-                        cmdPNH.ExecuteNonQuery();
-
+                        using (SqlCommand cmdPNH = new SqlCommand($"DELETE FROM PhieuNhapHang WHERE MaPhieu IN ({maHoaDonList})", con))
+                        {
+                            cmdPNH.ExecuteNonQuery();
+                        }
                         con.Close();
                     }
 
@@ -221,14 +194,13 @@ namespace DO_AN_1
                     DataTable dt = connData.displaySearch(query, ngayTuNgay, ngayDenNgay);
                     dgHoaDon.DataSource = dt;
 
-                    string query1 = @"SELECT pnh.MaPhieu, nd.MaNV, sp.MaSP, pnh.TenNCC, sp.TenNSX, ctpn.TenSP, pnh.NgayLap, ctpn.SoLuongNhap, sp.DonViTinh, 
-                    ctpn.GiaNhap, sp.DonGia, pnh.TongTien, ctpn.GhiChu 
-                    FROM PhieuNhapHang AS pnh
-                    INNER JOIN ChiTietPhieuNhap AS ctpn ON pnh.MaPhieu = ctpn.MaPhieu
-                    INNER JOIN NguoiDung AS nd ON nd.MaNV = pnh.MaNV
-                    INNER JOIN SanPham AS sp ON sp.MaSP = ctpn.MaSP
-                    WHERE pnh.NgayLap BETWEEN @NgayTuNgay AND @NgayDenNgay";
-                    DataTable dt1 = connData.displaySearch(query1, ngayTuNgay, ngayDenNgay);
+                    string query1 = @"SELECT sp.MaSP, sp.TenNSX, sp.TenSP, ctpn.SoLuong, sp.DonViTinh, 
+                            ctpn.GiaNhap, ctpn.GhiChu 
+                     FROM PhieuNhapHang AS pnh
+                     INNER JOIN ChiTietPhieuNhapHang AS ctpn ON pnh.MaPhieu = ctpn.MaPhieu
+                     INNER JOIN SanPham AS sp ON sp.MaSP = ctpn.MaSP
+                     WHERE pnh.MaPhieu IN (" + maHoaDonList + ")";
+                    DataTable dt1 = connData.displayDSHD1(query1);
                     dgDSHoaDon.DataSource = dt1;
 
                     MessageBox.Show("Đã xóa các hóa đơn được chọn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -243,7 +215,32 @@ namespace DO_AN_1
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             connData.HienthiLenDGPN(dgHoaDon);
-            connData.HienthiLenDGDSP(dgDSHoaDon);
+            DataTable dt = dgDSHoaDon.DataSource as DataTable;
+            if (dt != null)
+            {
+                dt.Clear();
+            }
+        }
+
+        private void dgHoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = dgHoaDon.Rows[e.RowIndex];
+            string maPhieu = row.Cells["MaPhieu"].Value.ToString();
+
+            string query = @"SELECT sp.MaSP, sp.TenNSX, sp.TenSP, ctpn.SoLuong, sp.DonViTinh, 
+                        ctpn.GiaNhap, ctpn.GhiChu 
+                 FROM PhieuNhapHang AS pnh
+                 INNER JOIN ChiTietPhieuNhapHang AS ctpn ON pnh.MaPhieu = ctpn.MaPhieu
+                 INNER JOIN SanPham AS sp ON sp.MaSP = ctpn.MaSP
+                 WHERE pnh.MaPhieu = @MaPhieu";
+
+            DataTable dt = connData.displayDSHD(query, new SqlParameter("@MaPhieu", maPhieu));
+            dgDSHoaDon.DataSource = dt;
+        }
+
+        private void dgHoaDon_ColumnHeadersDefaultCellStyleChanged(object sender, EventArgs e)
+        {
+            dgHoaDon.EnableHeadersVisualStyles = false;
         }
     }
 }

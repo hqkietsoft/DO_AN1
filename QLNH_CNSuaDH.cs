@@ -17,49 +17,90 @@ namespace DO_AN_1
     public partial class QLNH_CNSuaDH : DevExpress.XtraEditors.XtraForm
     {
         ConnData connData = new ConnData();
-        public QLNH_CNSuaDH(List<DonHang> danhSachDonHang)
+        private DataTable dtDSHoaDon;
+        public QLNH_CNSuaDH()
         {
             InitializeComponent();
             ccbMaNhanVien.DropDown += new EventHandler(ccbMaNhanVien_DropDown);
             ccbMaNhanVien.DropDownClosed += new EventHandler(ccbMaNhanVien_DropDownClosed);
-            HienThiDonHang(danhSachDonHang);
-        }
-
-
-        private void HienThiDonHang(List<DonHang> danhSachDonHang)
-        {
-            // Xóa dữ liệu hiện có trong dgvSuaHD
-            dgvSuaMH.Rows.Clear();
-
-            // Thêm thông tin từ danh sách đơn hàng vào dgvSuaHD
-            foreach (DonHang donHang in danhSachDonHang)
-            {
-                dgvSuaMH.Rows.Add(
-                    donHang.MaPhieu,
-                    donHang.MaNhanVien,
-                    donHang.MaSanPham,
-                    donHang.TenNCC,
-                    donHang.TenNSX,
-                    donHang.TenSanPham,
-                    donHang.NgayLap,
-                    donHang.SoLuongNhap,
-                    donHang.DonViTinh,
-                    donHang.GiaNhap,
-                    donHang.DonGia,
-                    donHang.TongTien,
-                    donHang.GhiChu
-                );
-            }
-        }
-
-        public QLNH_CNSuaDH(DataTable dtHoaDon)
-        {
-            InitializeComponent();
-            dgvSuaMH.DataSource = dtHoaDon;
             
         }
 
+        public void AddCombinedData(List<object> combinedData)
+        {
+            DataTable dtSuaMHCurrent = null;
+            if (dgvSuaDH.DataSource == null)
+            {
+                dtSuaMHCurrent = new DataTable();
+                dtSuaMHCurrent.Columns.Add("MaPhieu");
+                dtSuaMHCurrent.Columns.Add("MaNV");
+                dtSuaMHCurrent.Columns.Add("TenNCC");
+                dtSuaMHCurrent.Columns.Add("NgayLap", typeof(DateTime));
+                dtSuaMHCurrent.Columns.Add("TongTien", typeof(decimal));
+                dtSuaMHCurrent.Columns.Add("MaSP");
+                dtSuaMHCurrent.Columns.Add("TenNSX");
+                dtSuaMHCurrent.Columns.Add("TenSP");
+                dtSuaMHCurrent.Columns.Add("SoLuongNhap", typeof(int));
+                dtSuaMHCurrent.Columns.Add("DonViTinh");
+                dtSuaMHCurrent.Columns.Add("GiaNhap", typeof(decimal));
+                dtSuaMHCurrent.Columns.Add("GhiChu");
+                dgvSuaDH.DataSource = dtSuaMHCurrent;
+            }
+            else
+            {
+                dtSuaMHCurrent = (DataTable)dgvSuaDH.DataSource;
+            }
 
+            DataRow newRow = dtSuaMHCurrent.NewRow();
+
+            for (int i = 0; i < combinedData.Count; i++)
+            {
+                switch (i)
+                {
+                    case 0:
+                        newRow["MaPhieu"] = combinedData[i];
+                        break;
+                    case 1:
+                        newRow["MaNV"] = combinedData[i];
+                        break;
+                    case 2:
+                        newRow["TenNCC"] = combinedData[i];
+                        break;
+                    case 3:
+                        newRow["NgayLap"] = combinedData[i];
+                        break;
+                    case 4:
+                        newRow["TongTien"] = combinedData[i];
+                        break;
+                    case 5:
+                        newRow["MaSP"] = combinedData[i];
+                        break;
+                    case 6:
+                        newRow["TenNSX"] = combinedData[i];
+                        break;
+                    case 7:
+                        newRow["TenSP"] = combinedData[i];
+                        break;
+                    case 8:
+                        newRow["SoLuongNhap"] = combinedData[i];
+                        break;
+                    case 9:
+                        newRow["DonViTinh"] = combinedData[i];
+                        break;
+                    case 10:
+                        newRow["GiaNhap"] = combinedData[i];
+                        break;
+                    case 11:
+                        newRow["GhiChu"] = combinedData[i];
+                        break;
+                    default:
+                        // Xử lý trường hợp có nhiều hơn 12 giá trị trong combinedData
+                        break;
+                }
+            }
+
+            dtSuaMHCurrent.Rows.Add(newRow);
+        }
 
         public class Employee
         {
@@ -88,10 +129,13 @@ namespace DO_AN_1
                 var employee = new Employee(item["MaNV"].ToString(), item["HoTen"].ToString());
                 ccbMaNhanVien.Items.Add(employee);
             }
+            cbbMaSanPham.Text = "---Chọn mã SP---";
 
-            cbbTenSanPham.Properties.ReadOnly = true;
-            cbbTenNCC.Properties.ReadOnly = true;
-            txtMaSanPham.Properties.ReadOnly = true;
+            foreach (DataRow item in connData.laydulieuSanPham().Rows)
+            {
+                var employee1 = item["MaSP"].ToString();
+                cbbMaSanPham.Items.Add(employee1);
+            }
             FormatColumns();
         }
 
@@ -105,87 +149,62 @@ namespace DO_AN_1
             ccbMaNhanVien.DisplayMember = "MaNV";
         }
 
-
-
         private bool isDataSaved = false;
 
         private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(@"Data Source=DAFF;Initial Catalog=quanLyKDLaptop;Integrated Security=True;Encrypt=False"))
+            using (SqlConnection con = new SqlConnection(@"Data Source=DAFF;Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False"))
             {
                 con.Open();
                 SqlTransaction transaction = con.BeginTransaction();
 
                 try
                 {
-                    foreach (DataGridViewRow row in dgvSuaMH.Rows)
+                    foreach (DataGridViewRow row in dgvSuaDH.Rows)
                     {
-                        if (row.IsNewRow || row.Cells["MaPhieu"].Value == null) continue;
+                        if (row.IsNewRow) continue;
 
-                        string maPhieu = row.Cells["MaPhieu"].Value?.ToString();
-                        string maNV = row.Cells["MaNV"].Value?.ToString();
-                        string maSP = row.Cells["MaSP"].Value?.ToString();
-                        string tenNCC = row.Cells["TenNCC"].Value?.ToString();
-                        DateTime ngayLap = row.Cells["NgayLap"].Value == null ? DateTime.MinValue : Convert.ToDateTime(row.Cells["NgayLap"].Value);
-                        decimal tongTien = row.Cells["TongTien"].Value == null ? 0 : Convert.ToDecimal(row.Cells["TongTien"].Value);
-                        string tenSP = row.Cells["TenSP"].Value?.ToString();
-                        int soLuongNhap = row.Cells["SoLuongNhap"].Value == null ? 0 : Convert.ToInt32(row.Cells["SoLuongNhap"].Value);
-                        decimal giaNhap = row.Cells["GiaNhap"].Value == null ? 0 : Convert.ToDecimal(row.Cells["GiaNhap"].Value);
-                        string ghiChu = row.Cells["GhiChu"].Value?.ToString();
-                        string donViTinh = row.Cells["DonViTinh"].Value?.ToString();
-                        string tenNSX = row.Cells["TenNSX"].Value?.ToString();
-                        decimal donGia = row.Cells["DonGia"].Value == null ? 0 : Convert.ToDecimal(row.Cells["DonGia"].Value);
+                        // Lấy các giá trị từ DataGridView
+                        string maPhieu = row.Cells["MaPhieu"].Value.ToString();
+                        string maNV = row.Cells["MaNV"].Value.ToString();
+                        string maSP = row.Cells["MaSP"].Value.ToString();
+                        string tenNCC = row.Cells["TenNCC"].Value.ToString();
+                        string tenNSX = row.Cells["TenNSX"].Value.ToString();
+                        string tenSP = row.Cells["TenSP"].Value.ToString();
+                        DateTime ngayLap = Convert.ToDateTime(row.Cells["NgayLap"].Value);
+                        int soLuongNhap = Convert.ToInt32(row.Cells["SoLuongNhap"].Value);
+                        string donViTinh = row.Cells["DonViTinh"].Value.ToString();
+                        decimal giaNhap = Convert.ToDecimal(row.Cells["GiaNhap"].Value);
+                        decimal tongTien = Convert.ToDecimal(row.Cells["TongTien"].Value);
+                        string ghiChu = row.Cells["GhiChu"].Value.ToString();
 
-                        
-
-                        
-                        // Update bảng PhieuNhapHang
+                        // Cập nhật thông tin trong bảng PhieuNhapHang
                         string queryUpdatePNH = @"UPDATE PhieuNhapHang 
-                              SET MaNV = @MaNV, 
-                                  TenNCC = @TenNCC, 
-                                  NgayLap = @NgayLap, 
-                                  TongTien = @TongTien
-                              WHERE MaPhieu = @MaPhieu";
+                                      SET MaNV = @MaNV, TenNCC = @TenNCC, NgayLap = @NgayLap, TongTien = @TongTien
+                                      WHERE MaPhieu = @MaPhieu";
                         SqlCommand cmdUpdatePNH = new SqlCommand(queryUpdatePNH, con, transaction);
                         cmdUpdatePNH.Parameters.AddWithValue("@MaPhieu", maPhieu);
                         cmdUpdatePNH.Parameters.AddWithValue("@MaNV", maNV);
                         cmdUpdatePNH.Parameters.AddWithValue("@TenNCC", tenNCC);
                         cmdUpdatePNH.Parameters.AddWithValue("@NgayLap", ngayLap);
                         cmdUpdatePNH.Parameters.AddWithValue("@TongTien", tongTien);
-                        int rowsAffectedPNH = cmdUpdatePNH.ExecuteNonQuery();
+                        cmdUpdatePNH.ExecuteNonQuery();
 
-
-                        // Update bảng ChiTietPhieuNhap
-                        string queryUpdateCTPN = @"UPDATE ChiTietPhieuNhap 
-                           SET SoLuongNhap = @SoLuongNhap, 
-                               GiaNhap = @GiaNhap, 
-                               GhiChu = @GhiChu
-                           WHERE MaPhieu = @MaPhieu";
+                        // Cập nhật thông tin trong bảng ChiTietPhieuNhapHang
+                        string queryUpdateCTPN = @"UPDATE ChiTietPhieuNhapHang 
+                                       SET SoLuong = @SoLuong, GiaNhap = @GiaNhap, GhiChu = @GhiChu
+                                       WHERE MaPhieu = @MaPhieu AND MaSP = @MaSP";
                         SqlCommand cmdUpdateCTPN = new SqlCommand(queryUpdateCTPN, con, transaction);
                         cmdUpdateCTPN.Parameters.AddWithValue("@MaPhieu", maPhieu);
                         cmdUpdateCTPN.Parameters.AddWithValue("@MaSP", maSP);
-                        cmdUpdateCTPN.Parameters.AddWithValue("@SoLuongNhap", soLuongNhap);
+                        cmdUpdateCTPN.Parameters.AddWithValue("@SoLuong", soLuongNhap);
                         cmdUpdateCTPN.Parameters.AddWithValue("@GiaNhap", giaNhap);
                         cmdUpdateCTPN.Parameters.AddWithValue("@GhiChu", ghiChu);
-                        int rowsAffectedCTPN = cmdUpdateCTPN.ExecuteNonQuery();
-
-                        // Update bảng SanPham
-                        string queryUpdateSP = @"UPDATE SanPham 
-                             SET TenSP = @TenSP,
-                                 DonViTinh = @DonViTinh, 
-                                 TenNSX = @TenNSX, 
-                                 DonGia = @DonGia 
-                             WHERE MaSP = @MaSP";
-                        SqlCommand cmdUpdateSP = new SqlCommand(queryUpdateSP, con, transaction);
-                        cmdUpdateSP.Parameters.AddWithValue("@MaSP", maSP);
-                        cmdUpdateSP.Parameters.AddWithValue("@TenSP", tenSP);
-                        cmdUpdateSP.Parameters.AddWithValue("@DonViTinh", donViTinh);
-                        cmdUpdateSP.Parameters.AddWithValue("@TenNSX", tenNSX);
-                        cmdUpdateSP.Parameters.AddWithValue("@DonGia", donGia);
-                        int rowsAffectedSP = cmdUpdateSP.ExecuteNonQuery();
+                        cmdUpdateCTPN.ExecuteNonQuery();
                     }
+
                     transaction.Commit();
-                    MessageBox.Show("Đã lưu thông tin thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Đã cập nhật thông tin thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
@@ -197,6 +216,7 @@ namespace DO_AN_1
                     con.Close();
                 }
             }
+
             isDataSaved = true;
         }
         
@@ -219,198 +239,42 @@ namespace DO_AN_1
 
         private void cbbTenSanPham_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cbbTenSanPham.Properties.ReadOnly = true;
+            
         }
 
         private void cbbTenNCC_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cbbTenSanPham.Properties.Items.Clear();
-            string selectedSupplier = cbbTenNCC.SelectedItem.ToString();
-            List<string> products = GetProductsForSupplier(selectedSupplier);
-            cbbTenSanPham.Properties.Items.AddRange(products);
-
-            txtTenNSX.Text = cbbTenNCC.Text;
             
         }
 
-        private List<string> GetProductsForSupplier(string selectedSupplier)
-        {
-
-            List<string> products = new List<string>();
-
-
-            if (selectedSupplier == "Asus")
-            {
-                products.Add("Asus ROG Strix G15 G614");
-                products.Add("Asus ROG Strix G16 G614");
-                products.Add("Asus ROG Zephyrus M16 GU603");
-                products.Add("Asus ROG Flow X13 GV305");
-                products.Add("Asus TUF Gaming F15 FX507");
-                products.Add("Asus TUF Gaming F17 FX707");
-                products.Add("Asus TUF Gaming A15 FA507");
-                products.Add("Asus TUF Gaming A17 FA707");
-                products.Add("Asus TUF Gaming Dash F15 FX517");
-                products.Add("Asus TUF Gaming Dash F17 FX717");
-                products.Add("Asus Vivobook Pro 16X OLED M6600");
-                products.Add("Asus Vivobook Pro 14 OLED M3401");
-                products.Add("Asus Chromebook Flip CX570");
-                products.Add("Asus Chromebook Vibe CX550");
-            }
-
-            else if (selectedSupplier == "Acer")
-            {
-                products.Add("Acer Nitro 5 AN515-57-5669");
-                products.Add("Acer Nitro 5 AN515-58-57VH");
-                products.Add("Acer Nitro 5 AN515-59-593UH");
-                products.Add("Acer Nitro 16 AN16-51-57U1");
-                products.Add("Acer Nitro 17 AN17-51-57UX");
-                products.Add("Acer Predator Helios 300 PH315-55-77U9");
-                products.Add("Acer Predator Helios 300 PH315-56-77VH");
-                products.Add("Acer Predator Helios 300 PH315-57-79UH");
-                products.Add("Acer Aspire 7 A715-56-57VQ");
-            }
-
-            else if (selectedSupplier == "Apple Macbook")
-            {
-                products.Add("MacBook Pro 16 inch (2023)");
-                products.Add("MacBook Pro 14 inch (2023)");
-                products.Add("MacBook Air M2 (2022)");
-                products.Add("MacBook Pro 13 inch (2022)");
-                products.Add("MacBook Pro 16 inch (2023)");
-            }
-
-            else if (selectedSupplier == "HP")
-            {
-                products.Add("HP Victus 15 FHD1626TU");
-                products.Add("HP Victus 15 FHD1627TU");
-                products.Add("HP Victus 15 FHD1628TU");
-                products.Add("HP Omen 15-dh1053TX");
-                products.Add("HP Omen 15-dh1054TX");
-                products.Add("HP Omen 15-dh1055TX");
-                products.Add("HP Pavilion Gaming 15-ec2001TU");
-                products.Add("HP Pavilion Gaming 15-ec2003TU");
-                products.Add("HP Spectre x360 14-ea0053TU");
-                products.Add("HP Spectre x360 14-ea0055TU");
-
-            }
-
-            else if (selectedSupplier == "Razer")
-            {
-                products.Add("Razer Blade 14 (2023)");
-                products.Add("Razer Blade 15 (2023)");
-                products.Add("Razer Blade 17 (2023)");
-                products.Add("Razer Blade 18 (2023)");
-                products.Add("Razer Stealth 13 (2023)");
-                products.Add("Razer Stealth 14 (2023)");
-                products.Add("Razer Book 13 (2023)");
-                products.Add("Razer Book 14 (2023)");
-            }
-
-            else if (selectedSupplier == "MSI")
-            {
-                products.Add("MSI GE66 Raider 12UGS-093VN");
-                products.Add("MSI GE66 Raider 12UGS-209VN");
-                products.Add("MSI Stealth 15M HS13VS-040VN");
-                products.Add("MSI Stealth 17M HS13VS-041V");
-                products.Add("MSI Katana GF66 12UGS-044VN");
-                products.Add("MSI Katana GF76 12UGS-045VN");
-                products.Add("MSI Sword 15 CB13VS-008VN");
-            }
-
-            else if (selectedSupplier == "Dell")
-            {
-                products.Add("Dell G15 5525 R7H165W11GR3060");
-                products.Add("Dell G15 5528 R7H165W11GR3070");
-                products.Add("Dell Inspiron 3511 70270650");
-                products.Add("Dell Inspiron 3520 70270658");
-                products.Add("Dell Vostro 3510 7T2YC2");
-                products.Add("Dell Vostro 3520 P112F002BBL");
-                products.Add("Dell Latitude 3520");
-                products.Add("Dell XPS 13 9310");
-            }
-
-            else if (selectedSupplier == "Lenovo")
-            {
-                products.Add("Lenovo Legion 5 15ACH6H-83RD0002VN");
-                products.Add("Lenovo Legion 5 15ACH6H-83RD0003VN");
-                products.Add("Lenovo Legion 5 Pro 16ACH6H-83RB0001VN:");
-                products.Add("Lenovo ThinkPad P1 Gen 5");
-                products.Add("Lenovo IdeaPad Slim 3 15ITL6-82K20003VN");
-                products.Add("Lenovo IdeaPad Slim 5 15ITL6-83K20003VN");
-                products.Add("Lenovo Chromebook Flex 5 13CTL6-83K20003VN");
-                products.Add("Lenovo Chromebook Flex 5 13CTL6-83K20004VN");
-            }
-
-            else if (selectedSupplier == "Gigabyte")
-            {
-                products.Add("Gigabyte AORUS 15 BKF 73VN754SH");
-                products.Add("Gigabyte AORUS 15 BMF 52US383SH");
-                products.Add("Gigabyte AERO 15 XE5-99US754SH");
-                products.Add("Gigabyte AERO 16 XE5-99US154SH");
-                products.Add("Gigabyte Creator 5 17CF1-99US754SH");
-                products.Add("Gigabyte Creator 5 15CF1-99US754SH");
-                products.Add("Gigabyte Aero 15 XE5-99US554SH");
-                products.Add("Gigabyte AERO 16 XE5-99US354SH");
-                products.Add("Gigabyte AERO 15 XE5-57US354SH");
-            }
-
-            else if (selectedSupplier == "Samsung")
-            {
-                products.Add("Samsung Galaxy Book Pro 360 15 NP950YCM-K01US");
-                products.Add("Samsung Galaxy Book Ion 15 NP950XCJ-K01US");
-                products.Add("Samsung Notebook 9 Pro 15 NP940YCM-K01US");
-                products.Add("Samsung Chromebook 4+ 15 XE500YCM-K01US");
-                products.Add("Samsung Galaxy Book2 Pro 15 NP950YCM-K01US");
-            }
-
-            else if (selectedSupplier == "Microsoft")
-            {
-                products.Add("Microsoft Surface Laptop Studio 14-4155");
-                products.Add("Microsoft Surface Laptop 5 15-4153");
-                products.Add("Microsoft Surface Laptop 4 15-4081");
-                products.Add("Microsoft Surface Laptop Studio 16-4170");
-                products.Add("Microsoft Surface Laptop 5 13-4158");
-                products.Add("Microsoft Surface Pro 8 13-4171");
-            }
-
-            else if (selectedSupplier == "Huwei")
-            {
-                products.Add("Huawei MateBook X Pro 14 2023");
-                products.Add("Huawei MateBook X 14 2023");
-                products.Add("Huawei MateBook 14 2023");
-                products.Add("Huawei IdeaPad Slim 5 14 2023");
-                products.Add("Huawei MateBook E 2023");
-                products.Add("Huawei MatePad 11 2023");
-            }
-
-            return products;
-        }
+        
 
         private void dgvSuaMH_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) // Ensure that the user clicks on a valid row
+            if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = dgvSuaMH.Rows[e.RowIndex];
+                DataGridViewRow selectedRow = dgvSuaDH.Rows[e.RowIndex];
 
-                // Populate the textboxes and comboboxes
-                txtMaPhieu.Text = row.Cells["MaPhieu"].Value.ToString();
-                ccbMaNhanVien.Text = row.Cells["MaNV"].Value.ToString();
-                txtMaSanPham.Text = row.Cells["MaSP"].Value.ToString();
-                cbbTenNCC.Text = row.Cells["TenNCC"].Value.ToString();
-                txtTenNSX.Text = row.Cells["TenNSX"].Value.ToString();
-                cbbTenSanPham.Text = row.Cells["TenSP"].Value.ToString();
-                dteNgayLap.Text = Convert.ToDateTime(row.Cells["NgayLap"].Value).ToString("dd/MM/yyyy");
-                txtSoLuong.Text = row.Cells["SoLuongNhap"].Value.ToString();
-                cbbDonViTinh.Text = row.Cells["DonViTinh"].Value.ToString();
-                txtGiaNhap.Text = row.Cells["GiaNhap"].Value.ToString();
-                txtDonGia.Text = row.Cells["DonGia"].Value.ToString();
-                txtTongTien.Text = row.Cells["TongTien"].Value.ToString();
-                txtGhiChuSP.Text = row.Cells["GhiChu"].Value.ToString();
+                txtMaPhieu.Text = selectedRow.Cells["MaPhieu"].Value.ToString();
+                ccbMaNhanVien.Text = selectedRow.Cells["MaNV"].Value.ToString();
+                cbbMaSanPham.Text = selectedRow.Cells["MaSP"].Value.ToString();
+                cbbTenNCC.Text = selectedRow.Cells["TenNCC"].Value.ToString();
+                txtTenNSX.Text = selectedRow.Cells["TenNSX"].Value.ToString();
+                txtTenSanPham.Text = selectedRow.Cells["TenSP"].Value.ToString();
+                dteNgayLap.Text = selectedRow.Cells["NgayLap"].Value.ToString();
+                txtSoLuong.Text = selectedRow.Cells["SoLuongNhap"].Value.ToString();
+                txtDonViTinh.Text = selectedRow.Cells["DonViTinh"].Value.ToString();
+                txtGiaNhap.Text = selectedRow.Cells["GiaNhap"].Value.ToString();
+                txtTongTien.Text = selectedRow.Cells["TongTien"].Value.ToString();
+                txtGhiChuSP.Text = selectedRow.Cells["GhiChu"].Value.ToString();
             }
         }
         private void FormatColumns()
         {
-            dgvSuaMH.Columns["NgayLap"].DefaultCellStyle.Format = "dd-MM-yyyy";
+            if (dgvSuaDH.Columns["NgayLap"] != null)
+            {
+                dgvSuaDH.Columns["NgayLap"].DefaultCellStyle.Format = "dd-MM-yyyy";
+            }
         }
 
         private void txtMaPhieu_TextChanged(object sender, EventArgs e)
@@ -420,10 +284,10 @@ namespace DO_AN_1
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (dgvSuaMH.SelectedRows.Count > 0)
+            if (dgvSuaDH.SelectedRows.Count > 0)
             {
                 // Lấy dòng được chọn
-                DataGridViewRow selectedRow = dgvSuaMH.SelectedRows[0];
+                DataGridViewRow selectedRow = dgvSuaDH.SelectedRows[0];
 
                 // Lấy dữ liệu từ dòng được chọn
                 string maPhieu = selectedRow.Cells["MaPhieu"].Value.ToString();
@@ -432,18 +296,17 @@ namespace DO_AN_1
                 DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xoá dòng này không?", "Xác nhận xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    dgvSuaMH.Rows.Remove(selectedRow);
+                    dgvSuaDH.Rows.Remove(selectedRow);
                     txtMaPhieu.Clear();
                     ccbMaNhanVien.Text = "";
                     dteNgayLap.Text = "";
-                    txtMaSanPham.Clear();
+                    cbbMaSanPham.Text = "";
                     cbbTenNCC.Text = "";
                     txtTenNSX.Clear();
-                    cbbTenSanPham.Text = "";
+                    txtTenSanPham.Text = "";
                     txtSoLuong.Clear();
-                    cbbDonViTinh.Text = "";
+                    txtDonViTinh.Text = "";
                     txtGiaNhap.Clear();
-                    txtDonGia.Clear();
                     txtTongTien.Clear();
                     txtGhiChuSP.Clear();
                 }
@@ -459,47 +322,83 @@ namespace DO_AN_1
             txtMaPhieu.Clear();
             ccbMaNhanVien.Text = "";
             dteNgayLap.Text = "";
-            txtMaSanPham.Clear();
+            cbbMaSanPham.Text = ""; ;
             cbbTenNCC.Text = "";
             txtTenNSX.Clear();
-            cbbTenSanPham.Text = "";
+            txtTenSanPham.Text = "";
             txtSoLuong.Clear();
-            cbbDonViTinh.Text = "";
+            txtDonViTinh.Text = "";
             txtGiaNhap.Clear();
-            txtDonGia.Clear();
             txtTongTien.Clear();
             txtGhiChuSP.Clear();
         }
 
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (dgvSuaMH.SelectedCells.Count > 0)
+            if (dgvSuaDH.SelectedCells.Count > 0)
             {
-                int selectedRowIndex = dgvSuaMH.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow = dgvSuaMH.Rows[selectedRowIndex];
+                int selectedRowIndex = dgvSuaDH.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = dgvSuaDH.Rows[selectedRowIndex];
 
                 selectedRow.Cells["MaPhieu"].Value = txtMaPhieu.Text;
                 selectedRow.Cells["MaNV"].Value = ccbMaNhanVien.Text;
-                selectedRow.Cells["MaSP"].Value = txtMaSanPham.Text;
+                selectedRow.Cells["MaSP"].Value = cbbMaSanPham.Text;
                 selectedRow.Cells["TenNCC"].Value = cbbTenNCC.Text;
                 selectedRow.Cells["TenNSX"].Value = txtTenNSX.Text;
-                selectedRow.Cells["TenSP"].Value = cbbTenSanPham.Text;
+                selectedRow.Cells["TenSP"].Value = txtTenSanPham.Text;
                 selectedRow.Cells["NgayLap"].Value = dteNgayLap.Text;
                 selectedRow.Cells["SoLuongNhap"].Value = txtSoLuong.Text;
-                selectedRow.Cells["DonViTinh"].Value = cbbDonViTinh.Text;
+                selectedRow.Cells["DonViTinh"].Value = txtDonViTinh.Text;
                 selectedRow.Cells["GiaNhap"].Value = txtGiaNhap.Text;
-                selectedRow.Cells["DonGia"].Value = txtDonGia.Text;
                 selectedRow.Cells["TongTien"].Value = txtTongTien.Text;
                 selectedRow.Cells["GhiChu"].Value = txtGhiChuSP.Text;
 
-                // Cập nhật lại DataGridView
-                dgvSuaMH.Refresh();
+                dgvSuaDH.Refresh();
             }
         }
 
-        private void txtMaSanPham_EditValueChanged(object sender, EventArgs e)
+        private void cbbMaSanPham_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            string selectedMaSP = cbbMaSanPham.SelectedItem.ToString();
+
+            DataTable dtSanPham = connData.laydulieuMaSanPham(selectedMaSP);
+
+            if (dtSanPham.Rows.Count > 0)
+            {
+                DataRow row = dtSanPham.Rows[0];
+
+                txtTenSanPham.Text = row["TenSP"].ToString();
+                txtTenNSX.Text = row["TenNSX"].ToString();
+                txtDonViTinh.Text = row["DonViTinh"].ToString();
+            }
+            else
+            {
+                txtTenSanPham.Text = string.Empty;
+                txtTenNSX.Text = string.Empty;
+                txtDonViTinh.Text = string.Empty;
+            }
+        }
+
+        private void ThanhTien()
+        {
+            if (decimal.TryParse(txtSoLuong.Text, out decimal soLuong) && decimal.TryParse(txtGiaNhap.Text, out decimal giaNhap))
+            {
+                txtTongTien.Text = (soLuong * giaNhap).ToString();
+            }
+            else
+            {
+                txtTongTien.Text = string.Empty;
+            }
+        }
+
+        private void txtSoLuong_EditValueChanged(object sender, EventArgs e)
+        {
+            ThanhTien();
+        }
+
+        private void txtGiaNhap_EditValueChanged(object sender, EventArgs e)
+        {
+            ThanhTien();
         }
     }
 }

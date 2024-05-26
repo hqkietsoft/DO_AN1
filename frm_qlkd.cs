@@ -84,7 +84,7 @@ namespace DO_AN_1
 
         private void btn_tc_ItemClick(object sender, ItemClickEventArgs e)
         {
-            newChidForm(new TraCuu(), "Tra cứu");
+           
         }
 
 
@@ -121,12 +121,12 @@ namespace DO_AN_1
 
         private void acc_tc_Click(object sender, EventArgs e)
         {
-            newChidForm(new TraCuu(), "Tra cứu");
+            
         }
 
         private void frm_qlkd_Load(object sender, EventArgs e)
         {
-
+            newChidForm(new StartPage(), "Start Page");
         }
 
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)

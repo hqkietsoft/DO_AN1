@@ -4,29 +4,30 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="quanLyKDLaptopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="quanlykinhdoanhmaytinhModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
-warning 6002: The table/view 'quanLyKDLaptop.dbo.InPNH' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'quanlykinhdoanhmaytinh.dbo.InPNH' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="InPNH">
           <Key>
             <PropertyRef Name="MaNV" />
             <PropertyRef Name="MaPhieu" />
+            <PropertyRef Name="MaSP" />
           </Key>
-          <Property Name="MaNV" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="HoTen" Type="nvarchar" MaxLength="255" />
-          <Property Name="MaPhieu" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="MaSP" Type="nvarchar" MaxLength="255" />
-          <Property Name="TenNCC" Type="nvarchar" MaxLength="255" />
-          <Property Name="TenSP" Type="nvarchar" MaxLength="255" />
+          <Property Name="MaNV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaPhieu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaSP" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenNCC" Type="nvarchar" MaxLength="50" />
+          <Property Name="TenSP" Type="nvarchar" MaxLength="100" />
           <Property Name="NgayLap" Type="datetime" />
-          <Property Name="SoLuongNhap" Type="float" />
-          <Property Name="DonViTinh" Type="nvarchar" MaxLength="255" />
+          <Property Name="Soluong" Type="int" />
+          <Property Name="DonViTinh" Type="nvarchar" MaxLength="10" />
           <Property Name="GiaNhap" Type="float" />
           <Property Name="TongTien" Type="float" />
-          <Property Name="NgaySinh" Type="datetime" />
-          <Property Name="GioiTinh" Type="nvarchar" MaxLength="255" />
+          <Property Name="NamSinh" Type="datetime" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" />
         </EntityType>
-        <EntityContainer Name="quanLyKDLaptopModelStoreContainer">
+        <EntityContainer Name="quanlykinhdoanhmaytinhModelStoreContainer">
           <EntitySet Name="InPNH" EntityType="Self.InPNH" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [InPNH].[MaNV] AS [MaNV], 
@@ -36,39 +37,41 @@ warning 6002: The table/view 'quanLyKDLaptop.dbo.InPNH' does not have a primary 
     [InPNH].[TenNCC] AS [TenNCC], 
     [InPNH].[TenSP] AS [TenSP], 
     [InPNH].[NgayLap] AS [NgayLap], 
-    [InPNH].[SoLuongNhap] AS [SoLuongNhap], 
+    [InPNH].[Soluong] AS [Soluong], 
     [InPNH].[DonViTinh] AS [DonViTinh], 
     [InPNH].[GiaNhap] AS [GiaNhap], 
     [InPNH].[TongTien] AS [TongTien], 
-    [InPNH].[NgaySinh] AS [NgaySinh], 
+    [InPNH].[NamSinh] AS [NamSinh], 
     [InPNH].[GioiTinh] AS [GioiTinh]
     FROM [dbo].[InPNH] AS [InPNH]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="quanLyKDLaptopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="quanlykinhdoanhmaytinhModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="InPNH">
           <Key>
             <PropertyRef Name="MaNV" />
             <PropertyRef Name="MaPhieu" />
+            <PropertyRef Name="MaSP" />
           </Key>
-          <Property Name="MaNV" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="HoTen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="MaPhieu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MaSP" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="TenNCC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="TenSP" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MaNV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaPhieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaSP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenNCC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TenSP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="NgayLap" Type="DateTime" Precision="3" />
-          <Property Name="SoLuongNhap" Type="Double" />
-          <Property Name="DonViTinh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Soluong" Type="Int32" />
+          <Property Name="DonViTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="GiaNhap" Type="Double" />
           <Property Name="TongTien" Type="Double" />
-          <Property Name="NgaySinh" Type="DateTime" Precision="3" />
-          <Property Name="GioiTinh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NamSinh" Type="DateTime" Precision="3" />
+          <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="quanLyKDLaptopEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="quanlykinhdoanhmaytinhEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="InPNHs" EntityType="Self.InPNH" />
         </EntityContainer>
       </Schema>
@@ -76,12 +79,10 @@ warning 6002: The table/view 'quanLyKDLaptop.dbo.InPNH' does not have a primary 
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="quanLyKDLaptopModelStoreContainer" CdmEntityContainer="quanLyKDLaptopEntities">
+        <EntityContainerMapping StorageEntityContainer="quanlykinhdoanhmaytinhModelStoreContainer" CdmEntityContainer="quanlykinhdoanhmaytinhEntities">
           <EntitySetMapping Name="InPNHs">
-            <EntityTypeMapping TypeName="quanLyKDLaptopModel.InPNH">
+            <EntityTypeMapping TypeName="quanlykinhdoanhmaytinhModel.InPNH">
               <MappingFragment StoreEntitySet="InPNH">
-                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
-                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
                 <ScalarProperty Name="MaNV" ColumnName="MaNV" />
                 <ScalarProperty Name="HoTen" ColumnName="HoTen" />
                 <ScalarProperty Name="MaPhieu" ColumnName="MaPhieu" />
@@ -89,10 +90,12 @@ warning 6002: The table/view 'quanLyKDLaptop.dbo.InPNH' does not have a primary 
                 <ScalarProperty Name="TenNCC" ColumnName="TenNCC" />
                 <ScalarProperty Name="TenSP" ColumnName="TenSP" />
                 <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
-                <ScalarProperty Name="SoLuongNhap" ColumnName="SoLuongNhap" />
+                <ScalarProperty Name="Soluong" ColumnName="Soluong" />
                 <ScalarProperty Name="DonViTinh" ColumnName="DonViTinh" />
                 <ScalarProperty Name="GiaNhap" ColumnName="GiaNhap" />
                 <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+                <ScalarProperty Name="NamSinh" ColumnName="NamSinh" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

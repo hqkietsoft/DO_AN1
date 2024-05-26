@@ -16,7 +16,7 @@ namespace DO_AN_1
         static SqlConnection conn;
         public static SqlConnection Moketnoi()
         {
-            string connstr = @"Data Source=DAFF;Initial Catalog=quanLyKDLaptop;Integrated Security=True;Encrypt=False";
+            string connstr = @"Data Source=DAFF;Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False";
             conn = new SqlConnection(connstr);
             conn.Open();
             return conn;
@@ -32,6 +32,11 @@ namespace DO_AN_1
             }
         }
 
+        public static string GetConnectionString()
+        {
+            return @"Data Source=DAFF;Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False";
+        }
+
         public DataTable getQueryPhieuNH()
         {
             string selectAllQuery = "select * from PhieuNhapHang";
@@ -44,7 +49,7 @@ namespace DO_AN_1
         }
         public DataTable getQueryDSPhieuN()
         {
-            string selectAllQuery = "select [pnh].[MaPhieu] , [nd].[MaNV] , [sp].[MaSP], pnh.TenNCC  , sp.TenNSX , ctpn.TenSP , pnh.NgayLap , ctpn.SoLuongNhap , sp.DonViTinh, \r\nctpn.GiaNhap , sp.DonGia  , pnh.TongTien , ctpn.GhiChu from PhieuNhapHang as [pnh]\r\n, ChiTietPhieuNhap as [ctpn],NguoiDung as [nd], SanPham as [sp] \r\nwhere pnh.MaPhieu = ctpn.MaPhieu and nd.MaNV = pnh.MaNV and sp.MaSP = ctpn.MaSP;";
+            string selectAllQuery = "select [nd].[MaNV] , [sp].[MaSP],  sp.TenNSX , sp.TenSP , ctpn.SoLuong , sp.DonViTinh, \r\nctpn.GiaNhap , sp.DonGia  , ctpn.GhiChu from PhieuNhapHang as [pnh]\r\n, ChiTietPhieuNhapHang as [ctpn],NguoiDung as [nd], SanPham as [sp] \r\nwhere pnh.MaPhieu = ctpn.MaPhieu and nd.MaNV = pnh.MaNV and sp.MaSP = ctpn.MaSP;";
             SqlCommand cmd = new SqlCommand(selectAllQuery, Moketnoi());
             SqlDataReader reader = cmd.ExecuteReader();
             DataTable dt = new DataTable();
@@ -74,6 +79,22 @@ namespace DO_AN_1
 
             return ThungChua;
         }
+        public DataTable displayDSHD(string query, params SqlParameter[] parameters)
+        {
+            using (SqlConnection conn = Moketnoi())
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddRange(parameters);
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        return dt;
+                    }
+                }
+            }
+        }
         public DataTable laydulieuNguoiDung()
         {
             SqlCommand cmd = new SqlCommand();
@@ -86,7 +107,50 @@ namespace DO_AN_1
             return dt;
         }
 
-        
+        public DataTable laydulieuSanPham()
+        {
+            SqlCommand cmd = new SqlCommand();
+            string query = "select * from SanPham";
+            cmd = new SqlCommand(query, Moketnoi());
+            SqlDataReader reader = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+            Dongketnoi();
+            return dt;
+        }
+
+        public DataTable laydulieuMaSanPham(string maSP)
+        {
+            SqlCommand cmd = new SqlCommand();
+            string query = "SELECT TenSP, TenNSX , DonViTinh FROM SanPham WHERE MaSP = @MaSP";
+            cmd = new SqlCommand(query, Moketnoi());
+            cmd.Parameters.AddWithValue("@MaSP", maSP);
+            SqlDataReader reader = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+            Dongketnoi();
+            return dt;
+        }
+
+        public DataTable displayDSHD1(string query, params SqlParameter[] parameters)
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection con = new SqlConnection(@"Data Source=DAFF;Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False"))
+            {
+                con.Open();
+
+                // Tạo và thực thi SqlCommand với câu truy vấn SQL và tham số
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddRange(parameters);
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                }
+
+                con.Close();
+            }
+            return dt;
+        }
 
         public void HienthiLenDGPN(DataGridView dgHoaDon)
         {

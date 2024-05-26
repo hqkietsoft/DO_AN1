@@ -21,11 +21,11 @@ namespace DO_AN_1
         public string TenNCC { get; set; }
         public string TenSP { get; set; }
         public Nullable<System.DateTime> NgayLap { get; set; }
-        public Nullable<double> SoLuongNhap { get; set; }
+        public Nullable<int> Soluong { get; set; }
         public string DonViTinh { get; set; }
         public Nullable<double> GiaNhap { get; set; }
         public Nullable<double> TongTien { get; set; }
-        public Nullable<System.DateTime> NgaySinh { get; set; }
+        public Nullable<System.DateTime> NamSinh { get; set; }
         public string GioiTinh { get; set; }
     }
 }
