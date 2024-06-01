@@ -42,7 +42,7 @@ namespace DO_AN_1
         // lay du lieu truy van tu sql
         public void LaydulieuSP(string mahoadon, DataGridView dgv1)
         {
-            string selectAllQuery = "select ChiTietHoaDon.MaSP, SoLuong,GiaBan,SanPham.DonViTinh, GhiChu  from ChiTietHoaDon\r\ninner join SanPham on  SanPham.MaSP = ChiTietHoaDon.MaSP where MaHD = @mahd";
+            string selectAllQuery = "select ChiTietHoaDon.MaSP, SoLuong,SanPham.DonViTinh,GiaBan, GhiChu  from ChiTietHoaDon\r\ninner join SanPham on  SanPham.MaSP = ChiTietHoaDon.MaSP where MaHD = @mahd";
             cmd = new SqlCommand(selectAllQuery, Moketnoi());
             cmd.Parameters.AddWithValue("@mahd", mahoadon);
             SqlDataReader reader = cmd.ExecuteReader();
@@ -122,26 +122,28 @@ namespace DO_AN_1
             cmd1.ExecuteNonQuery();
             Dongketnoi();
         }
-        public void SuaHoaDon(string mahd, string manv, string makh, string ngaylap, string tongtien, string masp, string sl, string dongia, string ghichu)
+        public void SuaHoaDon(string mahd, string manv, string makh, string ngaylap, string tongtien, string masp, string sl, string gb, string ghichu)
         {
-            string query = "update HoaDon set MaNV = @manv, MaKH = @makh, NgayLap = @ngaylap, TongTien = @TongTien where mahd = @mahd";
-            string query2 = "update ChiTietHoaDon set MaSP = @masanpham, SoLuong = @soluong, GiaBan = @giaban, GhiChu = @ghichu where mahd = @mahd";
-            SqlCommand cmd1 = new SqlCommand(query2, Moketnoi());
-            cmd1.Parameters.AddWithValue("@mahd", mahd);
-            cmd1.Parameters.AddWithValue("@masanpham", masp);
-            cmd1.Parameters.AddWithValue("@soluong", sl);
-            cmd1.Parameters.AddWithValue("@giaban", dongia);
-            cmd1.Parameters.AddWithValue("@ghichu", ghichu);
-            cmd1.ExecuteNonQuery();
-            Dongketnoi();
-            cmd = new SqlCommand(query, Moketnoi());
-            cmd.Parameters.AddWithValue("@mahd", mahd);
-            cmd.Parameters.AddWithValue("@manv", manv);
-            cmd.Parameters.AddWithValue("@makh", makh);
-            cmd.Parameters.AddWithValue("@ngaylap", ngaylap);
-            cmd.Parameters.AddWithValue("@tongtien", tongtien);
-            cmd.ExecuteNonQuery();
-            Dongketnoi();
+
+           
+                string query1 = "update ChiTietHoaDon set MaSP = @masanpham, SoLuong = @soluong, GhiChu = @ghichu where mahd = @mahd";
+                SqlCommand cmd1 = new SqlCommand(query1,Moketnoi());
+                cmd1.Parameters.AddWithValue("@mahd", mahd);
+                cmd1.Parameters.AddWithValue("@masanpham", masp);
+                cmd1.Parameters.AddWithValue("@soluong", sl);
+                cmd1.Parameters.AddWithValue("@ghichu", ghichu);
+                cmd1.ExecuteNonQuery();
+                Dongketnoi();
+                string query2 = "update HoaDon set MaNV = @manv, MaKH = @makh, NgayLap = @ngaylap, TongTien = @TongTien where mahd = @mahd";
+                cmd = new SqlCommand(query2, Moketnoi());
+                cmd.Parameters.AddWithValue("@mahd", mahd);
+                cmd.Parameters.AddWithValue("@manv", manv);
+                cmd.Parameters.AddWithValue("@makh", makh);
+                cmd.Parameters.AddWithValue("@ngaylap", ngaylap);
+                cmd.Parameters.AddWithValue("@tongtien", tongtien);
+                cmd.ExecuteNonQuery();
+                Dongketnoi();
+
         }
         public void xoahoadon(string ma)
         {
@@ -171,52 +173,19 @@ namespace DO_AN_1
 
 
         // tim kiem hoa don
-        public void timkiemhoadon(RadioButton rdomahd, RadioButton rdomanv, RadioButton rdomakh, TextBox tb1, DataGridView dgvtimkiemhd, DateTimePicker dtp1, DateTimePicker dtp2)
+        public void timkiemhoadon(DataGridView dgvtimkiemhd, DateTimePicker dtp1, DateTimePicker dtp2)
         {
-            // tim kiem theo rdo duoc checked
-            if (rdomahd.Checked == true)
-            {
-                string searchQuery = "select * from HoaDon where MaHD ='" + tb1.Text + "'" ;
-                cmd = new SqlCommand(searchQuery, Moketnoi());
-                SqlDataReader reader = cmd.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(reader);
-                Dongketnoi();
-                dgvtimkiemhd.DataSource = dt;
-            }
-            else if (rdomanv.Checked == true)
-            {
-                string searchQuery = "select * from HoaDon where MaNV ='" + tb1.Text + "'";
-                cmd = new SqlCommand(searchQuery, Moketnoi());
-                SqlDataReader reader = cmd.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(reader);
-                Dongketnoi();
-                dgvtimkiemhd.DataSource = dt;
-            }
-            else if (rdomakh.Checked == true)
-            {
-                string searchQuery = "select * from HoaDon where MaKH ='" + tb1.Text + "'";
-                cmd = new SqlCommand(searchQuery, Moketnoi());
-                SqlDataReader reader = cmd.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(reader);
-                Dongketnoi();
-                dgvtimkiemhd.DataSource = dt;
-            }
-            else
-            {
-                string searchQuery = "select * from HoaDon where NgayLap BETWEEN '" + dtp1.Text+ "' AND '"+ dtp2.Text+"'" ;
-                cmd = new SqlCommand(searchQuery, Moketnoi());
-                SqlDataReader reader = cmd.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(reader);
-                Dongketnoi();
-                dgvtimkiemhd.DataSource = dt;
-            }
             
-
-
+            string searchQuery2 = "select * from HoaDon where NgayLap BETWEEN '" + dtp1.Text+ "' AND '"+ dtp2.Text+"'" ;
+            cmd = new SqlCommand(searchQuery2, Moketnoi());
+            var reader2 = cmd.ExecuteReader();
+            
+            DataTable dt2 = new DataTable();
+            dt2.Load(reader2);
+            dgvtimkiemhd.DataSource = dt2;
+            Dongketnoi();
+            
+            
         }
 
         public void hienthithongtinSP2(TextBox tb3, TextBox tb4, ComboBox cbo1)
@@ -261,6 +230,22 @@ namespace DO_AN_1
             {
                 tb1.Text = reader["TenSP"].ToString();
                 tb2.Text = reader["TenNSX"].ToString();
+                tb3.Text = reader["DonViTinh"].ToString();
+                tb4.Text = reader["DonGia"].ToString();
+
+            }
+            reader.Close();
+        }
+        public void hienthithongtinSP2(TextBox tb3, TextBox tb4, ComboBox cbo1)
+        {
+            string ma = cbo1.SelectedItem.ToString();
+            string query = "SELECT DonViTinh, DonGia FROM SanPham WHERE MaSP = @ma";
+            cmd = new SqlCommand(query, Moketnoi());
+            cmd.Parameters.AddWithValue("@ma", ma);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                
                 tb3.Text = reader["DonViTinh"].ToString();
                 tb4.Text = reader["DonGia"].ToString();
 
