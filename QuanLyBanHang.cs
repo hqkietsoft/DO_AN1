@@ -63,7 +63,26 @@ namespace DO_AN_1
 
                 cbo_masp.Items.Add(item[0]);
             }
-            conndb.HienthiLenDGV(dgv_ttdonhang);
+            conndb.HienthiLenDGV(dgv_ttdonhang); 
+            cbo_manv_cn.Text = "---Chọn mã NV---";
+            foreach (DataRow item in conndb.laydulieuNguoiDung().Rows)
+            {
+                cbo_manv_cn.Items.Add(item[2]);
+
+            }
+            cbo_makh_cn.Text = "---Chọn mã KH---";
+            foreach (DataRow item in conndb.laydulieuKhachHang().Rows)
+            {
+
+                cbo_makh_cn.Items.Add(item[0]);
+            }
+            cbo_masp_cn.Text = "---Chọn mã SP---";
+            foreach (DataRow item in conndb.laydulieuSanPham().Rows)
+            {
+
+                cbo_masp_cn.Items.Add(item[0]);
+            }
+
 
             cbo_manv_cn.Text = "---Chọn mã NV---";
             foreach (DataRow item in conndb.laydulieuNguoiDung().Rows)
@@ -112,9 +131,6 @@ namespace DO_AN_1
             dgv_sanpham.DataSource = table;
 
 
-
-
-            //
             txt_mahd_cn.Enabled = false;
             cbo_manv_cn.Enabled = false;
             cbo_makh_cn.Enabled = false;
@@ -125,11 +141,13 @@ namespace DO_AN_1
             cbo_masp_cn.Enabled = false;
             txt_sl_cn.Enabled = false;
             txt_ghichu_cn.Enabled = false;
+
             btnthemsp.Enabled = false;
             btnxoasp.Enabled = false;
             btnsuasp.Enabled = false;
             btnluusp.Enabled = false;
             txt_tongtien.ReadOnly = true;
+
         }
 
         public void ClearText()
@@ -489,6 +507,7 @@ namespace DO_AN_1
             txt_dvtinh_cn.Enabled = true;
             txt_thanhtien.Enabled = true;
             txt_dg_cn.Enabled = true;
+
             txt_sl_cn.Enabled = true;
             txt_ghichu_cn.Enabled = true;
             txt_mahd_cn.ReadOnly = true;
@@ -496,7 +515,9 @@ namespace DO_AN_1
             txt_thanhtien.ReadOnly = true;
             txt_dg_cn.ReadOnly = true;
             txt_sl_cn.ReadOnly = true;
+
             cbo_masp_cn.Enabled = false;
+
 
 
         }
@@ -539,6 +560,6 @@ namespace DO_AN_1
             
         }
 
-        
+
     }
 }
