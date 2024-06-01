@@ -47,6 +47,7 @@ namespace DO_AN_1
 
         }
 
+        //Sự kiện đưa dữ liệu lên các ô 
         private void dgvQuanLySanPham_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int i = e.RowIndex;
