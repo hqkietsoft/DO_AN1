@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyNhapHang));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnThem = new DevExpress.XtraBars.BarButtonItem();
@@ -67,6 +67,9 @@
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemZoomTrackBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemZoomTrackBar();
+            this.barListItem1 = new DevExpress.XtraBars.BarListItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -88,6 +91,7 @@
             this.splitContainerControl2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemZoomTrackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -104,12 +108,17 @@
             this.btnSua,
             this.btnIn,
             this.btnXoa,
-            this.btnThoat});
+            this.btnThoat,
+            this.barEditItem1,
+            this.barListItem1});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 5;
+            this.barManager1.MaxItemId = 7;
+            this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemZoomTrackBar1});
             // 
             // bar2
             // 
+            this.bar2.BarItemHorzIndent = 12;
             this.bar2.BarName = "Main menu";
             this.bar2.DockCol = 0;
             this.bar2.DockRow = 0;
@@ -291,14 +300,14 @@
             // 
             this.dgHoaDon.AllowUserToOrderColumns = true;
             this.dgHoaDon.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgHoaDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgHoaDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgHoaDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgHoaDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaPhieu,
@@ -508,6 +517,24 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "CHI TIẾT PHIẾU NHẬP";
             // 
+            // barEditItem1
+            // 
+            this.barEditItem1.Caption = "barEditItem1";
+            this.barEditItem1.Edit = this.repositoryItemZoomTrackBar1;
+            this.barEditItem1.Id = 5;
+            this.barEditItem1.Name = "barEditItem1";
+            this.barEditItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barEditItem1_ItemClick);
+            // 
+            // repositoryItemZoomTrackBar1
+            // 
+            this.repositoryItemZoomTrackBar1.Name = "repositoryItemZoomTrackBar1";
+            // 
+            // barListItem1
+            // 
+            this.barListItem1.Caption = " ";
+            this.barListItem1.Id = 6;
+            this.barListItem1.Name = "barListItem1";
+            // 
             // QuanLyNhapHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -547,6 +574,7 @@
             this.splitContainerControl2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemZoomTrackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -590,5 +618,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private DevExpress.XtraBars.BarEditItem barEditItem1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemZoomTrackBar repositoryItemZoomTrackBar1;
+        private DevExpress.XtraBars.BarListItem barListItem1;
     }
 }

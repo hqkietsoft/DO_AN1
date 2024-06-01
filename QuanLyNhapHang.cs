@@ -55,7 +55,7 @@ namespace DO_AN_1
                 }
 
                 // Truyền dữ liệu sang form QLNH_CNSuaDH
-                QLNH_CNSuaDH suaDHForm = new QLNH_CNSuaDH();
+                QLNH_CNSuaDH suaDHForm = new QLNH_CNSuaDH(this);
                 suaDHForm.AddCombinedData(combinedData);
                 suaDHForm.Show();
             }
@@ -245,6 +245,11 @@ namespace DO_AN_1
         private void dgHoaDon_ColumnHeadersDefaultCellStyleChanged(object sender, EventArgs e)
         {
             dgHoaDon.EnableHeadersVisualStyles = false;
+        }
+
+        private void barEditItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
         }
     }
 }

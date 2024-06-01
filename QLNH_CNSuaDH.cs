@@ -18,12 +18,13 @@ namespace DO_AN_1
     {
         ConnData connData = new ConnData();
         private DataTable dtDSHoaDon;
-        public QLNH_CNSuaDH()
+        private QuanLyNhapHang parentForm;
+        public QLNH_CNSuaDH(QuanLyNhapHang parent)
         {
             InitializeComponent();
             ccbMaNhanVien.DropDown += new EventHandler(ccbMaNhanVien_DropDown);
             ccbMaNhanVien.DropDownClosed += new EventHandler(ccbMaNhanVien_DropDownClosed);
-            
+            parentForm = parent;
         }
 
         public void AddCombinedData(List<object> combinedData)
@@ -205,6 +206,10 @@ namespace DO_AN_1
 
                     transaction.Commit();
                     MessageBox.Show("Đã cập nhật thông tin thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (parentForm != null)
+                    {
+                        parentForm.RefreshData();
+                    }
                 }
                 catch (Exception ex)
                 {
