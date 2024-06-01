@@ -11,11 +11,16 @@ using System.Windows.Forms;
 
 namespace DO_AN_1
 {
-    public partial class TraCuu : DevExpress.XtraEditors.XtraForm
+    public partial class StartPage : DevExpress.XtraEditors.XtraForm
     {
-        public TraCuu()
+        public StartPage()
         {
             InitializeComponent();
+        }
+
+        private void StartPage_Load(object sender, EventArgs e)
+        {
+            this.MdiParent = frm_qlkd.ActiveForm;
         }
     }
 }

@@ -13,7 +13,9 @@ namespace DO_AN_1
         SqlConnection conn;
         public SqlConnection Moketnoi()
         {
-            string sql = @"Data Source=DESKTOP-EC4KK8E\SQLEXPRESS;Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True";
+
+            string sql = @"Data Source=(local);Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False";
+
             conn = new SqlConnection(sql);
             conn.Open();
             return conn;
