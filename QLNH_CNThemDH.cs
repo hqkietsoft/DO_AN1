@@ -16,11 +16,13 @@ namespace DO_AN_1
     public partial class QLNH_CNThemDH : DevExpress.XtraEditors.XtraForm
     {
         ConnData connData = new ConnData();
-        public QLNH_CNThemDH()
+        private QuanLyNhapHang parentForm;
+        public QLNH_CNThemDH(QuanLyNhapHang parent)
         {
             InitializeComponent();
             ccbMaNhanVien.DropDown += new EventHandler(ccbMaNhanVien_DropDown);
             ccbMaNhanVien.DropDownClosed += new EventHandler(ccbMaNhanVien_DropDownClosed);
+            parentForm = parent;
         }
 
 
@@ -35,6 +37,129 @@ namespace DO_AN_1
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            //List<string> fieldsNotEntered = new List<string>();
+
+            //// Kiểm tra từng ô để đảm bảo rằng chúng đã được nhập đầy đủ
+            //if (string.IsNullOrEmpty(txtMaPhieu.Text))
+            //{
+            //    fieldsNotEntered.Add("Mã phiếu");
+            //    txtMaPhieu.Focus();
+            //}
+
+            //if (string.IsNullOrEmpty(ccbMaNhanVien.Text))
+            //{
+            //    fieldsNotEntered.Add("Mã nhân viên");
+            //    ccbMaNhanVien.Focus();
+            //}
+            //if (string.IsNullOrEmpty(cbbMaSanPham.Text))
+            //{
+            //    fieldsNotEntered.Add("Mã sản phẩm");
+            //    txtMaPhieu.Focus();
+            //}
+            //if (string.IsNullOrEmpty(cbbTenNCC.Text))
+            //{
+            //    fieldsNotEntered.Add("Tên nhà cung cấp");
+            //    ccbMaNhanVien.Focus();
+            //}
+            //if (string.IsNullOrEmpty(txtTenNSX.Text))
+            //{
+            //    fieldsNotEntered.Add("Tên nhà sản xuất");
+            //    txtMaPhieu.Focus();
+            //}
+
+            //if (string.IsNullOrEmpty(txtTenSanPham.Text))
+            //{
+            //    fieldsNotEntered.Add("Tên sản phẩm");
+            //    ccbMaNhanVien.Focus();
+            //}
+            //if (string.IsNullOrEmpty(dteNgayLap.Text))
+            //{
+            //    fieldsNotEntered.Add("Ngày lập");
+            //    txtMaPhieu.Focus();
+            //}
+
+            //if (string.IsNullOrEmpty(txtSoLuong.Text))
+            //{
+            //    fieldsNotEntered.Add("Số lượng");
+            //    ccbMaNhanVien.Focus();
+            //}
+            //if (string.IsNullOrEmpty(txtDonViTinh.Text))
+            //{
+            //    fieldsNotEntered.Add("Đơn vị tính");
+            //    ccbMaNhanVien.Focus();
+            //}
+            //if (string.IsNullOrEmpty(txtGiaNhap.Text))
+            //{
+            //    fieldsNotEntered.Add("Giá nhập");
+            //    txtMaPhieu.Focus();
+            //}
+
+            //if (string.IsNullOrEmpty(txtTongTien.Text))
+            //{
+            //    fieldsNotEntered.Add("Tổng tiền");
+            //    txtMaPhieu.Focus();
+            //}
+
+            //if (string.IsNullOrEmpty(txtGhiChuSP.Text))
+            //{
+            //    fieldsNotEntered.Add("Ghi chú");
+            //    ccbMaNhanVien.Focus();
+            //}
+
+
+            //if (fieldsNotEntered.Count > 0)
+            //{
+            //    string message = "Vui lòng nhập các thông tin sau:\n" + string.Join("\n", fieldsNotEntered);
+            //    MessageBox.Show(message, "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
+
+
+            //if (!KiemTraTonTaiMaPhieu(txtMaPhieu.Text))
+            //{
+            //    object[] values = {
+            //    txtMaPhieu.Text,
+            //    ccbMaNhanVien.Text,
+            //    cbbMaSanPham.Text,
+            //    cbbTenNCC.Text,
+            //    txtTenNSX.Text,
+            //    txtTenSanPham.Text,
+            //    dteNgayLap.Text,
+            //    txtSoLuong.Text,
+            //    txtDonViTinh.Text,
+            //    txtGiaNhap.Text,
+            //    txtTongTien.Text,
+            //    txtGhiChuSP.Text
+            //};
+
+            //    dgvThemDH.Rows.Add(values);
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Mã phiếu đã tồn tại. Vui lòng nhập lại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    txtMaPhieu.Clear();
+            //    txtMaPhieu.Focus();
+            //    return;
+            //}
+
+
+
+            //txtMaPhieu.Clear();
+            //ccbMaNhanVien.Text = "";
+            //dteNgayLap.Text = "";
+            //cbbMaSanPham.Text = "";
+            //cbbTenNCC.Text = "";
+            //txtTenNSX.Clear();
+            //txtTenSanPham.Text = "";
+            //txtSoLuong.Clear();
+            //txtDonViTinh.Text = "";
+            //txtGiaNhap.Clear();
+            //txtTongTien.Clear();
+            //txtGhiChuSP.Clear();
+
+
+
+
             List<string> fieldsNotEntered = new List<string>();
 
             // Kiểm tra từng ô để đảm bảo rằng chúng đã được nhập đầy đủ
@@ -104,7 +229,6 @@ namespace DO_AN_1
                 ccbMaNhanVien.Focus();
             }
 
-
             if (fieldsNotEntered.Count > 0)
             {
                 string message = "Vui lòng nhập các thông tin sau:\n" + string.Join("\n", fieldsNotEntered);
@@ -112,35 +236,58 @@ namespace DO_AN_1
                 return;
             }
 
-
-            if (!KiemTraTonTaiMaPhieu(txtMaPhieu.Text))
+            string maPhieu = txtMaPhieu.Text;
+            string maSanPham = cbbMaSanPham.Text;
+            int soLuongNhap;
+            if (!int.TryParse(txtSoLuong.Text, out soLuongNhap))
             {
-                object[] values = {
-                txtMaPhieu.Text,
-                ccbMaNhanVien.Text,
-                cbbMaSanPham.Text,
-                cbbTenNCC.Text,
-                txtTenNSX.Text,
-                txtTenSanPham.Text,
-                dteNgayLap.Text,
-                txtSoLuong.Text,
-                txtDonViTinh.Text,
-                txtGiaNhap.Text,
-                txtTongTien.Text,
-                txtGhiChuSP.Text
-            };
-
-                dgvThemDH.Rows.Add(values);
-            }
-            else
-            {
-                MessageBox.Show("Mã phiếu đã tồn tại. Vui lòng nhập lại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtMaPhieu.Clear();
-                txtMaPhieu.Focus();
+                MessageBox.Show("Số lượng nhập không hợp lệ. Vui lòng nhập lại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtSoLuong.Focus();
                 return;
             }
 
-            
+            bool isUpdated = false;
+            foreach (DataGridViewRow row in dgvThemDH.Rows)
+            {
+                if (row.Cells["MaPhieu"].Value != null && row.Cells["MaSP"].Value != null)
+                {
+                    if (row.Cells["MaPhieu"].Value.ToString() == maPhieu && row.Cells["MaSP"].Value.ToString() == maSanPham)
+                    {
+                        int currentSoLuong;
+                        if (int.TryParse(row.Cells["SoLuongNhap"].Value.ToString(), out currentSoLuong))
+                        {
+                            row.Cells["SoLuongNhap"].Value = currentSoLuong + soLuongNhap;
+                            isUpdated = true;
+                            break;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Số lượng hiện tại không hợp lệ. Vui lòng kiểm tra lại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                    }
+                }
+            }
+
+            if (!isUpdated)
+            {
+                object[] values = {
+            maPhieu,
+            ccbMaNhanVien.Text,
+            maSanPham,
+            cbbTenNCC.Text,
+            txtTenNSX.Text,
+            txtTenSanPham.Text,
+            dteNgayLap.Text,
+            soLuongNhap.ToString(),
+            txtDonViTinh.Text,
+            txtGiaNhap.Text,
+            txtTongTien.Text,
+            txtGhiChuSP.Text
+        };
+
+                dgvThemDH.Rows.Add(values);
+            }
 
             txtMaPhieu.Clear();
             ccbMaNhanVien.Text = "";
@@ -158,7 +305,7 @@ namespace DO_AN_1
 
         private bool KiemTraTonTaiMaPhieu(string maPhieu)
         {
-            using (SqlConnection con = new SqlConnection(@"Data Source=DAFF;Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False"))
+            using (SqlConnection con = new SqlConnection(@"Data Source=(local);Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False"))
             {
                 con.Open();
                 string query = "SELECT COUNT(*) FROM PhieuNhapHang WHERE MaPhieu = @MaPhieu";
@@ -237,7 +384,7 @@ namespace DO_AN_1
 
         private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(@"Data Source=DAFF;Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False"))
+            using (SqlConnection con = new SqlConnection(@"Data Source=(local);Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False"))
             {
                 con.Open();
                 SqlTransaction transaction = con.BeginTransaction();
@@ -287,6 +434,11 @@ namespace DO_AN_1
 
                     transaction.Commit();
                     MessageBox.Show("Đã lưu thông tin thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    if (parentForm != null)
+                    {
+                        parentForm.RefreshData();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -477,6 +629,9 @@ namespace DO_AN_1
 
         }
 
-        
+        private void labelControl21_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

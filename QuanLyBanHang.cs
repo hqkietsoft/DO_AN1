@@ -63,7 +63,26 @@ namespace DO_AN_1
 
                 cbo_masp.Items.Add(item[0]);
             }
-            conndb.HienthiLenDGV(dgv_ttdonhang);
+            conndb.HienthiLenDGV(dgv_ttdonhang); 
+            cbo_manv_cn.Text = "---Chọn mã NV---";
+            foreach (DataRow item in conndb.laydulieuNguoiDung().Rows)
+            {
+                cbo_manv_cn.Items.Add(item[2]);
+
+            }
+            cbo_makh_cn.Text = "---Chọn mã KH---";
+            foreach (DataRow item in conndb.laydulieuKhachHang().Rows)
+            {
+
+                cbo_makh_cn.Items.Add(item[0]);
+            }
+            cbo_masp_cn.Text = "---Chọn mã SP---";
+            foreach (DataRow item in conndb.laydulieuSanPham().Rows)
+            {
+
+                cbo_masp_cn.Items.Add(item[0]);
+            }
+
 
             btnthemhd.Enabled = false;
             txt_mahd.Enabled = false;
@@ -90,6 +109,17 @@ namespace DO_AN_1
             table.Columns.Add("Đơn vị tính", typeof(string));
             table.Columns.Add("Đơn giá", typeof(decimal));
             dgv_sanpham.DataSource = table;
+
+            txt_mahd_cn.Enabled = false;
+            cbo_manv_cn.Enabled = false;
+            cbo_makh_cn.Enabled = false;
+            dtp_ngayban.Enabled = false;
+            txt_dvtinh_cn.Enabled = false;
+            txt_thanhtien.Enabled = false;
+            txt_dg_cn.Enabled = false;
+            cbo_masp_cn.Enabled = false;
+            txt_sl_cn.Enabled = false;
+            txt_ghichu_cn.Enabled = false;
 
         }
 
@@ -379,16 +409,33 @@ namespace DO_AN_1
         }
         private void btnsuahd_Click_2(object sender, EventArgs e)
         {
+            txt_mahd_cn.Enabled = true;
+            cbo_manv_cn.Enabled = true;
+            cbo_makh_cn.Enabled = true;
+            dtp_ngayban.Enabled = true;
+            txt_dvtinh_cn.Enabled = true;
+            txt_thanhtien.Enabled = true;
+            txt_dg_cn.Enabled = true;
+
+            txt_sl_cn.Enabled = true;
+            txt_ghichu_cn.Enabled = true;
             txt_mahd_cn.ReadOnly = true;
-            txt_dvtinh.ReadOnly = true;
+            txt_dvtinh_cn.ReadOnly = true;
             txt_thanhtien.ReadOnly = true;
             txt_dg_cn.ReadOnly = true;
+            txt_sl_cn.ReadOnly = true;
         }
         private void btnluuhd_Click(object sender, EventArgs e)
         {
             conndb.SuaHoaDon(txt_mahd_cn.Text,cbo_manv_cn.Text, cbo_makh_cn.Text, dtp_ngayban.Text,txt_thanhtien.Text,cbo_masp_cn.Text,txt_sl_cn.Text, txt_dg_cn.Text,txt_ghichu_cn.Text);
             dgv_ttdonhang.Refresh();
             dgv_sp.Refresh();
+        }
+
+        private void cbo_masp_cn_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            conndb.hienthithongtinSP2(txt_dvtinh_cn, txt_dg_cn, cbo_masp_cn);
+            txt_sl_cn.Text = "1";
         }
     }
 }

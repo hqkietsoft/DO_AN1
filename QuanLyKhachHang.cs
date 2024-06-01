@@ -27,7 +27,7 @@ namespace DO_AN_1
         public void connect()
         {
             string ketnoi;
-            ketnoi = "Data Source=DESKTOP-H2UCOT4\\SQLEXPRESS;Initial Catalog=QLKDMayTinh;Integrated Security=True";
+            ketnoi = "Data Source=(local);Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False";
             sqlcon = new SqlConnection(ketnoi);
             sqlcon.Open();
         }

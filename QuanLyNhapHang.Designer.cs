@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyNhapHang));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -126,28 +127,28 @@
             // 
             // btnThem
             // 
-            this.btnThem.Caption = "Thêm đơn hàng";
+            this.btnThem.Caption = "Thêm phiếu nhập";
             this.btnThem.Id = 0;
             this.btnThem.Name = "btnThem";
             this.btnThem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThem_ItemClick);
             // 
             // btnSua
             // 
-            this.btnSua.Caption = "Sửa đơn hàng";
+            this.btnSua.Caption = "Sửa phiếu nhập";
             this.btnSua.Id = 1;
             this.btnSua.Name = "btnSua";
             this.btnSua.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSua_ItemClick);
             // 
             // btnIn
             // 
-            this.btnIn.Caption = "In";
+            this.btnIn.Caption = "In phiếu nhập";
             this.btnIn.Id = 2;
             this.btnIn.Name = "btnIn";
             this.btnIn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnIn_ItemClick);
             // 
             // btnXoa
             // 
-            this.btnXoa.Caption = "Xoá";
+            this.btnXoa.Caption = "Xoá phiếu nhập";
             this.btnXoa.Id = 3;
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXoa_ItemClick);
@@ -205,25 +206,29 @@
             this.groupControl1.Controls.Add(this.dteNhapTuNgay);
             this.groupControl1.Location = new System.Drawing.Point(12, 27);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(477, 82);
+            this.groupControl1.Size = new System.Drawing.Size(477, 98);
             this.groupControl1.TabIndex = 25;
             this.groupControl1.Text = "Ngày nhập vào hệ thống";
             this.groupControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl1_Paint);
             // 
             // btnRefresh
             // 
+            this.btnRefresh.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.ImageOptions.Image")));
             this.btnRefresh.Location = new System.Drawing.Point(123, 49);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(86, 23);
+            this.btnRefresh.Size = new System.Drawing.Size(86, 31);
             this.btnRefresh.TabIndex = 29;
-            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.Text = "Làm mới";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnTim
             // 
+            this.btnTim.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btnTim.Appearance.Options.UseForeColor = true;
+            this.btnTim.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnTim.ImageOptions.SvgImage")));
             this.btnTim.Location = new System.Drawing.Point(369, 49);
             this.btnTim.Name = "btnTim";
-            this.btnTim.Size = new System.Drawing.Size(86, 23);
+            this.btnTim.Size = new System.Drawing.Size(86, 31);
             this.btnTim.TabIndex = 28;
             this.btnTim.Text = "Tìm";
             this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
@@ -287,7 +292,7 @@
             this.dgHoaDon.AllowUserToOrderColumns = true;
             this.dgHoaDon.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -307,7 +312,7 @@
             this.dgHoaDon.Name = "dgHoaDon";
             this.dgHoaDon.RowHeadersWidth = 51;
             this.dgHoaDon.RowTemplate.Height = 24;
-            this.dgHoaDon.Size = new System.Drawing.Size(695, 235);
+            this.dgHoaDon.Size = new System.Drawing.Size(679, 235);
             this.dgHoaDon.TabIndex = 26;
             this.dgHoaDon.ColumnHeadersDefaultCellStyleChanged += new System.EventHandler(this.dgHoaDon_ColumnHeadersDefaultCellStyleChanged);
             this.dgHoaDon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgHoaDon_CellClick);
@@ -376,7 +381,7 @@
             this.dgDSHoaDon.Name = "dgDSHoaDon";
             this.dgDSHoaDon.RowHeadersWidth = 51;
             this.dgDSHoaDon.RowTemplate.Height = 24;
-            this.dgDSHoaDon.Size = new System.Drawing.Size(928, 123);
+            this.dgDSHoaDon.Size = new System.Drawing.Size(929, 123);
             this.dgDSHoaDon.TabIndex = 27;
             this.dgDSHoaDon.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDSHoaDon_CellContentClick);
             // 
@@ -458,7 +463,7 @@
             // 
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel1;
-            this.splitContainerControl1.Size = new System.Drawing.Size(695, 235);
+            this.splitContainerControl1.Size = new System.Drawing.Size(679, 235);
             this.splitContainerControl1.SplitterPosition = 86;
             this.splitContainerControl1.TabIndex = 30;
             // 
@@ -477,7 +482,7 @@
             // 
             this.splitContainerControl2.Panel2.Text = "Panel2";
             this.splitContainerControl2.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel1;
-            this.splitContainerControl2.Size = new System.Drawing.Size(928, 123);
+            this.splitContainerControl2.Size = new System.Drawing.Size(929, 123);
             this.splitContainerControl2.SplitterPosition = 86;
             this.splitContainerControl2.TabIndex = 31;
             // 
@@ -485,23 +490,23 @@
             // 
             this.groupBox1.Controls.Add(this.splitContainerControl1);
             this.groupBox1.Font = new System.Drawing.Font("Tahoma", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(13, 115);
+            this.groupBox1.Location = new System.Drawing.Point(13, 131);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(722, 292);
+            this.groupBox1.Size = new System.Drawing.Size(707, 292);
             this.groupBox1.TabIndex = 36;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "HOÁ ĐƠN NHẬP";
+            this.groupBox1.Text = "DANH SÁCH PHIẾU NHẬP";
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.splitContainerControl2);
             this.groupBox2.Font = new System.Drawing.Font("Tahoma", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(13, 413);
+            this.groupBox2.Location = new System.Drawing.Point(13, 429);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(954, 185);
             this.groupBox2.TabIndex = 37;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "THÔNG TIN CHI TIẾT";
+            this.groupBox2.Text = "CHI TIẾT PHIẾU NHẬP";
             // 
             // QuanLyNhapHang
             // 
@@ -517,7 +522,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "QuanLyNhapHang";
-            this.Text = "Quản lý nhập hàng";
+            this.Text = "Quản lý nhập hàng - Tra cứu";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.QuanLyNhapHang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();

@@ -20,7 +20,7 @@ namespace DO_AN_1
         SqlCommand cmd;
         public SqlConnection Moketnoi()
         {
-            string str = "Data Source=DESKTOP-H2UCOT4\\SQLEXPRESS;Initial Catalog=QLKDMayTinh;Integrated Security=True";
+            string str = "Data Source=(local);Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False";
 
             con = new SqlConnection(str);
             con.Open();
@@ -150,6 +150,11 @@ namespace DO_AN_1
             }
             txt_Chucvu.Text = dgv_nguoidung.CurrentRow.Cells[6].Value.ToString();
             txt_Diachi.Text = dgv_nguoidung.CurrentRow.Cells[7].Value.ToString();
+
+        }
+
+        private void QuanLyNguoiDung_Load(object sender, EventArgs e)
+        {
 
         }
     }

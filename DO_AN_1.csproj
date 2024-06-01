@@ -61,15 +61,12 @@
     <Reference Include="DevExpress.XtraBars.v23.2" />
     <Reference Include="DevExpress.Sparkline.v23.2.Core" />
     <Reference Include="DevExpress.XtraCharts.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-
     <Reference Include="DevExpress.XtraCharts.v23.2.Extensions, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraCharts.v23.2.UI, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraCharts.v23.2.Wizard, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v23.2" />
     <Reference Include="DevExpress.Drawing.v23.2" />
-
     <Reference Include="DevExpress.XtraGauges.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-
     <Reference Include="DevExpress.XtraGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraLayout.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraNavBar.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -126,7 +123,6 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-
     <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing.Design" />
@@ -157,7 +153,6 @@
       <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
-
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -169,13 +164,31 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaoCaoThongKe.cs">
-      <SubType>Form</SubType>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCaoThongKe.Designer.cs">
       <DependentUpon>BaoCaoThongKe.cs</DependentUpon>
     </Compile>
-
+    <Compile Include="BCTK.cs">
+      <DependentUpon>DataBCTK.tt</DependentUpon>
+    </Compile>
     <Compile Include="ConnData.cs" />
+    <Compile Include="Connection.cs" />
+    <Compile Include="DataBCTK.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataBCTK.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBCTK.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataBCTK.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBCTK.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataBCTK.edmx</DependentUpon>
+    </Compile>
     <Compile Include="InHDN.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -225,7 +238,6 @@
       <DependentUpon>QuanLyNhapHang.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
-
     <Compile Include="frm_qlkd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,12 +271,17 @@
     <Compile Include="QuanLySanPham.Designer.cs">
       <DependentUpon>QuanLySanPham.cs</DependentUpon>
     </Compile>
-
     <Compile Include="StartPage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="StartPage.Designer.cs">
       <DependentUpon>StartPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TimKiem_ND.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimKiem_ND.Designer.cs">
+      <DependentUpon>TimKiem_ND.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="BaoCaoThongKe.resx">
       <DependentUpon>BaoCaoThongKe.cs</DependentUpon>
@@ -310,10 +327,19 @@
     <EmbeddedResource Include="QuanLySanPham.resx">
       <DependentUpon>QuanLySanPham.cs</DependentUpon>
     </EmbeddedResource>
-
+    <EntityDeploy Include="DataBCTK.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DataBCTK.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DataBCTK.edmx.diagram">
+      <DependentUpon>DataBCTK.edmx</DependentUpon>
+    </None>
+    <None Include="Resources\QuanLyKhachHang.resx" />
     <EmbeddedResource Include="StartPage.resx">
       <DependentUpon>StartPage.cs</DependentUpon>
-
+    </EmbeddedResource>
+    <EmbeddedResource Include="TimKiem_ND.resx">
+      <DependentUpon>TimKiem_ND.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <EntityDeploy Include="InPNHData.edmx">
@@ -335,7 +361,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-
     <None Include="Resources\download.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -391,7 +416,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Screenshot 2024-05-19 232534.png" />
-
+    <Content Include="DataBCTK.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataBCTK.edmx</DependentUpon>
+      <LastGenOutput>DataBCTK.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataBCTK.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataBCTK.edmx</DependentUpon>
+      <LastGenOutput>DataBCTK.cs</LastGenOutput>
+    </Content>
     <Content Include="InPNHData.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>InPNHData.edmx</DependentUpon>
@@ -418,7 +452,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

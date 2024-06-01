@@ -23,7 +23,7 @@ namespace DO_AN_1
         private void button1_Click(object sender, EventArgs e)
         {
             string ketnoi;
-            ketnoi = "Data Source=DESKTOP-H2UCOT4\\SQLEXPRESS;Initial Catalog=QLKinhDoanhMayTinh;Integrated Security=True";
+            ketnoi = "Data Source=(local);Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False";
             SqlConnection sqlcon= new SqlConnection(ketnoi);
             sqlcon.Open();
 

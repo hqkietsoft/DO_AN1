@@ -17,7 +17,7 @@ namespace DO_AN_1
         SqlCommand cmd;
         public SqlConnection Moketnoi()
         {
-            string connstr = "Data Source=DESKTOP-TEOF11\\SQLEXPRESS;Initial Catalog=QLKDMT;Integrated Security=True;Encrypt=False";
+            string connstr = "Data Source=(local);Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False";
             conn = new SqlConnection(connstr);
             conn.Open();
             //if(conn.State == ConnectionState.Open)        
@@ -127,7 +127,7 @@ namespace DO_AN_1
             string query = "update HoaDon set MaNV = @manv, MaKH = @makh, NgayLap = @ngaylap, TongTien = @TongTien where mahd = @mahd";
             string query2 = "update ChiTietHoaDon set MaSP = @masanpham, SoLuong = @soluong, GiaBan = @giaban, GhiChu = @ghichu where mahd = @mahd";
             SqlCommand cmd1 = new SqlCommand(query2, Moketnoi());
-            cmd1.Parameters.AddWithValue("@mahoadon", mahd);
+            cmd1.Parameters.AddWithValue("@mahd", mahd);
             cmd1.Parameters.AddWithValue("@masanpham", masp);
             cmd1.Parameters.AddWithValue("@soluong", sl);
             cmd1.Parameters.AddWithValue("@giaban", dongia);
@@ -219,10 +219,26 @@ namespace DO_AN_1
 
         }
 
+        public void hienthithongtinSP2(TextBox tb3, TextBox tb4, ComboBox cbo1)
+        {
+            string ma = cbo1.SelectedItem.ToString();
+            string query = "SELECT DonViTinh, DonGia FROM SanPham WHERE MaSP = @ma";
+            cmd = new SqlCommand(query, Moketnoi());
+            cmd.Parameters.AddWithValue("@ma", ma);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+
+                tb3.Text = reader["DonViTinh"].ToString();
+                tb4.Text = reader["DonGia"].ToString();
+
+            }
+            reader.Close();
+        }
         public void hienthithongtinKH(TextBox tb1, TextBox tb2, TextBox tb3, ComboBox cbo1)
         {
             string makhachhang = cbo1.SelectedItem.ToString();
-            string query = "SELECT HoTen, DiaChi,SDT FROM KhachHang WHERE MaKH = @makhachhang";
+            string query = "SELECT HoTen, DiaChi,SĐT FROM KhachHang WHERE MaKH = @makhachhang";
             cmd = new SqlCommand(query, Moketnoi());
             cmd.Parameters.AddWithValue("@makhachhang", makhachhang);
             SqlDataReader reader = cmd.ExecuteReader();
@@ -230,7 +246,7 @@ namespace DO_AN_1
             {
                 tb1.Text = reader["HoTen"].ToString();
                 tb2.Text = reader["DiaChi"].ToString();
-                tb3.Text = reader["SDT"].ToString();
+                tb3.Text = reader["SĐT"].ToString();
             }
             reader.Close();
         }

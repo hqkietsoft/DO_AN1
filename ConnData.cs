@@ -16,7 +16,7 @@ namespace DO_AN_1
         static SqlConnection conn;
         public static SqlConnection Moketnoi()
         {
-            string connstr = @"Data Source=DAFF;Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False";
+            string connstr = @"Data Source=(local);Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False";
             conn = new SqlConnection(connstr);
             conn.Open();
             return conn;
@@ -34,7 +34,7 @@ namespace DO_AN_1
 
         public static string GetConnectionString()
         {
-            return @"Data Source=DAFF;Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False";
+            return @"Data Source=(local);Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False";
         }
 
         public DataTable getQueryPhieuNH()
@@ -135,7 +135,7 @@ namespace DO_AN_1
         public DataTable displayDSHD1(string query, params SqlParameter[] parameters)
         {
             DataTable dt = new DataTable();
-            using (SqlConnection con = new SqlConnection(@"Data Source=DAFF;Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False"))
+            using (SqlConnection con = new SqlConnection(@"Data Source=(local);Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False"))
             {
                 con.Open();
 

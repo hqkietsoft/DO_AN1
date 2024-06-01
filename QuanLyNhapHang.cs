@@ -27,7 +27,7 @@ namespace DO_AN_1
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            QLNH_CNThemDH qLNH_CNThem = new QLNH_CNThemDH();
+            QLNH_CNThemDH qLNH_CNThem = new QLNH_CNThemDH(this);
             qLNH_CNThem.Show();
         }
 
@@ -61,7 +61,7 @@ namespace DO_AN_1
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn hàng trong cả hai bảng dgHoaDon và dgDSHoaDon.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Vui lòng chọn hàng trong cả hai bảng DANH SÁCH PHIẾU NHẬP và CHI TIẾT PHIẾU NHẬP.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -129,7 +129,7 @@ namespace DO_AN_1
                 // Tạo chuỗi chứa các tham số cho câu lệnh SQL
                 string maHoaDonList = string.Join(",", maHoaDons.Select((m, i) => $"@MaPhieu{i}"));
 
-                using (SqlConnection con = new SqlConnection(@"Data Source=DAFF;Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False"))
+                using (SqlConnection con = new SqlConnection(@"Data Source=(local);Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False"))
                 {
                     con.Open();
                     SqlCommand cmd = new SqlCommand($"SELECT * FROM InPNH WHERE MaPhieu IN ({maHoaDonList})", con);
@@ -175,7 +175,7 @@ namespace DO_AN_1
 
                     string maHoaDonList = string.Join(",", maHoaDons.Select(m => $"'{m}'"));
 
-                    using (SqlConnection con = new SqlConnection(@"Data Source=DAFF;Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False"))
+                    using (SqlConnection con = new SqlConnection(@"Data Source=(local);Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False"))
                     {
                         con.Open();
                         using (SqlCommand cmdCTPN = new SqlCommand($"DELETE FROM ChiTietPhieuNhapHang WHERE MaPhieu IN ({maHoaDonList})", con))
@@ -215,15 +215,19 @@ namespace DO_AN_1
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             connData.HienthiLenDGPN(dgHoaDon);
-            DataTable dt = dgDSHoaDon.DataSource as DataTable;
-            if (dt != null)
-            {
-                dt.Clear();
-            }
+           
+        }
+        public void RefreshData()
+        {
+            btnRefresh_Click(this, EventArgs.Empty);
         }
 
         private void dgHoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1)
+            {
+                return;
+            }
             DataGridViewRow row = dgHoaDon.Rows[e.RowIndex];
             string maPhieu = row.Cells["MaPhieu"].Value.ToString();
 

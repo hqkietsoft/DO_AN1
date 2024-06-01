@@ -1,9 +1,11 @@
 ﻿using DevExpress.LookAndFeel;
 using DevExpress.XtraBars;
+using DevExpress.XtraReports.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -79,7 +81,19 @@ namespace DO_AN_1
 
         private void byn_bctk_ItemClick(object sender, ItemClickEventArgs e)
         {
-            newChidForm(new BaoCaoThongKe(), "Báo cáo thống kê");
+            using (SqlConnection con = new SqlConnection(@"Data Source=DAFF;Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False"))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM BCTK", con);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                BaoCaoThongKe report = new BaoCaoThongKe();
+                report.DataSource = dt;
+                report.ShowPreviewDialog();
+            }
         }
 
         private void btn_tc_ItemClick(object sender, ItemClickEventArgs e)
@@ -116,7 +130,7 @@ namespace DO_AN_1
 
         private void acc_bctk_Click(object sender, EventArgs e)
         {
-            newChidForm(new BaoCaoThongKe(), "Báo cáo thống kê");
+            
         }
 
         private void acc_tc_Click(object sender, EventArgs e)

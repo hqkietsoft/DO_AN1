@@ -519,5 +519,15 @@ namespace DO_AN_1
             cboma.Enabled = true;
             MessageBox.Show("Đã sửa thông tin có mã " + masp);
         }
+
+        private void btnLamMoi_Click(object sender, EventArgs e)
+        {
+            dgvCapNhatLoaiHang.DataSource = ketnoi.getDSLoaiHang();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dgvQuanLySanPham.DataSource = ketnoi.getDSSanPham();
+        }
     }
 }
