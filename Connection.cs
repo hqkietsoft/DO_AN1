@@ -13,7 +13,9 @@ namespace DO_AN_1
         SqlConnection conn;
         public SqlConnection Moketnoi()
         {
+
             string sql = @"Data Source=(local);Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False";
+
             conn = new SqlConnection(sql);
             conn.Open();
             return conn;
@@ -98,7 +100,7 @@ namespace DO_AN_1
             }
             catch (Exception e)
             {
-
+                MessageBox.Show("Không thể xoá sản phẩm này.", "Thông báo");
             }
             Dongketnoi();
             return kt;
@@ -153,8 +155,8 @@ namespace DO_AN_1
         public void themLoaiHang(string maloai, string tenhang, string tinhtrang, string giaban, string soluong, string mota)
         {
             Moketnoi();
-            String sql = "insert into LoaiHang values (@maloai,@tenhang,@tinhtrang,@giaban,@soluong,@mota)";
-            SqlCommand cmd = new SqlCommand(sql, conn);
+            String sql1 = "insert into LoaiHang values (@maloai,@tenhang,@tinhtrang,@giaban,@soluong,@mota)";
+            SqlCommand cmd = new SqlCommand(sql1, conn);
             cmd.Parameters.AddWithValue("maloai", maloai);
             cmd.Parameters.AddWithValue("tenhang", tenhang);
             cmd.Parameters.AddWithValue("tinhtrang", tinhtrang);
@@ -170,8 +172,8 @@ namespace DO_AN_1
         public void capnhatLoaiHang(string maloai, string tenhang, string tinhtrang, string giaban, string soluong, string mota)
         {
             Moketnoi();
-            string sql = "update LoaiHang set TenHang=@tenhang,TinhTrang=@tinhtrang,GiaBan=@GiaBan,SoLuong=@soluong,MoTa=@mota where MaLoai=@maloai";
-            SqlCommand cmd = new SqlCommand(sql, conn);
+            string sql1 = "update LoaiHang set TenHang=@tenhang,TinhTrang=@tinhtrang,GiaBan=@GiaBan,SoLuong=@soluong,MoTa=@mota where MaLoai=@maloai";
+            SqlCommand cmd = new SqlCommand(sql1, conn);
             cmd.Parameters.AddWithValue("maloai", maloai);
             cmd.Parameters.AddWithValue("tenhang", tenhang);
             cmd.Parameters.AddWithValue("tinhtrang", tinhtrang);
@@ -187,8 +189,8 @@ namespace DO_AN_1
         {
             Moketnoi();
             bool kt = false;
-            string sql = "delete LoaiHang where MaLoai =@maloai";
-            SqlCommand cmd = new SqlCommand(sql, conn);
+            string sql1 = "delete LoaiHang where MaLoai =@maloai";
+            SqlCommand cmd = new SqlCommand(sql1, conn);
             cmd.Parameters.AddWithValue("maloai", maloai);
             try
             {
@@ -197,7 +199,7 @@ namespace DO_AN_1
             }
             catch (Exception e)
             {
-
+                MessageBox.Show("Không thể xoá loại hàng này vì loại hàng này đã có trong sản phẩm.","Thông báo");
             }
             Dongketnoi();
             return kt;
