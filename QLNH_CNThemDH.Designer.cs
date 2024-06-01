@@ -125,7 +125,7 @@
             this.groupControl2.Controls.Add(this.labelControl7);
             this.groupControl2.Controls.Add(this.txtGiaNhap);
             this.groupControl2.Controls.Add(this.txtTongTien);
-            this.groupControl2.Location = new System.Drawing.Point(0, 88);
+            this.groupControl2.Location = new System.Drawing.Point(0, 95);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(953, 207);
             this.groupControl2.TabIndex = 120;
@@ -253,7 +253,7 @@
             // 
             this.txtGhiChuSP.Location = new System.Drawing.Point(86, 99);
             this.txtGhiChuSP.Name = "txtGhiChuSP";
-            this.txtGhiChuSP.Size = new System.Drawing.Size(841, 20);
+            this.txtGhiChuSP.Size = new System.Drawing.Size(841, 22);
             this.txtGhiChuSP.TabIndex = 11;
             // 
             // labelControl10
@@ -278,7 +278,7 @@
             this.txtSoLuong.Location = new System.Drawing.Point(660, 24);
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.Properties.MaskSettings.Set("mask", "{0:N2}");
-            this.txtSoLuong.Size = new System.Drawing.Size(267, 20);
+            this.txtSoLuong.Size = new System.Drawing.Size(267, 22);
             this.txtSoLuong.TabIndex = 5;
             this.txtSoLuong.EditValueChanged += new System.EventHandler(this.txtSoLuong_EditValueChanged);
             // 
@@ -295,7 +295,7 @@
             this.txtGiaNhap.Location = new System.Drawing.Point(86, 75);
             this.txtGiaNhap.MenuManager = this.barManager1;
             this.txtGiaNhap.Name = "txtGiaNhap";
-            this.txtGiaNhap.Size = new System.Drawing.Size(841, 20);
+            this.txtGiaNhap.Size = new System.Drawing.Size(841, 22);
             this.txtGiaNhap.TabIndex = 158;
             this.txtGiaNhap.EditValueChanged += new System.EventHandler(this.txtGiaNhap_EditValueChanged);
             // 
@@ -366,31 +366,31 @@
             this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl1.Location = new System.Drawing.Point(0, 0);
             this.barDockControl1.Manager = this.barManager1;
-            this.barDockControl1.Size = new System.Drawing.Size(1058, 22);
+            this.barDockControl1.Size = new System.Drawing.Size(1059, 31);
             // 
             // barDockControl2
             // 
             this.barDockControl2.CausesValidation = false;
             this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControl2.Location = new System.Drawing.Point(0, 598);
+            this.barDockControl2.Location = new System.Drawing.Point(0, 606);
             this.barDockControl2.Manager = this.barManager1;
-            this.barDockControl2.Size = new System.Drawing.Size(1058, 0);
+            this.barDockControl2.Size = new System.Drawing.Size(1059, 0);
             // 
             // barDockControl3
             // 
             this.barDockControl3.CausesValidation = false;
             this.barDockControl3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControl3.Location = new System.Drawing.Point(0, 22);
+            this.barDockControl3.Location = new System.Drawing.Point(0, 31);
             this.barDockControl3.Manager = this.barManager1;
-            this.barDockControl3.Size = new System.Drawing.Size(0, 576);
+            this.barDockControl3.Size = new System.Drawing.Size(0, 575);
             // 
             // barDockControl4
             // 
             this.barDockControl4.CausesValidation = false;
             this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControl4.Location = new System.Drawing.Point(1058, 22);
+            this.barDockControl4.Location = new System.Drawing.Point(1059, 31);
             this.barDockControl4.Manager = this.barManager1;
-            this.barDockControl4.Size = new System.Drawing.Size(0, 576);
+            this.barDockControl4.Size = new System.Drawing.Size(0, 575);
             // 
             // barButtonItem1
             // 
@@ -403,7 +403,7 @@
             this.txtTongTien.Location = new System.Drawing.Point(86, 124);
             this.txtTongTien.MenuManager = this.barManager1;
             this.txtTongTien.Name = "txtTongTien";
-            this.txtTongTien.Size = new System.Drawing.Size(840, 20);
+            this.txtTongTien.Size = new System.Drawing.Size(840, 22);
             this.txtTongTien.TabIndex = 159;
             this.txtTongTien.EditValueChanged += new System.EventHandler(this.txtTongTien_EditValueChanged_1);
             // 
@@ -417,7 +417,7 @@
             this.groupControl1.Controls.Add(this.dteNgayLap);
             this.groupControl1.Controls.Add(this.labelControl4);
             this.groupControl1.Controls.Add(this.labelControl5);
-            this.groupControl1.Location = new System.Drawing.Point(0, 26);
+            this.groupControl1.Location = new System.Drawing.Point(0, 33);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(953, 56);
             this.groupControl1.TabIndex = 119;
@@ -473,7 +473,7 @@
             "Công Ty Cổ Phần Giải Pháp Kỹ Thuật Ấn Tượng",
             "Công Ty TNHH Giải Pháp Công Nghệ VITECK",
             "Công Ty TNHH Siêu Siêu Nhỏ"});
-            this.cbbTenNCC.Size = new System.Drawing.Size(160, 20);
+            this.cbbTenNCC.Size = new System.Drawing.Size(160, 22);
             this.cbbTenNCC.TabIndex = 3;
             // 
             // dteNgayLap
@@ -491,7 +491,7 @@
             this.dteNgayLap.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.dteNgayLap.Properties.MaskSettings.Set("mask", "dd/MM/yyyy");
             this.dteNgayLap.Properties.MaxValue = new System.DateTime(9999, 12, 31, 0, 0, 0, 0);
-            this.dteNgayLap.Size = new System.Drawing.Size(152, 20);
+            this.dteNgayLap.Size = new System.Drawing.Size(152, 22);
             this.dteNgayLap.TabIndex = 1;
             // 
             // labelControl4
@@ -514,33 +514,33 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 22);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 31);
             this.barDockControlLeft.Manager = null;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 576);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 575);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1058, 22);
+            this.barDockControlRight.Location = new System.Drawing.Point(1059, 31);
             this.barDockControlRight.Manager = null;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 576);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 575);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 598);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 606);
             this.barDockControlBottom.Manager = null;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1058, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1059, 0);
             // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 22);
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 31);
             this.barDockControlTop.Manager = null;
-            this.barDockControlTop.Size = new System.Drawing.Size(1058, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1059, 0);
             // 
             // dgvThemDH
             // 
@@ -559,7 +559,7 @@
             this.GiaNhap,
             this.TongTien,
             this.GhiChu});
-            this.dgvThemDH.Location = new System.Drawing.Point(0, 301);
+            this.dgvThemDH.Location = new System.Drawing.Point(0, 308);
             this.dgvThemDH.Name = "dgvThemDH";
             this.dgvThemDH.ReadOnly = true;
             this.dgvThemDH.RowHeadersWidth = 51;
@@ -673,7 +673,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1058, 598);
+            this.ClientSize = new System.Drawing.Size(1059, 606);
             this.Controls.Add(this.dgvThemDH);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);

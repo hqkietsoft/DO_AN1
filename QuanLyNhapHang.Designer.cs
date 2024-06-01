@@ -167,7 +167,7 @@
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlTop.Size = new System.Drawing.Size(1168, 22);
+            this.barDockControlTop.Size = new System.Drawing.Size(1168, 31);
             // 
             // barDockControlBottom
             // 
@@ -182,19 +182,19 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 22);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 31);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 649);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 640);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1168, 22);
+            this.barDockControlRight.Location = new System.Drawing.Point(1168, 31);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 649);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 640);
             // 
             // groupControl1
             // 
@@ -204,7 +204,7 @@
             this.groupControl1.Controls.Add(this.dteNhapDenNgay);
             this.groupControl1.Controls.Add(this.labelControl1);
             this.groupControl1.Controls.Add(this.dteNhapTuNgay);
-            this.groupControl1.Location = new System.Drawing.Point(12, 27);
+            this.groupControl1.Location = new System.Drawing.Point(12, 35);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(477, 98);
             this.groupControl1.TabIndex = 25;
@@ -214,7 +214,7 @@
             // btnRefresh
             // 
             this.btnRefresh.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.ImageOptions.Image")));
-            this.btnRefresh.Location = new System.Drawing.Point(123, 49);
+            this.btnRefresh.Location = new System.Drawing.Point(123, 55);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(86, 31);
             this.btnRefresh.TabIndex = 29;
@@ -226,7 +226,7 @@
             this.btnTim.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnTim.Appearance.Options.UseForeColor = true;
             this.btnTim.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnTim.ImageOptions.SvgImage")));
-            this.btnTim.Location = new System.Drawing.Point(369, 49);
+            this.btnTim.Location = new System.Drawing.Point(369, 55);
             this.btnTim.Name = "btnTim";
             this.btnTim.Size = new System.Drawing.Size(86, 31);
             this.btnTim.TabIndex = 28;
@@ -235,7 +235,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(251, 26);
+            this.labelControl2.Location = new System.Drawing.Point(251, 32);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(47, 13);
             this.labelControl2.TabIndex = 24;
@@ -244,7 +244,7 @@
             // dteNhapDenNgay
             // 
             this.dteNhapDenNgay.EditValue = new System.DateTime(2019, 9, 9, 0, 0, 0, 0);
-            this.dteNhapDenNgay.Location = new System.Drawing.Point(312, 23);
+            this.dteNhapDenNgay.Location = new System.Drawing.Point(312, 29);
             this.dteNhapDenNgay.MenuManager = this.barManager1;
             this.dteNhapDenNgay.Name = "dteNhapDenNgay";
             this.dteNhapDenNgay.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -257,12 +257,12 @@
             this.dteNhapDenNgay.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dteNhapDenNgay.Properties.MaskSettings.Set("mask", "dd/MM/yyyy");
             this.dteNhapDenNgay.Properties.MaxValue = new System.DateTime(9999, 12, 31, 0, 0, 0, 0);
-            this.dteNhapDenNgay.Size = new System.Drawing.Size(143, 20);
+            this.dteNhapDenNgay.Size = new System.Drawing.Size(143, 22);
             this.dteNhapDenNgay.TabIndex = 25;
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(14, 26);
+            this.labelControl1.Location = new System.Drawing.Point(14, 32);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(40, 13);
             this.labelControl1.TabIndex = 22;
@@ -271,7 +271,7 @@
             // dteNhapTuNgay
             // 
             this.dteNhapTuNgay.EditValue = new System.DateTime(2017, 1, 1, 0, 0, 0, 0);
-            this.dteNhapTuNgay.Location = new System.Drawing.Point(66, 23);
+            this.dteNhapTuNgay.Location = new System.Drawing.Point(66, 29);
             this.dteNhapTuNgay.MenuManager = this.barManager1;
             this.dteNhapTuNgay.Name = "dteNhapTuNgay";
             this.dteNhapTuNgay.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -284,7 +284,7 @@
             this.dteNhapTuNgay.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dteNhapTuNgay.Properties.MaskSettings.Set("mask", "dd/MM/yyyy");
             this.dteNhapTuNgay.Properties.MaxValue = new System.DateTime(9999, 12, 31, 0, 0, 0, 0);
-            this.dteNhapTuNgay.Size = new System.Drawing.Size(143, 20);
+            this.dteNhapTuNgay.Size = new System.Drawing.Size(143, 22);
             this.dteNhapTuNgay.TabIndex = 23;
             // 
             // dgHoaDon
@@ -490,7 +490,7 @@
             // 
             this.groupBox1.Controls.Add(this.splitContainerControl1);
             this.groupBox1.Font = new System.Drawing.Font("Tahoma", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(13, 131);
+            this.groupBox1.Location = new System.Drawing.Point(13, 139);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(707, 292);
             this.groupBox1.TabIndex = 36;
@@ -501,7 +501,7 @@
             // 
             this.groupBox2.Controls.Add(this.splitContainerControl2);
             this.groupBox2.Font = new System.Drawing.Font("Tahoma", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(13, 429);
+            this.groupBox2.Location = new System.Drawing.Point(13, 437);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(954, 185);
             this.groupBox2.TabIndex = 37;

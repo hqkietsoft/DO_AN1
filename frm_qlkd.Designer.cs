@@ -66,7 +66,6 @@
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.page_khachhang = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.page_thongke = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.dcmManager = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
@@ -94,9 +93,6 @@
             // 
             // ribbon
             // 
-
-            this.ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 37, 35, 37);
-
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem,
@@ -122,25 +118,12 @@
             this.barButtonItem8,
             this.skinRibbonGalleryBarItem2});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-
-
-            this.ribbon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-
-
             this.ribbon.MaxItemId = 22;
-
             this.ribbon.Name = "ribbon";
-            this.ribbon.OptionsMenuMinWidth = 385;
-
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
             this.tacvu});
-
-
-            this.ribbon.Size = new System.Drawing.Size(1285, 147);
-
-
-            this.ribbon.StatusBar = this.ribbonStatusBar;
+            this.ribbon.Size = new System.Drawing.Size(1113, 170);
             // 
             // btn_qlnd
             // 
@@ -247,7 +230,6 @@
             // 
             // skinPaletteDropDownButtonItem1
             // 
-            this.skinPaletteDropDownButtonItem1.Enabled = false;
             this.skinPaletteDropDownButtonItem1.Id = 13;
             this.skinPaletteDropDownButtonItem1.Name = "skinPaletteDropDownButtonItem1";
             // 
@@ -405,17 +387,6 @@
             this.page_thongke.Name = "page_thongke";
             this.page_thongke.Text = "Thống kê";
             // 
-            // ribbonStatusBar
-            // 
-
-
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 634);
-            this.ribbonStatusBar.Name = "ribbonStatusBar";
-            this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1285, 23);
-
-
-            // 
             // dcmManager
             // 
             this.dcmManager.MdiParent = this;
@@ -453,42 +424,33 @@
             this.dockPanel1.Controls.Add(this.dockPanel1_Container);
             this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.dockPanel1.ID = new System.Guid("795d0690-91bf-4e60-ab75-1884d8036cfb");
-
-
-            this.dockPanel1.Location = new System.Drawing.Point(0, 147);
+            this.dockPanel1.Location = new System.Drawing.Point(0, 170);
+            this.dockPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Options.ShowAutoHideButton = false;
             this.dockPanel1.Options.ShowCloseButton = false;
             this.dockPanel1.OriginalSize = new System.Drawing.Size(201, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(201, 487);
-
-
+            this.dockPanel1.Size = new System.Drawing.Size(201, 364);
             this.dockPanel1.Text = "TRANG CHỦ";
             this.dockPanel1.Click += new System.EventHandler(this.dockPanel1_Click);
             // 
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Controls.Add(this.accordionControl1);
-
-
-            this.dockPanel1_Container.Location = new System.Drawing.Point(0, 22);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(0, 29);
+            this.dockPanel1_Container.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(200, 465);
-
-
+            this.dockPanel1_Container.Size = new System.Drawing.Size(200, 335);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // accordionControl1
             // 
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-
-
             this.acc_ele_tacvu});
-            this.accordionControl1.Location = new System.Drawing.Point(0, 25);
-
+            this.accordionControl1.Location = new System.Drawing.Point(0, 20);
+            this.accordionControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.accordionControl1.Name = "accordionControl1";
-            this.accordionControl1.Size = new System.Drawing.Size(232, 530);
-
+            this.accordionControl1.Size = new System.Drawing.Size(199, 431);
             this.accordionControl1.TabIndex = 0;
             this.accordionControl1.Click += new System.EventHandler(this.accordionControl1_Click);
             // 
@@ -563,24 +525,15 @@
             // 
             // frm_qlkd
             // 
-
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-
-            this.ClientSize = new System.Drawing.Size(1285, 657);
-
-
+            this.ClientSize = new System.Drawing.Size(1113, 534);
             this.Controls.Add(this.dockPanel1);
-            this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frm_qlkd.IconOptions.Image")));
             this.IsMdiContainer = true;
-
-            this.Margin = new System.Windows.Forms.Padding(4);
-
             this.Name = "frm_qlkd";
             this.Ribbon = this.ribbon;
-            this.StatusBar = this.ribbonStatusBar;
             this.Text = "QUẢN LÝ KINH DOANH";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frm_qlkd_Load);
@@ -602,7 +555,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
         private DevExpress.XtraBars.Ribbon.RibbonPage tacvu;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup page_nguoidung;
-        private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraBars.BarButtonItem btn_qlnd;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup page_sanpham;
         private DevExpress.XtraBars.BarButtonItem btn_qlsp;
