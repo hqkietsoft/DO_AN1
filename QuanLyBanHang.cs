@@ -43,7 +43,7 @@ namespace DO_AN_1
         }
         private void QuanLyBanHang_Load(object sender, EventArgs e)
         {
-            pnl_tacvu_taohd.Visible = false;
+
             cbo_manv.Text = "---Chọn mã NV---";
             foreach (DataRow item in conndb.laydulieuNguoiDung().Rows)
             {
@@ -62,6 +62,26 @@ namespace DO_AN_1
             {
 
                 cbo_masp.Items.Add(item[0]);
+            }
+            conndb.HienthiLenDGV(dgv_ttdonhang);
+
+            cbo_manv_cn.Text = "---Chọn mã NV---";
+            foreach (DataRow item in conndb.laydulieuNguoiDung().Rows)
+            {
+                cbo_manv_cn.Items.Add(item[2]);
+
+            }
+            cbo_makh_cn.Text = "---Chọn mã KH---";
+            foreach (DataRow item in conndb.laydulieuKhachHang().Rows)
+            {
+
+                cbo_makh_cn.Items.Add(item[0]);
+            }
+            cbo_masp_cn.Text = "---Chọn mã SP---";
+            foreach (DataRow item in conndb.laydulieuSanPham().Rows)
+            {
+
+                cbo_masp_cn.Items.Add(item[0]);
             }
             conndb.HienthiLenDGV(dgv_ttdonhang);
 
@@ -91,6 +111,22 @@ namespace DO_AN_1
             table.Columns.Add("Đơn giá", typeof(decimal));
             dgv_sanpham.DataSource = table;
 
+            //
+            txt_mahd_cn.Enabled = false;
+            cbo_manv_cn.Enabled = false;
+            cbo_makh_cn.Enabled = false;
+            dtp_ngayban.Enabled = false;
+            txt_dvtinh_cn.Enabled = false;
+            txt_thanhtien.Enabled = false;
+            txt_dg_cn.Enabled = false;
+            cbo_masp_cn.Enabled = false;
+            txt_sl_cn.Enabled = false;
+            txt_ghichu_cn.Enabled = false;
+            btnthemsp.Enabled = false;
+            btnxoasp.Enabled = false;
+            btnsuasp.Enabled = false;
+            btnluusp.Enabled = false;
+            txt_tongtien.ReadOnly = true;
         }
 
         public void ClearText()
@@ -121,22 +157,12 @@ namespace DO_AN_1
             if (txt_tenkh.Text.Trim() == "") return false;
             if (txt_diachi.Text.Trim() == "") return false;
             if (txt_sdt.Text.Trim() == "") return false;
-            if (txt_nsx.Text.Trim() == "") return false;
-            if (cbo_masp.Text.Trim() == "") return false;
-            if (txt_tensp.Text.Trim() == "") return false;
-            if (txt_sl.Text.Trim() == "") return false;
+            
+            
             return true;
 
         }
 
-        private void btntacvu_Click(object sender, EventArgs e)
-        {
-            if (pnl_tacvu_taohd.Visible == false)
-                pnl_tacvu_taohd.Visible = true;
-            else
-                pnl_tacvu_taohd.Visible = false;
-
-        }
 
         private void btn_taohd_Click(object sender, EventArgs e)
         {
@@ -158,25 +184,23 @@ namespace DO_AN_1
             txt_dongia.Enabled = true;
             txt_tongtien.Enabled = true;
             txt_ghichu.Enabled = true;
+            btnthemsp.Enabled = true;
+            btnxoasp.Enabled = true;
+            btnsuasp.Enabled = true;
+            btnluusp.Enabled = true;
 
 
         }
 
-        
+
 
         private void btn_timkiemhd_Click(object sender, EventArgs e)
         {
-            try
-            {
-                conndb.timkiemhoadon(rdo_mahd, rdo_manv, rdo_makh, txt_timkiemhd, dgv_thongtintkhd, dtp_ngaybatdautk, dtp_ngayketthuctk);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Không tìm thấy: " + ex.Message, "Lỗi tìm kiếm", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
+            conndb.timkiemhoadon(dgv_thongtintkhd, dtp_ngaybatdautk, dtp_ngayketthuctk);
         }
 
-       
+
 
         private void cbo_makh_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -206,7 +230,6 @@ namespace DO_AN_1
         {
             conndb.hienthithongtinSP(txt_tensp, txt_nsx, txt_dvtinh, txt_dongia, cbo_masp);
             txt_sl.Text = "1";
-
         }
 
         private void cbo_manv_SelectedIndexChanged(object sender, EventArgs e)
@@ -216,21 +239,21 @@ namespace DO_AN_1
 
         private void txt_sl_TextChanged(object sender, EventArgs e)
         {
-            if (txt_sl.Text != "")
+            try
             {
                 int sl = Convert.ToInt16(txt_sl.Text);
-                double dongia = conndb.laydulieudongia(cbo_masp.Text);
-
-                if (sl > 1)
+                if (txt_sl.Text != "" && sl >= 1)
                 {
-                    dongia *= sl;
-                    txt_dongia.Text = dongia.ToString();
+                    txt_dongia.Text = conndb.laydulieudongia(cbo_masp.Text).ToString();
                 }
-                txt_dongia.Text = dongia.ToString();
+                else
+                {
+                    txt_dongia.Text = "0";
+                }
             }
-            else if (txt_sl.Text == "" || txt_sl.Text == "0")
+            catch (Exception ex)
             {
-                txt_dongia.Text = "0";
+
             }
 
 
@@ -239,11 +262,53 @@ namespace DO_AN_1
 
         private void txt_dongia_TextChanged(object sender, EventArgs e)
         {
+            
 
         }
 
 
+        public void clearText_sp()
+        {
+            cbo_masp.Text = "---Chọn mã sản phẩm mới---";
+            txt_tensp.Text = "";
+            txt_nsx.Text = "";
+            txt_sl.Text = "";
+            txt_dvtinh.Text = "";
+            txt_dongia.Text = "";
 
+        }
+        public void tinhthanhtien()
+        {
+            decimal total = 0;
+            foreach (DataGridViewRow row in dgv_sanpham.Rows)
+            {
+
+                if (!row.IsNewRow)
+                {
+
+                    decimal unitPrice = Convert.ToDecimal(row.Cells["Đơn giá"].Value);
+                    int quantity = Convert.ToInt16(row.Cells["Số lượng"].Value);
+                    total += unitPrice * quantity;
+                }
+            }
+            txt_tongtien.Text = total.ToString();
+        }
+        public void tinhthanhtien2()
+        {
+            decimal total = 0;
+            foreach (DataGridViewRow row in dgv_sp.Rows)
+            {
+
+                if (!row.IsNewRow)
+                {
+
+                    decimal unitPrice = Convert.ToDecimal(row.Cells["Đơn giá"].Value);
+                    int quantity = Convert.ToInt16(row.Cells["Số lượng"].Value);
+                    total += unitPrice * quantity;
+                }
+            }
+            txt_thanhtien.Text = total.ToString();
+        }
         private void btnthemsp_Click(object sender, EventArgs e)
         {
             string maSanPham = cbo_masp.Text;
@@ -254,26 +319,16 @@ namespace DO_AN_1
             decimal donGia = decimal.Parse(txt_dongia.Text);
             table.Rows.Add(maSanPham, tenSanPham, nhasanxuat, soLuong, dvtinh, donGia);
             dgv_sanpham.Refresh();
-            decimal total = 0;
-            foreach (DataGridViewRow row in dgv_sanpham.Rows)
-            {
-
-                if (!row.IsNewRow)
-                {
-
-                    decimal unitPrice = Convert.ToDecimal(row.Cells["Đơn giá"].Value);
-
-                    total += unitPrice;
-                }
-            }
-
-            txt_tongtien.Text = total.ToString();
+            tinhthanhtien();
+            clearText_sp();
         }
 
         private void btnxoasp_Click(object sender, EventArgs e)
         {
             index = dgv_sanpham.CurrentCell.RowIndex;
             dgv_sanpham.Rows.RemoveAt(index);
+            tinhthanhtien();
+
         }
 
         private void dgv_sanpham_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -287,16 +342,23 @@ namespace DO_AN_1
             txt_sl.Text = row.Cells[3].Value.ToString();
             txt_dvtinh.Text = row.Cells[4].Value.ToString();
             txt_dongia.Text = row.Cells[5].Value.ToString();
+            cbo_masp.Enabled = false;
+            txt_tensp.ReadOnly = true;
+            txt_nsx.ReadOnly = true;
+            txt_sl.ReadOnly = true;
+            txt_dvtinh.ReadOnly = true;
+            txt_dongia.ReadOnly = true;
+
+
+
         }
 
         private void btnsuasp_Click(object sender, EventArgs e)
         {
-            cbo_masp.Enabled = false;
-            txt_tensp.Enabled = false;
-            txt_nsx.Enabled = false;
-            txt_sl.Enabled = true;
-            txt_dvtinh.Enabled = false;
-            txt_dongia.Enabled = false;
+            
+            txt_sl.ReadOnly = false;
+            
+            
         }
 
         private void btnluusp_Click(object sender, EventArgs e)
@@ -307,8 +369,10 @@ namespace DO_AN_1
             newdata.Cells[3].Value = txt_sl.Text;
             newdata.Cells[4].Value = txt_dvtinh.Text;
             newdata.Cells[5].Value = txt_dongia.Text;
+            tinhthanhtien();
         }
 
+        // Sửa nút thêm khi thêm xong à cập nhật lại thông tin đơn hàng bên cập nhật đơn hàng
         private void btnthemhd_Click_1(object sender, EventArgs e)
         {
             if (!Kiemtrarong())
@@ -335,12 +399,14 @@ namespace DO_AN_1
                     }
                 }
                 //conndb.HienthiLenDGV(dgv_sanpham);
-                MessageBox.Show("Đã tạo hoá đơn thành công", "Tạo hoá đơn", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Đã tạo hoá đơn thành công", "Tạo hoá đơn");
+
+                conndb.HienthiLenDGV(dgv_ttdonhang);
                 ClearText();
             }
         }
 
-       
+
 
         private void dgv_ttdonhang_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -355,7 +421,7 @@ namespace DO_AN_1
                 // Hiển thị các mã sản phẩm tương ứng
                 conndb.LaydulieuSP(mahoadon, dgv_sp);
             }
-           
+
 
         }
 
@@ -368,27 +434,74 @@ namespace DO_AN_1
                 txt_dvtinh_cn.Text = dgv_sp.Rows[e.RowIndex].Cells[2].Value.ToString();
                 txt_dg_cn.Text = dgv_sp.Rows[e.RowIndex].Cells[3].Value.ToString();
                 txt_ghichu_cn.Text = dgv_sp.Rows[e.RowIndex].Cells[4].Value.ToString();
-                
+
             }
         }
         private void btnxoahd_Click_1(object sender, EventArgs e)
         {
-            conndb.xoahoadon(txt_mahd_cn.Text);
-            conndb.HienthiLenDGV(dgv_ttdonhang);
-            dgv_sp.Refresh();
+            DialogResult ans = MessageBox.Show("Bạn có muốn xóa đơn hàng "+ txt_mahd_cn.Text + " không?", "Xóa đơn hàng", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(ans == DialogResult.Yes)
+            {
+                conndb.xoahoadon(txt_mahd_cn.Text);
+                conndb.HienthiLenDGV(dgv_ttdonhang);
+                dgv_sp.Refresh();
+            }
         }
         private void btnsuahd_Click_2(object sender, EventArgs e)
         {
+            txt_mahd_cn.Enabled = true;
+            cbo_manv_cn.Enabled = true;
+            cbo_makh_cn.Enabled = true;
+            dtp_ngayban.Enabled = true;
+            txt_dvtinh_cn.Enabled = true;
+            txt_thanhtien.Enabled = true;
+            txt_dg_cn.Enabled = true;
+            txt_sl_cn.Enabled = true;
+            txt_ghichu_cn.Enabled = true;
             txt_mahd_cn.ReadOnly = true;
-            txt_dvtinh.ReadOnly = true;
+            txt_dvtinh_cn.ReadOnly = true;
             txt_thanhtien.ReadOnly = true;
             txt_dg_cn.ReadOnly = true;
+            txt_sl_cn.ReadOnly = false;
+            cbo_masp_cn.Enabled = true;
+
+
         }
         private void btnluuhd_Click(object sender, EventArgs e)
         {
-            conndb.SuaHoaDon(txt_mahd_cn.Text,cbo_manv_cn.Text, cbo_makh_cn.Text, dtp_ngayban.Text,txt_thanhtien.Text,cbo_masp_cn.Text,txt_sl_cn.Text, txt_dg_cn.Text,txt_ghichu_cn.Text);
-            dgv_ttdonhang.Refresh();
-            dgv_sp.Refresh();
+            conndb.SuaHoaDon(txt_mahd_cn.Text, cbo_manv_cn.Text, cbo_makh_cn.Text, dtp_ngayban.Text, txt_thanhtien.Text, cbo_masp_cn.Text, txt_sl_cn.Text, txt_dg_cn.Text, txt_ghichu_cn.Text);
+            conndb.HienthiLenDGV(dgv_ttdonhang);
+            conndb.LaydulieuSP(txt_mahd_cn.Text, dgv_sanpham);
+        }
+
+        private void cbo_masp_cn_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            conndb.hienthithongtinSP2(txt_dvtinh_cn, txt_dg_cn, cbo_masp_cn);
+            txt_sl_cn.Text = "1";
+        }
+
+        private void txt_sl_cn_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int sl = Convert.ToInt16(txt_sl_cn.Text);
+                if (txt_sl_cn.Text != "" && sl >= 1)
+                {
+                    txt_dg_cn.Text = conndb.laydulieudongia(cbo_masp_cn.Text).ToString();
+                    tinhthanhtien2();
+                }
+                else
+                {
+                    txt_dg_cn.Text = "0";
+                    tinhthanhtien2();
+                }
+                
+            }
+            catch (Exception ex)
+            {
+
+            }
+            
         }
     }
 }
