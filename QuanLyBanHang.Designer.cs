@@ -703,7 +703,7 @@
             // txt_dvtinh_cn
             // 
             this.txt_dvtinh_cn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_dvtinh_cn.Location = new System.Drawing.Point(915, 105);
+            this.txt_dvtinh_cn.Location = new System.Drawing.Point(1177, 68);
             this.txt_dvtinh_cn.Name = "txt_dvtinh_cn";
             this.txt_dvtinh_cn.Size = new System.Drawing.Size(196, 35);
             this.txt_dvtinh_cn.TabIndex = 36;
@@ -714,7 +714,7 @@
             this.cbo_masp_cn.FormattingEnabled = true;
             this.cbo_masp_cn.Location = new System.Drawing.Point(915, 9);
             this.cbo_masp_cn.Name = "cbo_masp_cn";
-            this.cbo_masp_cn.Size = new System.Drawing.Size(294, 35);
+            this.cbo_masp_cn.Size = new System.Drawing.Size(458, 35);
             this.cbo_masp_cn.TabIndex = 35;
             this.cbo_masp_cn.SelectedIndexChanged += new System.EventHandler(this.cbo_masp_cn_SelectedIndexChanged);
             // 
@@ -722,7 +722,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(765, 112);
+            this.label15.Location = new System.Drawing.Point(1027, 75);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(117, 25);
             this.label15.TabIndex = 34;
@@ -732,7 +732,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(765, 161);
+            this.label21.Location = new System.Drawing.Point(765, 138);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(100, 25);
             this.label21.TabIndex = 30;
@@ -742,7 +742,7 @@
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(765, 63);
+            this.label28.Location = new System.Drawing.Point(765, 76);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(109, 25);
             this.label28.TabIndex = 31;
@@ -761,17 +761,17 @@
             // txt_dg_cn
             // 
             this.txt_dg_cn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_dg_cn.Location = new System.Drawing.Point(915, 153);
+            this.txt_dg_cn.Location = new System.Drawing.Point(915, 129);
             this.txt_dg_cn.Name = "txt_dg_cn";
-            this.txt_dg_cn.Size = new System.Drawing.Size(484, 35);
+            this.txt_dg_cn.Size = new System.Drawing.Size(458, 35);
             this.txt_dg_cn.TabIndex = 33;
             // 
             // txt_sl_cn
             // 
             this.txt_sl_cn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_sl_cn.Location = new System.Drawing.Point(915, 57);
+            this.txt_sl_cn.Location = new System.Drawing.Point(915, 69);
             this.txt_sl_cn.Name = "txt_sl_cn";
-            this.txt_sl_cn.Size = new System.Drawing.Size(196, 35);
+            this.txt_sl_cn.Size = new System.Drawing.Size(103, 35);
             this.txt_sl_cn.TabIndex = 32;
             this.txt_sl_cn.TextChanged += new System.EventHandler(this.txt_sl_cn_TextChanged);
             // 
@@ -786,9 +786,9 @@
             // txt_ghichu_cn
             // 
             this.txt_ghichu_cn.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_ghichu_cn.Location = new System.Drawing.Point(915, 201);
+            this.txt_ghichu_cn.Location = new System.Drawing.Point(915, 189);
             this.txt_ghichu_cn.Name = "txt_ghichu_cn";
-            this.txt_ghichu_cn.Size = new System.Drawing.Size(484, 37);
+            this.txt_ghichu_cn.Size = new System.Drawing.Size(458, 37);
             this.txt_ghichu_cn.TabIndex = 28;
             // 
             // cbo_manv_cn
@@ -814,7 +814,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(765, 210);
+            this.label1.Location = new System.Drawing.Point(765, 200);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 25);
             this.label1.TabIndex = 14;

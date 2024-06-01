@@ -111,6 +111,9 @@ namespace DO_AN_1
             table.Columns.Add("Đơn giá", typeof(decimal));
             dgv_sanpham.DataSource = table;
 
+
+
+
             //
             txt_mahd_cn.Enabled = false;
             cbo_manv_cn.Enabled = false;
@@ -188,6 +191,13 @@ namespace DO_AN_1
             btnxoasp.Enabled = true;
             btnsuasp.Enabled = true;
             btnluusp.Enabled = true;
+            txt_tensp.ReadOnly = true;
+            txt_nsx.ReadOnly = true;
+            txt_dvtinh.ReadOnly = true;
+            txt_dongia.ReadOnly = true;
+            txt_tenkh.ReadOnly = true;
+            txt_diachi.ReadOnly = true;
+            txt_sdt.ReadOnly = true;
 
 
         }
@@ -311,17 +321,40 @@ namespace DO_AN_1
         }
         private void btnthemsp_Click(object sender, EventArgs e)
         {
-            string maSanPham = cbo_masp.Text;
-            string tenSanPham = txt_tensp.Text;
-            string nhasanxuat = txt_nsx.Text;
-            int soLuong = int.Parse(txt_sl.Text);
-            string dvtinh = txt_dvtinh.Text;
-            decimal donGia = decimal.Parse(txt_dongia.Text);
-            table.Rows.Add(maSanPham, tenSanPham, nhasanxuat, soLuong, dvtinh, donGia);
-            dgv_sanpham.Refresh();
-            tinhthanhtien();
-            clearText_sp();
+            
+            if(cbo_masp.Text.Trim() == "")
+            {
+                MessageBox.Show("Bạn chưa chọn mã sản phẩm", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                int rowIndex = -1;
+                foreach (DataGridViewRow row in dgv_sanpham.Rows)
+                {
+                    if (row.Cells["Mã sản phẩm"].Value != null && row.Cells["Mã sản phẩm"].Value.ToString().Equals(cbo_masp.Text))
+                    {
+                        rowIndex = row.Index;
+                        break;
+                    }
+                }
+
+                if (rowIndex >= 0)
+                {
+                    dgv_sanpham.Rows[rowIndex].Cells["Số lượng"].Value =
+                        Convert.ToInt32(dgv_sanpham.Rows[rowIndex].Cells["Số lượng"].Value) + int.Parse(txt_sl.Text);
+                }
+                else
+                {
+                    table.Rows.Add(cbo_masp.Text, txt_tensp.Text, txt_nsx.Text, txt_sl.Text, txt_dvtinh.Text, txt_dongia.Text);
+                }
+
+                dgv_sanpham.Refresh();
+                tinhthanhtien();
+                clearText_sp();
+            }
         }
+
+
 
         private void btnxoasp_Click(object sender, EventArgs e)
         {
@@ -462,8 +495,8 @@ namespace DO_AN_1
             txt_dvtinh_cn.ReadOnly = true;
             txt_thanhtien.ReadOnly = true;
             txt_dg_cn.ReadOnly = true;
-            txt_sl_cn.ReadOnly = false;
-            cbo_masp_cn.Enabled = true;
+            txt_sl_cn.ReadOnly = true;
+            cbo_masp_cn.Enabled = false;
 
 
         }
@@ -471,7 +504,9 @@ namespace DO_AN_1
         {
             conndb.SuaHoaDon(txt_mahd_cn.Text, cbo_manv_cn.Text, cbo_makh_cn.Text, dtp_ngayban.Text, txt_thanhtien.Text, cbo_masp_cn.Text, txt_sl_cn.Text, txt_dg_cn.Text, txt_ghichu_cn.Text);
             conndb.HienthiLenDGV(dgv_ttdonhang);
+            dgv_sp.Refresh(); 
             conndb.LaydulieuSP(txt_mahd_cn.Text, dgv_sanpham);
+            
         }
 
         private void cbo_masp_cn_SelectedIndexChanged(object sender, EventArgs e)
@@ -503,5 +538,7 @@ namespace DO_AN_1
             }
             
         }
+
+        
     }
 }

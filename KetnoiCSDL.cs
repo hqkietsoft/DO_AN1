@@ -124,9 +124,7 @@ namespace DO_AN_1
         }
         public void SuaHoaDon(string mahd, string manv, string makh, string ngaylap, string tongtien, string masp, string sl, string gb, string ghichu)
         {
-            //try
-            //{
-               
+           
                 string query1 = "update ChiTietHoaDon set MaSP = @masanpham, SoLuong = @soluong, GhiChu = @ghichu where mahd = @mahd";
                 SqlCommand cmd1 = new SqlCommand(query1,Moketnoi());
                 cmd1.Parameters.AddWithValue("@mahd", mahd);
@@ -144,10 +142,7 @@ namespace DO_AN_1
                 cmd.Parameters.AddWithValue("@tongtien", tongtien);
                 cmd.ExecuteNonQuery();
                 Dongketnoi();
-            //}catch(Exception e)
-            //{
-            //    MessageBox.Show("Lỗi : "+e.Message, "Thông báo");
-            //}
+            
         }
         public void xoahoadon(string ma)
         {
