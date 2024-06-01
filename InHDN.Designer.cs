@@ -675,11 +675,11 @@
             // summariesTable
             // 
             this.summariesTable.ForeColor = System.Drawing.Color.Black;
-            this.summariesTable.LocationFloat = new DevExpress.Utils.PointFloat(262.5016F, 10.00004F);
+            this.summariesTable.LocationFloat = new DevExpress.Utils.PointFloat(153.083F, 10.00004F);
             this.summariesTable.Name = "summariesTable";
             this.summariesTable.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.totalRow});
-            this.summariesTable.SizeF = new System.Drawing.SizeF(376.4982F, 33F);
+            this.summariesTable.SizeF = new System.Drawing.SizeF(485.9168F, 33F);
             this.summariesTable.StylePriority.UseForeColor = false;
             // 
             // totalRow
@@ -700,7 +700,7 @@
             this.totalCaption.StylePriority.UseTextAlignment = false;
             this.totalCaption.Text = "THANH TOÁN";
             this.totalCaption.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            this.totalCaption.Weight = 1.1594463201028353D;
+            this.totalCaption.Weight = 1.1785604931975195D;
             // 
             // total
             // 
@@ -715,7 +715,7 @@
             this.total.Text = "0.00 VNĐ";
             this.total.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             this.total.TextFormatString = "{0:0 VND}";
-            this.total.Weight = 1.6058962907682328D;
+            this.total.Weight = 2.3904509102716176D;
             // 
             // GroupHeader1
             // 

@@ -115,33 +115,60 @@ namespace DO_AN_1
 
             string maPhieu = txtMaPhieu.Text;
             string maSanPham = cbbMaSanPham.Text;
+            string maNhanvien = ccbMaNhanVien.Text;
+            string ngayLap = dteNgayLap.Text;
+            string nCC = cbbTenNCC.Text;
+            string ghiChu = txtGhiChuSP.Text;
             int soLuongNhap;
-            if (!int.TryParse(txtSoLuong.Text, out soLuongNhap))
+            long tongTien;
+
+            // Kiểm tra từng giá trị một cách riêng lẻ
+            bool isSoLuongValid = int.TryParse(txtSoLuong.Text, out soLuongNhap);
+            bool isTongTienValid = long.TryParse(txtTongTien.Text, out tongTien);
+
+            if (!isSoLuongValid)
             {
                 MessageBox.Show("Số lượng nhập không hợp lệ. Vui lòng nhập lại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtSoLuong.Focus();
                 return;
             }
 
+            if (!isTongTienValid)
+            {
+                MessageBox.Show("Tổng tiền không hợp lệ. Vui lòng nhập lại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTongTien.Focus();
+                return;
+            }
+
             bool isUpdated = false;
             foreach (DataGridViewRow row in dgvThemDH.Rows)
             {
-                if (row.Cells["MaPhieu"].Value != null && row.Cells["MaSP"].Value != null)
+                if (row.Cells["MaPhieu"].Value != null && row.Cells["MaSP"].Value != null && row.Cells["MaNV"].Value != null && row.Cells["NgayLap"].Value != null
+                    && row.Cells["TenNCC"].Value != null && row.Cells["GhiChu"].Value != null)
                 {
-                    if (row.Cells["MaPhieu"].Value.ToString() == maPhieu && row.Cells["MaSP"].Value.ToString() == maSanPham)
+                    if (row.Cells["MaPhieu"].Value.ToString() == maPhieu && row.Cells["MaSP"].Value.ToString() == maSanPham
+                        && row.Cells["MaNV"].Value.ToString() == maNhanvien && row.Cells["NgayLap"].Value.ToString() == ngayLap
+                        && row.Cells["TenNCC"].Value.ToString() == nCC && row.Cells["GhiChu"].Value.ToString() == ghiChu)
                     {
                         int currentSoLuong;
-                        if (int.TryParse(row.Cells["SoLuongNhap"].Value.ToString(), out currentSoLuong))
+                        long currentTongTien;
+                        if (int.TryParse(row.Cells["SoLuongNhap"].Value.ToString(), out currentSoLuong) && long.TryParse(row.Cells["TongTien"].Value.ToString(), out currentTongTien))
                         {
                             row.Cells["SoLuongNhap"].Value = currentSoLuong + soLuongNhap;
+                            row.Cells["TongTien"].Value = currentTongTien + tongTien;
                             isUpdated = true;
                             break;
                         }
                         else
                         {
-                            MessageBox.Show("Số lượng hiện tại không hợp lệ. Vui lòng kiểm tra lại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("Số lượng hiện tại hoặc tổng tiền hiện tại không hợp lệ. Vui lòng kiểm tra lại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
+                    }
+                    else if(row.Cells["MaPhieu"].Value.ToString() == maPhieu)
+                    {
+                        MessageBox.Show("Mã phiếu đã tồn tại. Vui lòng kiểm tra lại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
                     }
                 }
             }
@@ -149,19 +176,19 @@ namespace DO_AN_1
             if (!isUpdated)
             {
                 object[] values = {
-            maPhieu,
-            ccbMaNhanVien.Text,
-            maSanPham,
-            cbbTenNCC.Text,
-            txtTenNSX.Text,
-            txtTenSanPham.Text,
-            dteNgayLap.Text,
-            soLuongNhap.ToString(),
-            txtDonViTinh.Text,
-            txtGiaNhap.Text,
-            txtTongTien.Text,
-            txtGhiChuSP.Text
-        };
+                    maPhieu,
+                    maNhanvien,
+                    maSanPham,
+                    nCC,
+                    txtTenNSX.Text,
+                    txtTenSanPham.Text,
+                    ngayLap,
+                    soLuongNhap.ToString(),
+                    txtDonViTinh.Text,
+                    txtGiaNhap.Text,
+                    tongTien.ToString(),
+                    ghiChu
+                };
 
                 dgvThemDH.Rows.Add(values);
             }
