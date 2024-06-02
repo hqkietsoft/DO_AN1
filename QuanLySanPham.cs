@@ -23,12 +23,13 @@ namespace DO_AN_1
             DuaDLVaoBangLoaiHang();
             DuaDLVaoBangCNSP();
             ketnoi.layDLhienthilenCombobox(cboMaLoai, "select MaLoai from LoaiHang", "MaLoai");
-            
+
             // ketnoi.layDLhienthilenCombobox(cboma, "select SoLuongNhap from ChiTietPhieuNhap", "SoLuongNhap");
             //ketnoi.layDLhienthilenCombobox(cboGiaNhap, "select GiaNhap from ChiTietPhieuNhap", "GiaNhap");
             //ketnoi.layDLhienthilenCombobox(cboSoLuongBan, "select SoLuongBan from ChiTietHoaDon", "SoLuongBan");
             //ketnoi.layDLhienthilenCombobox(cboGiaBan, "select GiaBan from ChiTietHoaDon", "GiaBan");
 
+        
         }
 
         /// <summary>
@@ -142,12 +143,13 @@ namespace DO_AN_1
                     ketnoi.xoaSP(txtmasp.Text.Trim());
                     DuaDLVaoBangSP();
                     clearsTextSP();
+                    
                 }    
                 else
                 {
                     MessageBox.Show("Không thể xoá!");
                 }    
-            }    
+            }
         }
 
         //Sự kiện nút thoát sản phẩm

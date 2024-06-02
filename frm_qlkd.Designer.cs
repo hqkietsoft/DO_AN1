@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_qlkd));
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem1 = new DevExpress.XtraBars.Ribbon.GalleryItem();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem2 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup4 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem7 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem8 = new DevExpress.XtraBars.Ribbon.GalleryItem();
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btn_qlnd = new DevExpress.XtraBars.BarButtonItem();
             this.btn_qlsp = new DevExpress.XtraBars.BarButtonItem();
@@ -123,7 +124,7 @@
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
             this.tacvu});
-            this.ribbon.Size = new System.Drawing.Size(1113, 170);
+            this.ribbon.Size = new System.Drawing.Size(1230, 170);
             // 
             // btn_qlnd
             // 
@@ -245,17 +246,17 @@
             // 
             // 
             // 
-            galleryItemGroup1.Caption = "Group4";
-            galleryItem1.Caption = "Item2";
-            galleryItem1.Checked = true;
-            galleryItem1.Description = "Seven Classic";
-            galleryItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            galleryItem2.Caption = "Item3";
-            galleryItemGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            galleryItem1,
-            galleryItem2});
+            galleryItemGroup4.Caption = "Group4";
+            galleryItem7.Caption = "Item2";
+            galleryItem7.Checked = true;
+            galleryItem7.Description = "Seven Classic";
+            galleryItem7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            galleryItem8.Caption = "Item3";
+            galleryItemGroup4.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            galleryItem7,
+            galleryItem8});
             this.skinPaletteRibbonGalleryBarItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup1});
+            galleryItemGroup4});
             this.skinPaletteRibbonGalleryBarItem1.Id = 15;
             this.skinPaletteRibbonGalleryBarItem1.Name = "skinPaletteRibbonGalleryBarItem1";
             // 
@@ -430,7 +431,7 @@
             this.dockPanel1.Options.ShowAutoHideButton = false;
             this.dockPanel1.Options.ShowCloseButton = false;
             this.dockPanel1.OriginalSize = new System.Drawing.Size(201, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(201, 364);
+            this.dockPanel1.Size = new System.Drawing.Size(201, 520);
             this.dockPanel1.Text = "TRANG CHỦ";
             this.dockPanel1.Click += new System.EventHandler(this.dockPanel1_Click);
             // 
@@ -440,7 +441,7 @@
             this.dockPanel1_Container.Location = new System.Drawing.Point(0, 29);
             this.dockPanel1_Container.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(200, 335);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(200, 491);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // accordionControl1
@@ -527,7 +528,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1113, 534);
+            this.ClientSize = new System.Drawing.Size(1230, 690);
             this.Controls.Add(this.dockPanel1);
             this.Controls.Add(this.ribbon);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frm_qlkd.IconOptions.Image")));

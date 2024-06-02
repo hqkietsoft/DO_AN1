@@ -1,8 +1,10 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,6 +18,7 @@ namespace DO_AN_1
         KetnoiCSDL conndb;
         DataTable table;
         int index;
+        
         public QuanLyBanHang()
         {
             InitializeComponent();
@@ -23,6 +26,7 @@ namespace DO_AN_1
             cbo_manv.DropDown += new EventHandler(cbo_manv_DropDown);
             cbo_manv.DropDownClosed += new EventHandler(cbo_manv_DropDownClosed);
             table = new DataTable();
+
 
         }
         public class Employee
@@ -41,6 +45,20 @@ namespace DO_AN_1
                 return $"{MaNV} - {TenNV}";
             }
         }
+
+        public void RefreshData()
+        {
+            cbo_masp.Items.Clear();
+            cbo_masp.Text = "---Chọn mã SP---";
+            foreach (DataRow item in conndb.laydulieuSanPham().Rows)
+            {
+
+                cbo_masp.Items.Add(item[0]);
+            }
+            cbo_masp.Refresh();
+        }
+
+
         private void QuanLyBanHang_Load(object sender, EventArgs e)
         {
 
@@ -140,7 +158,6 @@ namespace DO_AN_1
             txt_dg_cn.Enabled = false;
             cbo_masp_cn.Enabled = false;
             txt_sl_cn.Enabled = false;
-            txt_ghichu_cn.Enabled = false;
 
             btnthemsp.Enabled = false;
             btnxoasp.Enabled = false;
@@ -258,6 +275,10 @@ namespace DO_AN_1
         {
             conndb.hienthithongtinSP(txt_tensp, txt_nsx, txt_dvtinh, txt_dongia, cbo_masp);
             txt_sl.Text = "1";
+            if (txt_tensp.Text == "")
+            {
+                MessageBox.Show("Mã sản phẩm này đã được xoá!, Vui lòng chọn sản phẩm khác.");
+            }
         }
 
         private void cbo_manv_SelectedIndexChanged(object sender, EventArgs e)
@@ -484,7 +505,6 @@ namespace DO_AN_1
                 txt_sl_cn.Text = dgv_sp.Rows[e.RowIndex].Cells[1].Value.ToString();
                 txt_dvtinh_cn.Text = dgv_sp.Rows[e.RowIndex].Cells[2].Value.ToString();
                 txt_dg_cn.Text = dgv_sp.Rows[e.RowIndex].Cells[3].Value.ToString();
-                txt_ghichu_cn.Text = dgv_sp.Rows[e.RowIndex].Cells[4].Value.ToString();
 
             }
         }
@@ -509,7 +529,6 @@ namespace DO_AN_1
             txt_dg_cn.Enabled = true;
 
             txt_sl_cn.Enabled = true;
-            txt_ghichu_cn.Enabled = true;
             txt_mahd_cn.ReadOnly = true;
             txt_dvtinh_cn.ReadOnly = true;
             txt_thanhtien.ReadOnly = true;
@@ -523,7 +542,7 @@ namespace DO_AN_1
         }
         private void btnluuhd_Click(object sender, EventArgs e)
         {
-            conndb.SuaHoaDon(txt_mahd_cn.Text, cbo_manv_cn.Text, cbo_makh_cn.Text, dtp_ngayban.Text, txt_thanhtien.Text, cbo_masp_cn.Text, txt_sl_cn.Text, txt_dg_cn.Text, txt_ghichu_cn.Text);
+            conndb.SuaHoaDon(txt_mahd_cn.Text, cbo_manv_cn.Text, cbo_makh_cn.Text, dtp_ngayban.Text, txt_thanhtien.Text, cbo_masp_cn.Text, txt_sl_cn.Text, txt_dg_cn.Text);
             conndb.HienthiLenDGV(dgv_ttdonhang);
             dgv_sp.Refresh(); 
             conndb.LaydulieuSP(txt_mahd_cn.Text, dgv_sanpham);
@@ -560,6 +579,50 @@ namespace DO_AN_1
             
         }
 
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            if (dgv_ttdonhang.SelectedRows.Count > 0)
+            {
+                List<string> maHoaDons = new List<string>();
+
+                foreach (DataGridViewRow row in dgv_ttdonhang.SelectedRows)
+                {
+                    string maHoaDon = row.Cells[0].Value.ToString();
+                    maHoaDons.Add(maHoaDon);
+                }
+
+                // Tạo chuỗi chứa các tham số cho câu lệnh SQL
+                string maHoaDonList = string.Join(",", maHoaDons.Select((m, i) => $"@MaHD{i}"));
+
+                using (SqlConnection con = new SqlConnection(@"Data Source=(local);Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False"))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand($"SELECT * FROM InHoaDonXuat WHERE MaHD IN ({maHoaDonList})", con);
+
+                    // Thêm các giá trị cho tham số vào SqlCommand
+                    for (int i = 0; i < maHoaDons.Count; i++)
+                    {
+                        cmd.Parameters.AddWithValue($"@MaHD{i}", maHoaDons[i]);
+                    }
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    InHoaDonXuat1 report = new InHoaDonXuat1();
+                    report.DataSource = dt;
+                    report.ShowPreviewDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn ít nhất một hóa đơn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

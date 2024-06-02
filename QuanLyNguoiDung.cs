@@ -88,8 +88,8 @@ namespace DO_AN_1
 
         private void btnSua_Click_2(object sender, EventArgs e)
         {
-            string Query = "UPDATE NguoiDung SET Taikhoan = '" + txt_taikhoan.Text + "',Matkhau ='" + txt_Matkhau.Text + "',Hoten = '" + txt_Hoten.Text + "'," +
-               "Namsinh='" + datetime.Text + "',GioiTinh= '" + gioitinh() + "',Chucvu = '" + txt_Chucvu.Text + "',Diachi='" + txt_Diachi.Text + "'" +
+            string Query = "UPDATE NguoiDung SET Taikhoan = '" + txt_taikhoan.Text + "',Matkhau ='" + txt_Matkhau.Text + "',Hoten = N'" + txt_Hoten.Text + "'," +
+               "Namsinh='" + datetime.Text + "',GioiTinh= N'" + gioitinh() + "',Chucvu = N'" + txt_Chucvu.Text + "',Diachi= N'" + txt_Diachi.Text + "'" +
                "WHERE MaNV = '" + txtMaNV.Text + "' ";
             do_sql(Query);
             Hienthi_dgv1();
@@ -119,8 +119,10 @@ namespace DO_AN_1
         private void btn_Timkiem_Click_2(object sender, EventArgs e)
         {
 
-            TimKiem_ND a = new TimKiem_ND();
-            a.Show();
+            //TimKiem_ND a = new TimKiem_ND();
+            //a.Show();
+            TimKiem_ND timKiem = new TimKiem_ND();
+            timKiem.Show();
         }
 
         private void btnBoqua_Click_2(object sender, EventArgs e)

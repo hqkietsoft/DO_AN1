@@ -237,7 +237,19 @@ namespace DO_AN_1
 
         private void Login_Load(object sender, EventArgs e)
         {
+            this.BeginInvoke((Action)delegate
+            {
+                btnThoat.Focus();
+            });
             
+        }
+
+        private void pictureBox3_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            //if (e.KeyCode == Keys.Enter)
+            //{
+            //    pictureBox3_Click(sender, e);
+            //}
         }
 
         

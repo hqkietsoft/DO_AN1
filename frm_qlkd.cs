@@ -81,7 +81,7 @@ namespace DO_AN_1
 
         private void byn_bctk_ItemClick(object sender, ItemClickEventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(@"Data Source=DAFF;Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False"))
+            using (SqlConnection con = new SqlConnection(@"Data Source=(local);Initial Catalog=quanlykinhdoanhmaytinh;Integrated Security=True;Encrypt=False"))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM BCTK", con);
@@ -100,8 +100,6 @@ namespace DO_AN_1
         {
            
         }
-
-
 
         private void acc_qlnd_Click(object sender, EventArgs e)
         {

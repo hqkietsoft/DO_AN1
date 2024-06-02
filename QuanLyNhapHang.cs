@@ -251,5 +251,10 @@ namespace DO_AN_1
         {
 
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -42,7 +42,7 @@ namespace DO_AN_1
         // lay du lieu truy van tu sql
         public void LaydulieuSP(string mahoadon, DataGridView dgv1)
         {
-            string selectAllQuery = "select ChiTietHoaDon.MaSP, SoLuong,SanPham.DonViTinh,GiaBan, GhiChu  from ChiTietHoaDon\r\ninner join SanPham on  SanPham.MaSP = ChiTietHoaDon.MaSP where MaHD = @mahd";
+            string selectAllQuery = "select ChiTietHoaDon.MaSP, SoLuong,SanPham.DonViTinh,GiaBan from ChiTietHoaDon\r\ninner join SanPham on  SanPham.MaSP = ChiTietHoaDon.MaSP where MaHD = @mahd";
             cmd = new SqlCommand(selectAllQuery, Moketnoi());
             cmd.Parameters.AddWithValue("@mahd", mahoadon);
             SqlDataReader reader = cmd.ExecuteReader();
@@ -53,7 +53,7 @@ namespace DO_AN_1
         }
         public DataTable ShowALL()
         {
-            string selectAllQuery = "select * from HoaDon ";
+            string selectAllQuery = " select * from HoaDon";
             cmd = new SqlCommand(selectAllQuery, Moketnoi());
             SqlDataReader reader = cmd.ExecuteReader();
             DataTable dt = new DataTable();
@@ -122,7 +122,7 @@ namespace DO_AN_1
             cmd1.ExecuteNonQuery();
             Dongketnoi();
         }
-        public void SuaHoaDon(string mahd, string manv, string makh, string ngaylap, string tongtien, string masp, string sl, string gb, string ghichu)
+        public void SuaHoaDon(string mahd, string manv, string makh, string ngaylap, string tongtien, string masp, string sl, string gb)
         {
 
            
@@ -131,7 +131,6 @@ namespace DO_AN_1
                 cmd1.Parameters.AddWithValue("@mahd", mahd);
                 cmd1.Parameters.AddWithValue("@masanpham", masp);
                 cmd1.Parameters.AddWithValue("@soluong", sl);
-                cmd1.Parameters.AddWithValue("@ghichu", ghichu);
                 cmd1.ExecuteNonQuery();
                 Dongketnoi();
                 string query2 = "update HoaDon set MaNV = @manv, MaKH = @makh, NgayLap = @ngaylap, TongTien = @TongTien where mahd = @mahd";
@@ -236,22 +235,22 @@ namespace DO_AN_1
             }
             reader.Close();
         }
-        public void hienthithongtinSP2(TextBox tb3, TextBox tb4, ComboBox cbo1)
-        {
-            string ma = cbo1.SelectedItem.ToString();
-            string query = "SELECT DonViTinh, DonGia FROM SanPham WHERE MaSP = @ma";
-            cmd = new SqlCommand(query, Moketnoi());
-            cmd.Parameters.AddWithValue("@ma", ma);
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
-            {
+        //public void hienthithongtinSP2(TextBox tb3, TextBox tb4, ComboBox cbo1)
+        //{
+        //    string ma = cbo1.SelectedItem.ToString();
+        //    string query = "SELECT DonViTinh, DonGia FROM SanPham WHERE MaSP = @ma";
+        //    cmd = new SqlCommand(query, Moketnoi());
+        //    cmd.Parameters.AddWithValue("@ma", ma);
+        //    SqlDataReader reader = cmd.ExecuteReader();
+        //    if (reader.Read())
+        //    {
                 
-                tb3.Text = reader["DonViTinh"].ToString();
-                tb4.Text = reader["DonGia"].ToString();
+        //        tb3.Text = reader["DonViTinh"].ToString();
+        //        tb4.Text = reader["DonGia"].ToString();
 
-            }
-            reader.Close();
-        }
+        //    }
+        //    reader.Close();
+        //}
         public double laydulieudongia(string masanpham)
         {
 

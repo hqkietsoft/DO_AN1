@@ -51,9 +51,10 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(93, 33);
+            this.radioButton1.Location = new System.Drawing.Point(70, 27);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(187, 37);
+            this.radioButton1.Size = new System.Drawing.Size(148, 29);
             this.radioButton1.TabIndex = 0;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Mã nhân viên";
@@ -63,9 +64,10 @@
             // txt_MaNV
             // 
             this.txt_MaNV.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_MaNV.Location = new System.Drawing.Point(424, 122);
+            this.txt_MaNV.Location = new System.Drawing.Point(318, 99);
+            this.txt_MaNV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txt_MaNV.Name = "txt_MaNV";
-            this.txt_MaNV.Size = new System.Drawing.Size(401, 38);
+            this.txt_MaNV.Size = new System.Drawing.Size(302, 32);
             this.txt_MaNV.TabIndex = 2;
             this.txt_MaNV.TextChanged += new System.EventHandler(this.txt_MaNV_TextChanged);
             // 
@@ -92,11 +94,12 @@
             this.Column7});
             this.dgv_timkiem.EnableHeadersVisualStyles = false;
             this.dgv_timkiem.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgv_timkiem.Location = new System.Drawing.Point(38, 214);
+            this.dgv_timkiem.Location = new System.Drawing.Point(28, 174);
+            this.dgv_timkiem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgv_timkiem.Name = "dgv_timkiem";
             this.dgv_timkiem.RowHeadersWidth = 51;
             this.dgv_timkiem.RowTemplate.Height = 24;
-            this.dgv_timkiem.Size = new System.Drawing.Size(957, 287);
+            this.dgv_timkiem.Size = new System.Drawing.Size(718, 233);
             this.dgv_timkiem.TabIndex = 4;
             // 
             // Column1
@@ -152,9 +155,11 @@
             // 
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(38, 94);
+            this.groupBox1.Location = new System.Drawing.Point(28, 76);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(332, 92);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(249, 75);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tìm kiếm theo: ";
@@ -164,9 +169,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(167, 26);
+            this.label1.Location = new System.Drawing.Point(125, 21);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(620, 40);
+            this.label1.Size = new System.Drawing.Size(512, 33);
             this.label1.TabIndex = 6;
             this.label1.Text = "TÌM KIẾM THÔNG TIN NGƯỜI DÙNG";
             // 
@@ -175,9 +181,10 @@
             this.button1.BackColor = System.Drawing.Color.Yellow;
             this.button1.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(846, 112);
+            this.button1.Location = new System.Drawing.Point(634, 91);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(149, 56);
+            this.button1.Size = new System.Drawing.Size(112, 46);
             this.button1.TabIndex = 3;
             this.button1.Text = "&Tìm Kiếm";
             this.button1.UseVisualStyleBackColor = false;
@@ -185,16 +192,17 @@
             // 
             // TimKiem_ND
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1052, 547);
+            this.ClientSize = new System.Drawing.Size(789, 444);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgv_timkiem);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txt_MaNV);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "TimKiem_ND";
             this.Text = "Tìm kiếm thông tin người dùng";
             this.Load += new System.EventHandler(this.TimKiem_ND_Load);

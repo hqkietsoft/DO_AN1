@@ -195,6 +195,15 @@
     <Compile Include="InHDN.Designer.cs">
       <DependentUpon>InHDN.cs</DependentUpon>
     </Compile>
+    <Compile Include="InHoaDonXuat.cs">
+      <DependentUpon>PhieuXuat.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InHoaDonXuat1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InHoaDonXuat1.Designer.cs">
+      <DependentUpon>InHoaDonXuat1.cs</DependentUpon>
+    </Compile>
     <Compile Include="InPNH.cs">
       <DependentUpon>InPNHData.tt</DependentUpon>
     </Compile>
@@ -218,6 +227,21 @@
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PhieuXuat.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhieuXuat.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhieuXuat.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhieuXuat.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhieuXuat.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhieuXuat.edmx</DependentUpon>
     </Compile>
     <Compile Include="QLNH_CNSuaDH.cs">
       <SubType>Form</SubType>
@@ -292,6 +316,9 @@
     <EmbeddedResource Include="InHDN.resx">
       <DependentUpon>InHDN.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InHoaDonXuat1.resx">
+      <DependentUpon>InHoaDonXuat1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -333,6 +360,13 @@
     </EntityDeploy>
     <None Include="DataBCTK.edmx.diagram">
       <DependentUpon>DataBCTK.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="PhieuXuat.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PhieuXuat.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="PhieuXuat.edmx.diagram">
+      <DependentUpon>PhieuXuat.edmx</DependentUpon>
     </None>
     <None Include="Resources\QuanLyKhachHang.resx" />
     <EmbeddedResource Include="StartPage.resx">
@@ -436,6 +470,17 @@
       <DependentUpon>InPNHData.edmx</DependentUpon>
       <LastGenOutput>InPNHData.cs</LastGenOutput>
     </Content>
+    <Content Include="PhieuXuat.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PhieuXuat.edmx</DependentUpon>
+      <LastGenOutput>PhieuXuat.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="PhieuXuat.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PhieuXuat.edmx</DependentUpon>
+      <LastGenOutput>PhieuXuat.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\Image1.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

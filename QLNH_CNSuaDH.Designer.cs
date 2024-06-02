@@ -120,9 +120,9 @@
             this.groupControl2.Controls.Add(this.labelControl7);
             this.groupControl2.Controls.Add(this.txtGiaNhap);
             this.groupControl2.Controls.Add(this.txtTongTien);
-            this.groupControl2.Location = new System.Drawing.Point(0, 96);
+            this.groupControl2.Location = new System.Drawing.Point(0, 110);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(955, 210);
+            this.groupControl2.Size = new System.Drawing.Size(953, 207);
             this.groupControl2.TabIndex = 122;
             this.groupControl2.Text = "Nhập thông tin sản phẩm";
             // 
@@ -156,7 +156,7 @@
             this.btnClear.Appearance.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.Appearance.Options.UseFont = true;
             this.btnClear.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.ImageOptions.Image")));
-            this.btnClear.Location = new System.Drawing.Point(815, 169);
+            this.btnClear.Location = new System.Drawing.Point(812, 163);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(120, 33);
             this.btnClear.TabIndex = 162;
@@ -197,7 +197,7 @@
             // 
             // labelControl20
             // 
-            this.labelControl20.Location = new System.Drawing.Point(9, 145);
+            this.labelControl20.Location = new System.Drawing.Point(10, 140);
             this.labelControl20.Name = "labelControl20";
             this.labelControl20.Size = new System.Drawing.Size(51, 13);
             this.labelControl20.TabIndex = 97;
@@ -277,7 +277,7 @@
             // 
             // txtTongTien
             // 
-            this.txtTongTien.Location = new System.Drawing.Point(84, 141);
+            this.txtTongTien.Location = new System.Drawing.Point(84, 136);
             this.txtTongTien.Name = "txtTongTien";
             this.txtTongTien.Size = new System.Drawing.Size(848, 22);
             this.txtTongTien.TabIndex = 159;
@@ -292,9 +292,9 @@
             this.groupControl1.Controls.Add(this.dteNgayLap);
             this.groupControl1.Controls.Add(this.labelControl4);
             this.groupControl1.Controls.Add(this.labelControl5);
-            this.groupControl1.Location = new System.Drawing.Point(0, 34);
+            this.groupControl1.Location = new System.Drawing.Point(0, 37);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(955, 56);
+            this.groupControl1.Size = new System.Drawing.Size(953, 67);
             this.groupControl1.TabIndex = 121;
             this.groupControl1.Text = "Nhập thông tin đơn hàng";
             // 
@@ -446,15 +446,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1056, 31);
+            this.barDockControlTop.Size = new System.Drawing.Size(957, 31);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 611);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 457);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1056, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(957, 0);
             // 
             // barDockControlLeft
             // 
@@ -462,15 +462,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 31);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 580);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 426);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1056, 31);
+            this.barDockControlRight.Location = new System.Drawing.Point(957, 31);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 580);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 426);
             // 
             // btnXoa
             // 
@@ -487,6 +487,7 @@
             // 
             // dgvSuaDH
             // 
+            this.dgvSuaDH.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSuaDH.BackgroundColor = System.Drawing.Color.White;
             this.dgvSuaDH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSuaDH.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -502,11 +503,11 @@
             this.DonViTinh,
             this.GiaNhap,
             this.GhiChu});
-            this.dgvSuaDH.Location = new System.Drawing.Point(0, 311);
+            this.dgvSuaDH.Location = new System.Drawing.Point(0, 323);
             this.dgvSuaDH.Name = "dgvSuaDH";
             this.dgvSuaDH.ReadOnly = true;
             this.dgvSuaDH.RowHeadersWidth = 51;
-            this.dgvSuaDH.Size = new System.Drawing.Size(1054, 297);
+            this.dgvSuaDH.Size = new System.Drawing.Size(953, 127);
             this.dgvSuaDH.TabIndex = 127;
             this.dgvSuaDH.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSuaMH_CellContentClick);
             // 
@@ -519,7 +520,6 @@
             this.MaPhieu.ReadOnly = true;
             this.MaPhieu.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.MaPhieu.Visible = false;
-            this.MaPhieu.Width = 125;
             // 
             // MaNV
             // 
@@ -528,7 +528,6 @@
             this.MaNV.MinimumWidth = 6;
             this.MaNV.Name = "MaNV";
             this.MaNV.ReadOnly = true;
-            this.MaNV.Width = 125;
             // 
             // TenNCC
             // 
@@ -537,7 +536,6 @@
             this.TenNCC.MinimumWidth = 6;
             this.TenNCC.Name = "TenNCC";
             this.TenNCC.ReadOnly = true;
-            this.TenNCC.Width = 125;
             // 
             // NgayLap
             // 
@@ -546,7 +544,6 @@
             this.NgayLap.MinimumWidth = 6;
             this.NgayLap.Name = "NgayLap";
             this.NgayLap.ReadOnly = true;
-            this.NgayLap.Width = 125;
             // 
             // TongTien
             // 
@@ -555,7 +552,6 @@
             this.TongTien.MinimumWidth = 6;
             this.TongTien.Name = "TongTien";
             this.TongTien.ReadOnly = true;
-            this.TongTien.Width = 125;
             // 
             // MaSP
             // 
@@ -564,7 +560,6 @@
             this.MaSP.MinimumWidth = 6;
             this.MaSP.Name = "MaSP";
             this.MaSP.ReadOnly = true;
-            this.MaSP.Width = 125;
             // 
             // TenNSX
             // 
@@ -574,7 +569,6 @@
             this.TenNSX.Name = "TenNSX";
             this.TenNSX.ReadOnly = true;
             this.TenNSX.Visible = false;
-            this.TenNSX.Width = 125;
             // 
             // TenSP
             // 
@@ -584,7 +578,6 @@
             this.TenSP.Name = "TenSP";
             this.TenSP.ReadOnly = true;
             this.TenSP.Visible = false;
-            this.TenSP.Width = 125;
             // 
             // SoLuongNhap
             // 
@@ -593,7 +586,6 @@
             this.SoLuongNhap.MinimumWidth = 6;
             this.SoLuongNhap.Name = "SoLuongNhap";
             this.SoLuongNhap.ReadOnly = true;
-            this.SoLuongNhap.Width = 125;
             // 
             // DonViTinh
             // 
@@ -603,7 +595,6 @@
             this.DonViTinh.Name = "DonViTinh";
             this.DonViTinh.ReadOnly = true;
             this.DonViTinh.Visible = false;
-            this.DonViTinh.Width = 125;
             // 
             // GiaNhap
             // 
@@ -612,7 +603,6 @@
             this.GiaNhap.MinimumWidth = 6;
             this.GiaNhap.Name = "GiaNhap";
             this.GiaNhap.ReadOnly = true;
-            this.GiaNhap.Width = 125;
             // 
             // GhiChu
             // 
@@ -621,7 +611,6 @@
             this.GhiChu.MinimumWidth = 6;
             this.GhiChu.Name = "GhiChu";
             this.GhiChu.ReadOnly = true;
-            this.GhiChu.Width = 125;
             // 
             // bar1
             // 
@@ -637,7 +626,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1056, 611);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(957, 457);
             this.Controls.Add(this.dgvSuaDH);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);

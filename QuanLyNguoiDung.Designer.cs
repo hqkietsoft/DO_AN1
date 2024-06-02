@@ -46,7 +46,6 @@
             this.btnBoqua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txt_Matkhau = new System.Windows.Forms.TextBox();
             this.txt_taikhoan = new System.Windows.Forms.TextBox();
@@ -94,12 +93,12 @@
             this.ChucVu,
             this.DiaChi});
             this.dgv_nguoidung.EnableHeadersVisualStyles = false;
-            this.dgv_nguoidung.Location = new System.Drawing.Point(437, 246);
+            this.dgv_nguoidung.Location = new System.Drawing.Point(422, 212);
             this.dgv_nguoidung.Name = "dgv_nguoidung";
             this.dgv_nguoidung.ReadOnly = true;
             this.dgv_nguoidung.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dgv_nguoidung.RowHeadersWidth = 51;
-            this.dgv_nguoidung.Size = new System.Drawing.Size(661, 275);
+            this.dgv_nguoidung.Size = new System.Drawing.Size(622, 275);
             this.dgv_nguoidung.TabIndex = 64;
             this.dgv_nguoidung.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_nguoidung_CellContentClick_2);
             // 
@@ -177,11 +176,11 @@
             this.groupBox2.Controls.Add(this.btnXoa);
             this.groupBox2.Controls.Add(this.btnSua);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(437, 62);
+            this.groupBox2.Location = new System.Drawing.Point(422, 28);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(1, 2, 1, 2);
-            this.groupBox2.Size = new System.Drawing.Size(447, 158);
+            this.groupBox2.Size = new System.Drawing.Size(409, 158);
             this.groupBox2.TabIndex = 68;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tác vụ ";
@@ -193,7 +192,7 @@
             this.btnThem.ForeColor = System.Drawing.Color.Black;
             this.btnThem.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Image")));
             this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThem.Location = new System.Drawing.Point(27, 38);
+            this.btnThem.Location = new System.Drawing.Point(16, 38);
             this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(99, 35);
@@ -210,7 +209,7 @@
             this.btnThoat.ForeColor = System.Drawing.Color.Black;
             this.btnThoat.Image = ((System.Drawing.Image)(resources.GetObject("btnThoat.Image")));
             this.btnThoat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThoat.Location = new System.Drawing.Point(310, 102);
+            this.btnThoat.Location = new System.Drawing.Point(277, 102);
             this.btnThoat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(117, 35);
@@ -227,7 +226,7 @@
             this.btn_Timkiem.ForeColor = System.Drawing.Color.Black;
             this.btn_Timkiem.Image = ((System.Drawing.Image)(resources.GetObject("btn_Timkiem.Image")));
             this.btn_Timkiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Timkiem.Location = new System.Drawing.Point(310, 38);
+            this.btn_Timkiem.Location = new System.Drawing.Point(277, 38);
             this.btn_Timkiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Timkiem.Name = "btn_Timkiem";
             this.btn_Timkiem.Size = new System.Drawing.Size(117, 35);
@@ -243,7 +242,7 @@
             this.btnBoqua.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBoqua.Image = ((System.Drawing.Image)(resources.GetObject("btnBoqua.Image")));
             this.btnBoqua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBoqua.Location = new System.Drawing.Point(168, 102);
+            this.btnBoqua.Location = new System.Drawing.Point(146, 102);
             this.btnBoqua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBoqua.Name = "btnBoqua";
             this.btnBoqua.Size = new System.Drawing.Size(99, 35);
@@ -260,7 +259,7 @@
             this.btnXoa.ForeColor = System.Drawing.Color.Black;
             this.btnXoa.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.Image")));
             this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXoa.Location = new System.Drawing.Point(27, 102);
+            this.btnXoa.Location = new System.Drawing.Point(16, 103);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(99, 35);
@@ -276,7 +275,7 @@
             this.btnSua.ForeColor = System.Drawing.Color.Black;
             this.btnSua.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.Image")));
             this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSua.Location = new System.Drawing.Point(168, 38);
+            this.btnSua.Location = new System.Drawing.Point(146, 38);
             this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(99, 35);
@@ -284,17 +283,6 @@
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click_2);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Tahoma", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Red;
-            this.label12.Location = new System.Drawing.Point(386, 7);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(331, 33);
-            this.label12.TabIndex = 69;
-            this.label12.Text = "QUẢN LÝ NGƯỜI DÙNG";
             // 
             // groupBox1
             // 
@@ -317,7 +305,7 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(28, 62);
+            this.groupBox1.Location = new System.Drawing.Point(25, 28);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(1, 2, 1, 2);
@@ -505,10 +493,10 @@
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(899, 44);
+            this.button1.Location = new System.Drawing.Point(850, 11);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(199, 191);
+            this.button1.Size = new System.Drawing.Size(194, 190);
             this.button1.TabIndex = 70;
             this.button1.UseVisualStyleBackColor = false;
             // 
@@ -520,11 +508,12 @@
             this.Appearance.Options.UseForeColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1114, 542);
+            this.AutoScroll = true;
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1067, 507);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dgv_nguoidung);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.label12);
             this.Controls.Add(this.groupBox1);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("QuanLyNguoiDung.IconOptions.Image")));
             this.Name = "QuanLyNguoiDung";
@@ -535,7 +524,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -550,7 +538,6 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnBoqua;
         private System.Windows.Forms.Button btnSua;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtMaNV;
         private System.Windows.Forms.Label label13;

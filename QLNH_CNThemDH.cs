@@ -143,12 +143,9 @@ namespace DO_AN_1
             bool isUpdated = false;
             foreach (DataGridViewRow row in dgvThemDH.Rows)
             {
-                if (row.Cells["MaPhieu"].Value != null && row.Cells["MaSP"].Value != null && row.Cells["MaNV"].Value != null && row.Cells["NgayLap"].Value != null
-                    && row.Cells["TenNCC"].Value != null && row.Cells["GhiChu"].Value != null)
+                if (row.Cells["MaSP"].Value != null && row.Cells["GhiChu"].Value != null)
                 {
-                    if (row.Cells["MaPhieu"].Value.ToString() == maPhieu && row.Cells["MaSP"].Value.ToString() == maSanPham
-                        && row.Cells["MaNV"].Value.ToString() == maNhanvien && row.Cells["NgayLap"].Value.ToString() == ngayLap
-                        && row.Cells["TenNCC"].Value.ToString() == nCC && row.Cells["GhiChu"].Value.ToString() == ghiChu)
+                    if (row.Cells["MaSP"].Value.ToString() == maSanPham && row.Cells["GhiChu"].Value.ToString() == ghiChu)
                     {
                         int currentSoLuong;
                         long currentTongTien;
@@ -165,39 +162,23 @@ namespace DO_AN_1
                             return;
                         }
                     }
-                    else if(row.Cells["MaPhieu"].Value.ToString() == maPhieu)
-                    {
-                        MessageBox.Show("Mã phiếu đã tồn tại. Vui lòng kiểm tra lại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
                 }
             }
 
             if (!isUpdated)
             {
                 object[] values = {
-                    maPhieu,
-                    maNhanvien,
                     maSanPham,
-                    nCC,
-                    txtTenNSX.Text,
-                    txtTenSanPham.Text,
-                    ngayLap,
                     soLuongNhap.ToString(),
-                    txtDonViTinh.Text,
                     txtGiaNhap.Text,
-                    tongTien.ToString(),
-                    ghiChu
+                    ghiChu,
+                    tongTien.ToString()
                 };
 
                 dgvThemDH.Rows.Add(values);
             }
 
-            txtMaPhieu.Clear();
-            ccbMaNhanVien.Text = "";
-            dteNgayLap.Text = "";
             cbbMaSanPham.Text = "";
-            cbbTenNCC.Text = "";
             txtTenNSX.Clear();
             txtTenSanPham.Text = "";
             txtSoLuong.Clear();
@@ -205,6 +186,24 @@ namespace DO_AN_1
             txtGiaNhap.Clear();
             txtTongTien.Clear();
             txtGhiChuSP.Clear();
+
+            //FormatColumns();
+            decimal total = 0;
+            if (dgvThemDH.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dgvThemDH.Rows)
+                {
+
+                    if (!row.IsNewRow)
+                    {
+
+                        decimal unitPrice = Convert.ToDecimal(row.Cells["TongTien"].Value);
+                        total += unitPrice;
+                    }
+                }
+            }
+            
+            txtTong.Text = total.ToString();
         }
 
         private bool KiemTraTonTaiMaPhieu(string maPhieu)
@@ -255,7 +254,7 @@ namespace DO_AN_1
                 var employee1 = item["MaSP"].ToString() ;
                 cbbMaSanPham.Items.Add(employee1);
             }
-            FormatColumns();
+            
         }
 
         private void ccbMaNhanVien_DropDown(object sender, EventArgs e)
@@ -295,34 +294,32 @@ namespace DO_AN_1
 
                 try
                 {
-                    foreach (DataGridViewRow row in dgvThemDH.Rows)
-                    {
-                        if (row.IsNewRow) continue;
-
-                        // Lấy các giá trị từ DataGridView
-                        string maPhieu = row.Cells["MaPhieu"].Value.ToString();
-                        string maNV = row.Cells["MaNV"].Value.ToString();
-                        string maSP = row.Cells["MaSP"].Value.ToString();
-                        string tenNCC = row.Cells["TenNCC"].Value.ToString();
-                        string tenNSX = row.Cells["TenNSX"].Value.ToString();
-                        string tenSP = row.Cells["TenSP"].Value.ToString();
-                        DateTime ngayLap = Convert.ToDateTime(row.Cells["NgayLap"].Value);
-                        int soLuongNhap = Convert.ToInt32(row.Cells["SoLuongNhap"].Value);
-                        string donViTinh = row.Cells["DonViTinh"].Value.ToString();
-                        decimal giaNhap = Convert.ToDecimal(row.Cells["GiaNhap"].Value);
-                        decimal tongTien = Convert.ToDecimal(row.Cells["TongTien"].Value);
-                        string ghiChu = row.Cells["GhiChu"].Value.ToString();
-
+                        string maPhieu = txtMaPhieu.Text;
+                        string maNV = ccbMaNhanVien.Text;
+                        string tenNCC = cbbTenNCC.Text;
+                        DateTime ngayLap = dteNgayLap.DateTime;
+                        decimal TongTien = Convert.ToDecimal(txtTong.Text);
                         // Insert vào bảng PhieuNhapHang
                         string queryPNH = @"INSERT INTO PhieuNhapHang (MaPhieu, MaNV, TenNCC, NgayLap, TongTien) 
-                        VALUES (@MaPhieu, @MaNV, @TenNCC, @NgayLap, @TongTien)";
+                            VALUES (@MaPhieu, @MaNV, @TenNCC, @NgayLap, @TongTien)";
                         SqlCommand cmdPNH = new SqlCommand(queryPNH, con, transaction);
                         cmdPNH.Parameters.AddWithValue("@MaPhieu", maPhieu);
                         cmdPNH.Parameters.AddWithValue("@MaNV", maNV);
                         cmdPNH.Parameters.AddWithValue("@TenNCC", tenNCC);
                         cmdPNH.Parameters.AddWithValue("@NgayLap", ngayLap);
-                        cmdPNH.Parameters.AddWithValue("@TongTien", tongTien);
+                        cmdPNH.Parameters.AddWithValue("@TongTien", TongTien);
                         cmdPNH.ExecuteNonQuery();
+                    foreach (DataGridViewRow row in dgvThemDH.Rows)
+                    {
+                        if (row.IsNewRow) continue;
+
+                        // Lấy các giá trị từ DataGridView
+                        string maSP = row.Cells["MaSP"].Value.ToString();
+                        int soLuongNhap = Convert.ToInt32(row.Cells["SoLuongNhap"].Value);
+                        decimal giaNhap = Convert.ToDecimal(row.Cells["GiaNhap"].Value);
+                        string ghiChu = row.Cells["GhiChu"].Value.ToString();
+
+                        
 
                         // Insert vào bảng ChiTietPhieuNhapHang
                         string queryCTPN = @"INSERT INTO ChiTietPhieuNhapHang (MaPhieu, MaSP, SoLuong, GiaNhap, GhiChu) 
@@ -364,25 +361,18 @@ namespace DO_AN_1
             {
                 DataGridViewRow row = dgvThemDH.Rows[e.RowIndex];
 
-                txtMaPhieu.Text = row.Cells["MaPhieu"].Value.ToString();
-                ccbMaNhanVien.Text = row.Cells["MaNV"].Value.ToString();
                 cbbMaSanPham.Text = row.Cells["MaSP"].Value.ToString();
-                cbbTenNCC.Text = row.Cells["TenNCC"].Value.ToString();
-                txtTenNSX.Text = row.Cells["TenNSX"].Value.ToString();
-                txtTenSanPham.Text = row.Cells["TenSP"].Value.ToString();
-                dteNgayLap.Text = row.Cells["NgayLap"].Value.ToString();
                 txtSoLuong.Text = row.Cells["SoLuongNhap"].Value.ToString();
-                txtDonViTinh.Text = row.Cells["DonViTinh"].Value.ToString();
+                txtGhiChuSP.Text = row.Cells["GhiChu"].Value.ToString();
                 txtGiaNhap.Text = row.Cells["GiaNhap"].Value.ToString();
                 txtTongTien.Text = row.Cells["TongTien"].Value.ToString();
-                txtGhiChuSP.Text = row.Cells["GhiChu"].Value.ToString();
             }
         }
 
-        private void FormatColumns()
-        {
-            dgvThemDH.Columns["NgayLap"].DefaultCellStyle.Format = "dd-MM-yyyy";
-        }
+        //private void FormatColumns()
+        //{
+        //    dgvThemDH.Columns["NgayLap"].DefaultCellStyle.Format = "dd-MM-yyyy";
+        //}
 
         private void txtMaPhieu_TextChanged(object sender, EventArgs e)
         {
